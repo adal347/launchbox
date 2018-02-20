@@ -2,8 +2,7 @@
 
 Proyecto para la empresa Launchbox.
 
-Es necesario Nodejs:
-Instalar [node](https://nodejs.org/en/download/).
+Para desarrollar es necesario [Nodejs](https://nodejs.org/en/download/).
 
 ## Configuración
 
