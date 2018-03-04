@@ -12,10 +12,101 @@
 
 <ion-content padding>
   <ion-grid>
-    <ul>
-      <li class="text" *ngFor="let box of boxes">
-        {{ box.id }}
-      </li>
-    </ul>
+    <ion-row>
+      <ion-col *ngFor="let box of section1">
+        <ion-card>
+          <ion-card-header>
+            {{ box.id }}
+          </ion-card-header>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-4></ion-col>
+      <ion-col *ngFor="let box of section2">
+        <ion-card>
+          <ion-card-header>
+            {{ box.id }}
+          </ion-card-header>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-4></ion-col>
+      <ion-col *ngFor="let box of section3">
+        <ion-card>
+          <ion-card-header>
+            {{ box.id }}
+          </ion-card-header>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-4></ion-col>
+      <ion-col *ngFor="let box of section4">
+        <ion-card>
+          <ion-card-header>
+            {{ box.id }}
+          </ion-card-header>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-4></ion-col>
+      <ion-col *ngFor="let box of section5">
+        <ion-card>
+          <ion-card-header>
+            {{ box.id }}
+          </ion-card-header>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-6></ion-col>
+      <ion-col *ngFor="let box of section6">
+        <ion-card>
+          <ion-card-header>
+            {{ box.id }}
+          </ion-card-header>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-6></ion-col>
+      <ion-col *ngFor="let box of section7">
+        <ion-card>
+          <ion-card-header>
+            {{ box.id }}
+          </ion-card-header>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col *ngFor="let box of section8">
+        <ion-card>
+          <ion-card-header>
+            {{ box.id }}
+          </ion-card-header>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col *ngFor="let box of section9">
+        <ion-card>
+          <ion-card-header>
+            {{ box.id }}
+          </ion-card-header>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col *ngFor="let box of section10">
+        <ion-card>
+          <ion-card-header>
+            {{ box.id }}
+          </ion-card-header>
+        </ion-card>
+      </ion-col>
+    </ion-row>
   </ion-grid>
 </ion-content>
