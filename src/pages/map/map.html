@@ -1,12 +1,9 @@
-<!--
-  Generated template for the MapPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
 
   <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
     <ion-title>Mapa</ion-title>
   </ion-navbar>
 
@@ -15,5 +12,10 @@
 
 <ion-content padding>
   <ion-grid>
+    <ul>
+      <li class="text" *ngFor="let box of boxes">
+        {{ box.id }}
+      </li>
+    </ul>
   </ion-grid>
 </ion-content>
