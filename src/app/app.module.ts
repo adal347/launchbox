@@ -10,6 +10,8 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { Environment } from '../enviorments/enviorment';
 import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFireDatabase } from 'angularfire2/database';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,8 @@ import { AngularFireModule } from 'angularfire2';
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    AngularFireModule.initializeApp(Environment.firebase)
+    AngularFireModule.initializeApp(Environment.firebase),
+    AngularFireDatabaseModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [

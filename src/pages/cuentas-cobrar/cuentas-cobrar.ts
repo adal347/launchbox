@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+//import { AngularFireDatabase} from 'angularfire2/database';
 
 /**
  * Generated class for the CuentasCobrarPage page.
@@ -15,7 +16,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class CuentasCobrarPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(/*public db:AngularFireDatabase, */public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {

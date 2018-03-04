@@ -12,7 +12,7 @@ import { CuentasCobrarPage } from '../pages/cuentas-cobrar/cuentas-cobrar';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = HomePage;
+  rootPage: any = CuentasCobrarPage;
 
   pages: Array<{title: string, component: any}>;
 
