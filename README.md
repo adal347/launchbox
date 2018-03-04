@@ -30,3 +30,30 @@ npm install
 ```dos
 ionic serve
 ```
+
+## Deploy
+
+1. Si aún no se ha realizado:
+
+```dos
+npm install --save morgan cors express body-parser
+```
+
+2. Si aun no se ha realizado:
+
+```dos
+npm install -g heroku-cli
+```
+
+3. Si aun no se ha realizado:
+
+```dos
+heroku login
+credenciales
+```
+
+2. Si aun no se ha realizado:
+
+```dos
+heroku create
+```
