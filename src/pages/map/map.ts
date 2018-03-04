@@ -23,6 +23,16 @@ export class MapPage {
 
   constructor(public db: AngularFireDatabase, public navCtrl: NavController, public navParams: NavParams) {
     this.s = this.db.list('boxes').valueChanges().subscribe( data => {
+      this.section1 = [];
+      this.section2 = [];
+      this.section3 = [];
+      this.section4 = [];
+      this.section5 = [];
+      this.section6 = [];
+      this.section7 = [];
+      this.section8 = [];
+      this.section9 = [];
+      this.section10 = [];
       for (let i = 35; i < data.length; i++) {
         this.section1.push(data[i]);
       }
