@@ -6,12 +6,11 @@
 -->
 <ion-header>
   <ion-navbar>
-  	 <button ion-button menuToggle>
+  	<button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
     <ion-title>Cuentas por cobrar</ion-title>
   </ion-navbar>
-
 </ion-header>
 
 <ion-content padding>
@@ -43,12 +42,37 @@
       <td>efectivo</td>
       <td><ion-toggle ></ion-toggle></td>
       <td><button color = "update" ion-button icon-left item-left><ion-icon ios="ios-create" md="md-create"></ion-icon>Editar</button></td>
-      <td><button color = "retrieve"ion-button icon-left item-left><ion-icon ios="ios-clipboard" md="md-clipboard"></ion-icon>Detalles</button></td>
+      <td><button color = "retrieve" ion-button icon-left item-left><ion-icon ios="ios-clipboard" md="md-clipboard"></ion-icon>Detalles</button></td>
       <td><button  color = "danger" ion-button icon-left item-left><ion-icon ios="ios-trash" md="md-trash"></ion-icon>Eliminar</button></td>
     </tr>
    </table>
    <br/>
    <br/>
-  <ion-buttons end><button color = "create" ion-button icon-right item-right>Nuevo<ion-icon ios="ios-add-circle" md="md-add-circle"></ion-icon></button></ion-buttons>
+   <ion-buttons end>
+    <button color = "create" ion-button icon-right item-right data-toggle="modal" data-target="#newEntryModal">
+      Nuevo<ion-icon ios="ios-add-circle" md="md-add-circle"></ion-icon>
+    </button>
+  </ion-buttons>
+
+  <!--Modal of new Entry-->
+  <div class="modal fade" id="newEntryModal" tabindex="-1" role="dialog"  aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" >Modal title</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          ...
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
 </ion-content>
