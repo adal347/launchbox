@@ -4,6 +4,7 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
+import { MapPage } from '../pages/map/map';
 import { CuentasCobrarPage } from '../pages/cuentas-cobrar/cuentas-cobrar';
 
 import { StatusBar } from '@ionic-native/status-bar';
@@ -17,6 +18,7 @@ import { AngularFireDatabase } from 'angularfire2/database';
   declarations: [
     MyApp,
     HomePage,
+    MapPage,
     CuentasCobrarPage
   ],
   imports: [
@@ -29,6 +31,7 @@ import { AngularFireDatabase } from 'angularfire2/database';
   entryComponents: [
     MyApp,
     HomePage,
+    MapPage,
     CuentasCobrarPage
   ],
   providers: [
