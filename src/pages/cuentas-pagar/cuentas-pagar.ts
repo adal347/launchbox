@@ -20,21 +20,29 @@ export class CuentasPagarPage {
   statusBoxes: object[]=[];
   typoBoxes: object[]=[];
   typoPago: object[]=[];
-
+  title: any;
+  show: any;
 
   constructor(public db:AngularFireDatabase, public navCtrl: NavController, public navParams: NavParams) {
-  	this.s = this.db.list('boxes').valueChanges().subscribe( data => {
-		this.boxes=data;
-	});
-	this.s= this.db.list('statusBox').valueChanges().subscribe(data => {
-		this.statusBoxes=data;
-	});
-	this.s= this.db.list('typoBox').valueChanges().subscribe(data => {
-		this.typoBoxes=data;
-	});
-	this.s= this.db.list('typoPago').valueChanges().subscribe(data => {
+  	this.title= 'Ingreso de nuevo servicio';
+  	this.s= this.db.list('typoPago').valueChanges().subscribe(data => {
 		this.typoPago=data;
 	});
+  }
+
+  initModal(type){
+  	this.show = false;
+  	if (type==1) {
+  		this.title= 'Ingreso de nuevo servicio';
+  	}
+  	else if (type==0) {
+  		this.title = 'Editar servicio';
+  	}
+  	else{
+  		this.title = 'Ver detalles del servicio';
+  		this.show=true;
+  	}
+  	$('#newEntryModal').modal();
   }
 
   ionViewDidLoad() {

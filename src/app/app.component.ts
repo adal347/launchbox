@@ -25,7 +25,7 @@ export class MyApp {
     this.pages = [
       { title: 'Home', component: HomePage },
       { title: 'Mapa', component: MapPage },
-      { title: 'Cuentas por cobrar', component: CuentasCobrarPage }
+      { title: 'Cuentas por cobrar', component: CuentasCobrarPage },
       { title: 'Cuentas por pagar', component: CuentasPagarPage }
     ];
 

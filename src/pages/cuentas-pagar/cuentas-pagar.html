@@ -43,14 +43,14 @@
 		<td></td>
 		<td></td>
 		<td></td>
-		<td><button color = "update" ion-button icon-left item-left data-target="#updateEntryModal" data-toggle="modal"><ion-icon ios="ios-create" md="md-create"></ion-icon>Editar</button></td>
-      <td><button color = "retrieve" ion-button icon-left item-left><ion-icon ios="ios-clipboard" md="md-clipboard"></ion-icon>Detalles</button></td>
-      <td><button  color = "danger" ion-button icon-left item-left><ion-icon ios="ios-trash" md="md-trash"></ion-icon>Eliminar</button></td>
+		<td><button color = "update" ion-button icon-left item-left data-target="#updateEntryModal" data-toggle="modal" (click)="initModal(0)" ><ion-icon ios="ios-create" md="md-create"></ion-icon>Editar</button></td>
+      <td><button color = "retrieve" ion-button icon-left item-left (click)="initModal(2)" ><ion-icon ios="ios-clipboard" md="md-clipboard"></ion-icon>Detalles</button></td>
+      <td><button  color = "danger" ion-button icon-left item-left data-target="#newDeleteModal" data-toggle="modal" ><ion-icon ios="ios-trash" md="md-trash"></ion-icon>Eliminar</button></td>
 	</tr>	
 </table>
 <h4>Total:</h4>
 <ion-buttons end>
-    <button color = "create" ion-button icon-right item-right data-toggle="modal" data-target="#newEntryModal">
+    <button color = "create" ion-button icon-right item-right data-toggle="modal" (click)="initModal(1)" data-target="#newEntryModal">
       Nueva Fila<ion-icon ios="ios-add-circle" md="md-add-circle"></ion-icon>
     </button>
   </ion-buttons>
@@ -87,30 +87,11 @@
 </table>
 <h4>Total:</h4> 
 <ion-buttons end>
-    <button color = "create" ion-button icon-right item-right data-toggle="modal" data-target="#newEntryModal">
+    <button color = "create" ion-button icon-right item-right data-toggle="modal" data-target="#newEntryModal"> 
       Nueva Fila<ion-icon ios="ios-add-circle" md="md-add-circle"></ion-icon>
     </button>
   </ion-buttons>
 
-<!--Modal of new Entry(editar)-->
-  <div class="modal fade" id="updateEntryModal" tabindex="-1" role="dialog"  aria-hidden="true" >
-   <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" >editar Ingreso servicio</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        </div>
-      </div>
-    </div>
-  </div>
-<!--Modal of new END-->
 
 
 <!--Modal of new Entry (NUEVA FILA)-->
@@ -118,7 +99,7 @@
    <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" >Ingreso de nuevo servicio</h5>
+          <h5 class="modal-title" >{{ title }}</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -128,7 +109,7 @@
             <div class="input-group mb-3">
               <label for = "recipient-name" class="col-form-label" text-align="center">Tipo de servicio</label>
               <div class="col">
-                <input type="text" class="form-control" placeholder="Cantidad">
+                <input type="text" class="form-control" placeholder="Cantidad" [disabled]="show">
               </div>
             </div>
             <div class="input-group mb-3">
@@ -148,7 +129,7 @@
             <div class="form-group">
               <label for="recipient-name" class="col-form-label">Efectivo/Transferencia</label>
               <select class="custom-select">
-                <option *ngFor="let typo of typoPago" value="{{typo.id}}">{{typo.id}}</option>
+                <option *ngFor="let typo of typoPago" value="{{typo.id}}">{{typo.tipo}}</option>
               </select>
             </div>
 
@@ -183,12 +164,36 @@
           </form>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+          <button type="button" class="btn btn-primary" *ngIf="!show">Guardar</button>
         </div>
       </div>
     </div>
   </div>
 <!--Modal of new END-->
+
+<!--Modal of new Entry (NUEVA FILA)-->
+  <div class="modal fade" id="newDeleteModal" tabindex="-1" role="dialog"  aria-hidden="true" >
+  	<div class="modal-dialog modal-dialog-centered" role="document">
+  	  <div class="modal-content">
+  	   	<div class="modal-header">
+  	   	 <h5 class="modal-title" >Eliminar Servicio</h5>
+  	   	  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">Estas seguro que desea eliminar el servicio?</div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+          <button type="button" class="btn btn-primary">Eliminar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
 
 </ion-content>
