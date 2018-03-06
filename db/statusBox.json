@@ -1,0 +1,13 @@
+[ null, {
+    "id" : 1,
+    "type" : "activo"
+  }, {
+    "id" : 2,
+    "type" : "inactivo"
+  }, {
+    "id" : 3,
+    "type" : "apartado"
+  }, {
+    "id" : 4,
+    "type" : "coworking"
+  }]

@@ -1,0 +1,13 @@
+[ null, {
+    "id" : 1,
+    "nombre" : "FRUIT BOX"
+  }, {
+    "id" : 2,
+    "nombre" : "SPROUT BOX"
+  }, {
+    "id" : 3,
+    "nombre" : "DOBLE SPROUT BOX"
+  }, {
+    "id" : 4,
+    "nombre" : "SEED BOX"
+  } ]
