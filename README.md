@@ -15,7 +15,7 @@ git clone https://github.com/adal347/launchbox.git
 2. Si aún no tienes ionic:
 
 ```dos
-npm install ionic y cordova
+npm install -g ionic cordova
 ```
 
 3. Instalar las dependencias:
