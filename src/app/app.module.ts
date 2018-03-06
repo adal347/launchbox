@@ -3,7 +3,6 @@ import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 
 import { MyApp } from './app.component';
-import { HomePage } from '../pages/home/home';
 import { MapPage } from '../pages/map/map';
 import { CuentasCobrarPage } from '../pages/cuentas-cobrar/cuentas-cobrar';
 import { CuentasPagarPage } from '../pages/cuentas-pagar/cuentas-pagar';
@@ -17,7 +16,6 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 @NgModule({
   declarations: [
     MyApp,
-    HomePage,
     MapPage,
     CuentasCobrarPage,
     CuentasPagarPage
@@ -31,7 +29,6 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage,
     MapPage,
     CuentasCobrarPage,
     CuentasPagarPage
