@@ -1,9 +1,3 @@
-<!--
-  Generated template for the CuentasCobrarPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
   <ion-navbar>
   	<button ion-button menuToggle>
@@ -41,27 +35,27 @@
       <td>16</td>
       <td>efectivo</td>
       <td><ion-toggle ></ion-toggle></td>
-      <td><button color = "update" ion-button icon-left item-left data-toggle="modal" data-target="#updateEntryModal">
-        <ion-icon ios="ios-create" md="md-create"></ion-icon>Editar
-      </button></td>
+      <td>
+        <button color = "update" ion-button icon-left item-left data-toggle="modal" data-target="#updateEntryModal">
+          <ion-icon ios="ios-create" md="md-create"></ion-icon>Editar
+        </button>
+      </td>
       <td><button color = "retrieve" ion-button icon-left item-left><ion-icon ios="ios-clipboard" md="md-clipboard"></ion-icon>Detalles</button></td>
       <td><button  color = "danger" ion-button icon-left item-left data-toggle="modal" data-target="#deleteEntryModal"><ion-icon ios="ios-trash" md="md-trash"></ion-icon>Eliminar</button></td>
     </tr>
-   </table>
-   <br/>
-   <br/>
-   <ion-buttons end>
+  </table>
+  <br/>
+  <br/>
+  <ion-buttons end>
     <button color = "create" ion-button icon-right item-right data-toggle="modal" data-target="#newEntryModal">
       Nuevo<ion-icon ios="ios-add-circle" md="md-add-circle"></ion-icon>
     </button>
   </ion-buttons>
 
-
-<!--MODALS FOR BUTTONS-->
-<!--Modal of 'generic Modal'-->
-
+  <!--MODALS FOR BUTTONS-->
+  <!--Modal of 'generic Modal'-->
   <div class="modal fade" id="newEntryModal" tabindex="-1" role="dialog"  aria-hidden="true" >
-   <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" >Ingreso de cuenta nueva</h5>
@@ -131,30 +125,27 @@
       </div>
     </div>
   </div>
-<!--'Generic Modal' END-->
 
-<!--Modal of 'Delete Entry'-->
-
+  <!--'Generic Modal' END-->
+  <!--Modal of 'Delete Entry'-->
   <div class="modal fade" id="deleteEntryModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog  modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Eliminar cuenta</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        ¿Estas seguro de que quieres eliminar la cuenta?
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-        <button type="button" class="btn btn-primary">Eliminar</button>
+    <div class="modal-dialog  modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Eliminar cuenta</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          ¿Estas seguro de que quieres eliminar la cuenta?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+          <button type="button" class="btn btn-primary">Eliminar</button>
+        </div>
       </div>
     </div>
   </div>
-</div>
-<!--'Delete Entry' END-->
-
-
+  <!--'Delete Entry' END-->
 </ion-content>

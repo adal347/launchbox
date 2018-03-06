@@ -20,18 +20,17 @@ export class CuentasCobrarPage {
   boxes: object[]=[];
   statusBoxes: object[]=[];
   typoBoxes: object[]=[];
+
   constructor(public db:AngularFireDatabase, public navCtrl: NavController, public navParams: NavParams) {
-
-	this.s = this.db.list('boxes').valueChanges().subscribe( data => {
-		this.boxes=data;
-	});
-	this.s= this.db.list('statusBox').valueChanges().subscribe(data => {
-		this.statusBoxes=data;
-	});
-	this.s= this.db.list('typoBox').valueChanges().subscribe(data => {
-		this.typoBoxes=data;
-	});
-
+    this.s = this.db.list('boxes').valueChanges().subscribe( data => {
+      this.boxes=data;
+	  });
+  	this.s= this.db.list('statusBox').valueChanges().subscribe(data => {
+  		this.statusBoxes=data;
+  	});
+  	this.s= this.db.list('typoBox').valueChanges().subscribe(data => {
+  		this.typoBoxes=data;
+  	});
   }
 
   ionViewDidLoad() {

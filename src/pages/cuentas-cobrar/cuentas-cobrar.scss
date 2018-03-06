@@ -1,8 +1,8 @@
 page-cuentas-cobrar {
-	h1{
+	h1 {
 		text-align: center;
 	}
-	table{
+	table {
 		margin: 0;
 		border-collapse: collapse;
 		width: 100%;
@@ -16,16 +16,15 @@ page-cuentas-cobrar {
 	tr:nth-child(even) {
     background-color: #dddddd;
 	}
-	#headerTable th{
+	#headerTable th {
 		text-align: center;
 		background-color: #000000;
 		color: #ffffff;
 	}
-	.fade{
+	.fade {
 		background-color: rgba(0,0,0,0.8);
 	}
-	.form-control, .btn-secondary, .btn-primary{
+	.form-control, .btn-secondary, .btn-primary {
 		font-size: 15px;
 	}
 }
-
