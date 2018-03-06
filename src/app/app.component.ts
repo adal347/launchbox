@@ -13,7 +13,7 @@ import { CuentasPagarPage } from '../pages/cuentas-pagar/cuentas-pagar';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = CuentasPagarPage;
+  rootPage: any = CuentasCobrarPage;
 
   pages: Array<{title: string, component: any}>;
 
@@ -22,9 +22,9 @@ export class MyApp {
 
     // used for an example of ngFor and navigation
     this.pages = [
-      { title: 'Mapa', component: MapPage },
       { title: 'Cuentas por cobrar', component: CuentasCobrarPage },
-      { title: 'Cuentas por pagar', component: CuentasPagarPage }
+      { title: 'Cuentas por pagar', component: CuentasPagarPage },
+      { title: 'Mapa', component: MapPage }
     ];
 
   }

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { AngularFireDatabase} from 'angularfire2/database';
+import { AngularFireDatabase } from 'angularfire2/database';
+import { CuentasCobrarService } from '../../services/cuentas_cobrar.service';
 
 /**
  * Generated class for the CuentasCobrarPage page.
@@ -21,7 +22,8 @@ export class CuentasCobrarPage {
   statusBoxes: object[]=[];
   typoBoxes: object[]=[];
 
-  constructor(public db:AngularFireDatabase, public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public db:AngularFireDatabase, public navCtrl: NavController,
+              public navParams: NavParams, public cuentasCobrarService: CuentasCobrarService) {
     this.s = this.db.list('boxes').valueChanges().subscribe( data => {
       this.boxes=data;
 	  });
@@ -31,6 +33,10 @@ export class CuentasCobrarPage {
   	this.s= this.db.list('typoBox').valueChanges().subscribe(data => {
   		this.typoBoxes=data;
   	});
+  }
+
+  createNewEntry() {
+    this.cuentasCobrarService.createNewEntry();
   }
 
   ionViewDidLoad() {

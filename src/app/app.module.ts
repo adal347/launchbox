@@ -13,6 +13,8 @@ import { Environment } from '../enviorments/enviorment';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 
+import { CuentasCobrarService } from '../services/cuentas_cobrar.service';
+
 @NgModule({
   declarations: [
     MyApp,
@@ -36,7 +38,8 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    CuentasCobrarService
   ]
 })
 export class AppModule {}
