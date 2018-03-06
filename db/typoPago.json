@@ -1,0 +1,7 @@
+[ null, {
+    "id" : 1,
+    "tipo" : "Transfer"
+  }, {
+    "id" : 2,
+    "tipo" : "Efectivo"
+  }]
