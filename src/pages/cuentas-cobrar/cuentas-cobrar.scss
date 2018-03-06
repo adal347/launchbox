@@ -21,31 +21,11 @@ page-cuentas-cobrar {
 		background-color: #000000;
 		color: #ffffff;
 	}
-	.actions{
-		text-align: center;
+	.fade{
+		background-color: rgba(0,0,0,0.8);
 	}
-	.action1 button{
-		color: #ffffff;
-		background-color: #EEAD51;
-	}
-	.action2 button{
-		color:#ffffff;
-		background-color:#5AC3E1; 
-	}
-	.action3 button{
-		color: #ffffff;
-		background-color: #E24C4C;
-	}
-	table td button{
-		color: #ffffff;
-		background-color: #99c9db;
-		margin: 0;
-		padding-top: 15px;
-		padding-right: 25px;
-		padding-bottom: 15px;
-		padding-left: 25px;
-		border-radius: 10px;
-		
+	.form-control, .btn-secondary, .btn-primary{
+		font-size: 15px;
 	}
 }
 

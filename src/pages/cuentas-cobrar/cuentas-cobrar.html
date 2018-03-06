@@ -41,9 +41,11 @@
       <td>16</td>
       <td>efectivo</td>
       <td><ion-toggle ></ion-toggle></td>
-      <td><button color = "update" ion-button icon-left item-left><ion-icon ios="ios-create" md="md-create"></ion-icon>Editar</button></td>
+      <td><button color = "update" ion-button icon-left item-left data-toggle="modal" data-target="#updateEntryModal">
+        <ion-icon ios="ios-create" md="md-create"></ion-icon>Editar
+      </button></td>
       <td><button color = "retrieve" ion-button icon-left item-left><ion-icon ios="ios-clipboard" md="md-clipboard"></ion-icon>Detalles</button></td>
-      <td><button  color = "danger" ion-button icon-left item-left><ion-icon ios="ios-trash" md="md-trash"></ion-icon>Eliminar</button></td>
+      <td><button  color = "danger" ion-button icon-left item-left data-toggle="modal" data-target="#deleteEntryModal"><ion-icon ios="ios-trash" md="md-trash"></ion-icon>Eliminar</button></td>
     </tr>
    </table>
    <br/>
@@ -54,25 +56,105 @@
     </button>
   </ion-buttons>
 
-  <!--Modal of new Entry-->
-  <div class="modal fade" id="newEntryModal" tabindex="-1" role="dialog"  aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
+
+<!--MODALS FOR BUTTONS-->
+<!--Modal of 'generic Modal'-->
+
+  <div class="modal fade" id="newEntryModal" tabindex="-1" role="dialog"  aria-hidden="true" >
+   <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" >Modal title</h5>
+          <h5 class="modal-title" >Ingreso de cuenta nueva</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
         <div class="modal-body">
-          ...
+          <form>
+            <div class="form-group">
+              <label for="recipient-name" class="col-form-label">No. de Box</label>
+              <select class="custom-select">
+                <option *ngFor="let box of boxes" value="{{box.id}}">{{box.id}}</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="recipient-name" class="col-form-label">Status</label>
+              <select class="custom-select">
+                <option *ngFor="let status of statusBoxes" value="{{status.id}}">{{status.type}}</option>
+              </select>
+            </div>
+            <div>
+              <label for="recipient-name" class="col-form-label">Tipo de box</label>
+              <select class="custom-select">
+                <option *ngFor="let typo of typoBoxes" value="{{typo.id}}">{{typo.nombre}}</option>
+              </select>
+            </div>
+            <div class="form-row">
+              <div class="col">
+                <label for = "nombreInquilino" class="col-form-label" text-align="center">Inquilino</label>
+              </div>
+              <div class="col">
+                <label for = "recipient-name" class="col-form-label"></label>
+                <input type="text" class="form-control" placeholder="Nombre">
+              </div>
+              <div class="col">
+                <label for = "recipient-name" class="col-form-label"></label>
+                <input type="text" class="form-control" placeholder="Apellido">
+              </div>
+            </div>
+            <div class="input-group mb-3">
+              <label for = "recipient-name" class="col-form-label" text-align="center">Monto</label>
+              <div class="col">
+                <input type="text" class="form-control" placeholder="Cantidad">
+              </div>
+            </div>
+            <div class="input-group mb-3">
+              <label for = "recipient-name" class="col-form-label" text-align="center">Fecha</label>
+              <div class="col">
+                <input type="text" class="form-control" placeholder="DD/MM/AAAA">
+              </div>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="inlineRadioOptions" id="efectivo">
+              <label class="form-check-label" for="efectivo">Efectivo</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="inlineRadioOptions" id="transferencia">
+              <label class="form-check-label" for="transferencia">Transferencia</label>
+            </div>
+          </form>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+          <button type="button" class="btn btn-primary">Guardar</button>
         </div>
       </div>
     </div>
   </div>
+<!--'Generic Modal' END-->
+
+<!--Modal of 'Delete Entry'-->
+
+  <div class="modal fade" id="deleteEntryModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog  modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Eliminar cuenta</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ¿Estas seguro de que quieres eliminar la cuenta?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary">Eliminar</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!--'Delete Entry' END-->
+
 
 </ion-content>
