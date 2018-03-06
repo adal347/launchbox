@@ -21,6 +21,9 @@ export class CuentasCobrarPage {
   boxes: object[]=[];
   statusBoxes: object[]=[];
   typoBoxes: object[]=[];
+  typoPago:object[]=[];
+  service: any;
+
 
   constructor(public db:AngularFireDatabase, public navCtrl: NavController,
               public navParams: NavParams, public cuentasCobrarService: CuentasCobrarService) {
@@ -33,10 +36,15 @@ export class CuentasCobrarPage {
   	this.s= this.db.list('typoBox').valueChanges().subscribe(data => {
   		this.typoBoxes=data;
   	});
+  	this.s= this.db.list('typoPago').valueChanges().subscribe(data => {
+		this.typoPago=data;
+	});
+	this.service={};
   }
 
   createNewEntry() {
-    this.cuentasCobrarService.createNewEntry();
+  	console.log(this.service);
+    this.cuentasCobrarService.createNewEntry(this.service);
   }
 
   ionViewDidLoad() {
