@@ -19,7 +19,8 @@ export class CuentasPagarPage {
   boxes: object[]=[];
   statusBoxes: object[]=[];
   typoBoxes: object[]=[];
-  
+  typoPago: object[]=[];
+
 
   constructor(public db:AngularFireDatabase, public navCtrl: NavController, public navParams: NavParams) {
   	this.s = this.db.list('boxes').valueChanges().subscribe( data => {
@@ -30,6 +31,9 @@ export class CuentasPagarPage {
 	});
 	this.s= this.db.list('typoBox').valueChanges().subscribe(data => {
 		this.typoBoxes=data;
+	});
+	this.s= this.db.list('typoPago').valueChanges().subscribe(data => {
+		this.typoPago=data;
 	});
   }
 
