@@ -6,6 +6,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { HomePage } from '../pages/home/home';
 import { MapPage } from '../pages/map/map';
 import { CuentasCobrarPage } from '../pages/cuentas-cobrar/cuentas-cobrar';
+import { CuentasPagarPage } from '../pages/cuentas-pagar/cuentas-pagar';
 
 @Component({
   templateUrl: 'app.html'
@@ -13,7 +14,7 @@ import { CuentasCobrarPage } from '../pages/cuentas-cobrar/cuentas-cobrar';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = CuentasCobrarPage;
+  rootPage: any = CuentasPagarPage;
 
   pages: Array<{title: string, component: any}>;
 
@@ -25,6 +26,7 @@ export class MyApp {
       { title: 'Home', component: HomePage },
       { title: 'Mapa', component: MapPage },
       { title: 'Cuentas por cobrar', component: CuentasCobrarPage }
+      { title: 'Cuentas por pagar', component: CuentasPagarPage }
     ];
 
   }
