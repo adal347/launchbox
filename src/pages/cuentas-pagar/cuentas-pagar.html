@@ -7,16 +7,16 @@
 <ion-header>
   <ion-navbar>
   	<button ion-button menuToggle>
+
   		<ion-icon name="menu"></ion-icon>
   	</button>
     <ion-title>cuentas-pagar</ion-title>
   </ion-navbar>
-
 </ion-header>
-
 
 <ion-content padding>
 <br>
+<ion-img width="80" height="80" src="../../assets/imgs/logo.png"></ion-img>
 <h1>Mes</h1>
 <br>
 <br>
@@ -57,43 +57,6 @@
 <br>
 <br>
 
-
-
-
-<table>
-	<tr id="headerTable">
-		<th colspan="100%">Wishlist por pagar</th>
-	</tr>
-	<tr>
-		<td>Material</td>
-		<td>Precio</td>
-		<th colspan="3">Botones</th>
-
-	</tr>
-	<tr>
-		<td>Terraza</td>
-		<td>$1800</td>
-		<td><button color = "update" ion-button icon-left item-left><ion-icon ios="ios-create" md="md-create"></ion-icon>Editar</button></td>
-      <td><button color = "retrieve" ion-button icon-left item-left><ion-icon ios="ios-clipboard" md="md-clipboard"></ion-icon>Detalles</button></td>
-      <td><button  color = "danger" ion-button icon-left item-left><ion-icon ios="ios-trash" md="md-trash"></ion-icon>Eliminar</button></td>
-	</tr>
-	<tr>
-		<td>Baños</td>
-		<td>$3454</td>
-		<td><button color = "update" ion-button icon-left item-left><ion-icon ios="ios-create" md="md-create"></ion-icon>Editar</button></td>
-      <td><button color = "retrieve" ion-button icon-left item-left><ion-icon ios="ios-clipboard" md="md-clipboard"></ion-icon>Detalles</button></td>
-      <td><button  color = "danger" ion-button icon-left item-left><ion-icon ios="ios-trash" md="md-trash"></ion-icon>Eliminar</button></td>
-	</tr>
-</table>
-<h4>Total:</h4> 
-<ion-buttons end>
-    <button color = "create" ion-button icon-right item-right data-toggle="modal" data-target="#newEntryModal"> 
-      Nueva Fila<ion-icon ios="ios-add-circle" md="md-add-circle"></ion-icon>
-    </button>
-  </ion-buttons>
-
-
-
 <!--Modal of new Entry (NUEVA FILA)-->
   <div class="modal fade" id="newEntryModal" tabindex="-1" role="dialog"  aria-hidden="true" >
    <div class="modal-dialog modal-dialog-centered" role="document">
@@ -109,57 +72,45 @@
             <div class="input-group mb-3">
               <label for = "recipient-name" class="col-form-label" text-align="center">Tipo de servicio</label>
               <div class="col">
-                <input type="text" class="form-control" placeholder="Cantidad" [disabled]="show">
+                <input type="text" class="form-control" placeholder="Nombre" [disabled]="show">
               </div>
             </div>
             <div class="input-group mb-3">
               <label for = "recipient-name" class="col-form-label" text-align="center">Proveedor</label>
               <div class="col">
-                <input type="text" class="form-control" placeholder="Cantidad">
+                <input type="text" class="form-control" placeholder="Nombre" [disabled]="show">
               </div>
             </div>
-
-            <div class="input-group mb-3">
-              <label for = "recipient-name" class="col-form-label" text-align="center">Efectivo/Transferencia</label>
-              <div class="col">
-                <input type="text" class="form-control" placeholder="Cantidad">
-              </div>
-            </div>
-
             <div class="form-group">
               <label for="recipient-name" class="col-form-label">Efectivo/Transferencia</label>
-              <select class="custom-select">
+              <select class="custom-select" [disabled]="show">
                 <option *ngFor="let typo of typoPago" value="{{typo.id}}">{{typo.tipo}}</option>
               </select>
             </div>
-
-
-
             <div class="input-group mb-3">
               <label for = "recipient-name" class="col-form-label" text-align="center">Monto</label>
               <div class="col">
-                <input type="text" class="form-control" placeholder="Cantidad">
+                <input type="text" class="form-control" placeholder="Cantidad" [disabled]="show">
               </div>
             </div>
             <div class="input-group mb-3">
               <label for = "recipient-name" class="col-form-label" text-align="center">Pagado</label>
               <div class="col">
-                <input type="text" class="form-control" placeholder="Cantidad">
+                <input type="text" class="form-control" placeholder="Cantidad" [disabled]="show">
               </div>
             </div>
             <div class="input-group mb-3">
               <label for = "recipient-name" class="col-form-label" text-align="center">Por pagar</label>
               <div class="col">
-                <input type="text" class="form-control" placeholder="Cantidad">
+                <input type="text" class="form-control" placeholder="Cantidad" [disabled]="show">
               </div>
             </div>
             <div class="input-group mb-3">
               <label for = "recipient-name" class="col-form-label" text-align="center">Fecha limite</label>
               <div class="col">
-                <input type="text" class="form-control" placeholder="Cantidad">
+                <input type="text" class="form-control" placeholder="0/0/0" [disabled]="show">
               </div>
             </div>
-            
 
           </form>
         </div>
@@ -190,10 +141,5 @@
       </div>
     </div>
   </div>
-
-
-
-
-
 
 </ion-content>

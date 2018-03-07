@@ -1,6 +1,6 @@
 [ null, {
     "id" : 1,
-    "tipo" : "Transfer"
+    "tipo" : "Transferencia"
   }, {
     "id" : 2,
     "tipo" : "Efectivo"
