@@ -68,12 +68,12 @@
             <div class="form-group">
               <label for="recipient-name" class="col-form-label">No. de Box</label>
               <select class="custom-select" [(ngModel)]="service.box" name="boxSelect">
-                <option *ngFor="let box of boxes" value="{{box.id}}">{{box.id}}</option>
+                <option *ngFor="let box of boxes | async" value="{{box}}">{{box.id}}</option>
               </select>
             </div>
             <div class="form-group">
               <label for="recipient-name" class="col-form-label">Status</label>
-              <select class="custom-select" [(ngModel)]="service.status" name="statusSelect">
+              <select class="custom-select" [(ngModel)]="service.statusBox" name="statusSelect">
                 <option *ngFor="let status of statusBoxes" value="{{status.id}}">{{status.type}}</option>
               </select>
             </div>
@@ -105,7 +105,7 @@
             <div class="input-group mb-3">
               <label for = "recipient-name" class="col-form-label" text-align="center">Fecha</label>
               <div class="col">
-                <input type="date" class="form-control" placeholder="DD/MM/AAAA" [(ngModel)]="service.date" name="fechaInput">
+                <input type="number" class="form-control" [(ngModel)]="service.payDay" name="diaInput">
               </div>
             </div>
             <div class="form-group">
