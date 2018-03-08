@@ -21,7 +21,7 @@ export class CuentasCobrarPage {
   boxes: Observable<any[]>
   statusBoxes: Observable<any[]>;
   typeBoxes: Observable<any[]>;
-  typePago: Observable<any[]>;
+  typePay: Observable<any[]>;
   service: any;
 
   constructor(public db:AngularFireDatabase, public navCtrl: NavController,
@@ -29,12 +29,12 @@ export class CuentasCobrarPage {
     this.boxes = this.cuentasCobrarProvider.getBoxes();
   	this.statusBoxes = this.cuentasCobrarProvider.getBoxStatus();
   	this.typeBoxes = this.cuentasCobrarProvider.getTypeBox();
-  	this.typePago = this.cuentasCobrarProvider.getTypePay();
+  	this.typePay = this.cuentasCobrarProvider.getTypePay();
     this.service = {};
+    console.log(this.boxes);
   }
 
   createNewEntry() {
-  	//this.boxesRef.update();
     this.cuentasCobrarProvider.createNewEntry(this.service);
   }
 

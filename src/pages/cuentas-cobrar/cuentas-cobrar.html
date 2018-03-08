@@ -21,7 +21,7 @@
       <th>Tipo de Box</th>
       <th>Inquilino</th>
       <th>Monto</th>
-      <th>Fecha de pago</th>
+      <th>Día de pago</th>
       <th>Tipo de pago</th>
       <th>Pagado</th>
       <th colspan="100%"></th>
@@ -85,25 +85,25 @@
             </div>
             <div class="form-row">
               <div class="col">
-                <label for = "nombreInquilino" class="col-form-label" text-align="center">Inquilino</label>
+                <label for="nombreInquilino" class="col-form-label" text-align="center">Inquilino</label>
               </div>
               <div class="col">
-                <label for = "recipient-name" class="col-form-label"></label>
+                <label for="recipient-name" class="col-form-label"></label>
                 <input type="text" class="form-control" placeholder="Nombre" [(ngModel)]="service.nameInquilino" name="nombreInput">
               </div>
               <div class="col">
-                <label for = "recipient-name" class="col-form-label"></label>
+                <label for="recipient-name" class="col-form-label"></label>
                 <input type="text" class="form-control" placeholder="Apellido" [(ngModel)]="service.lastNameInquilino" name="apellidoInput">
               </div>
             </div>
             <div class="input-group mb-3">
-              <label for = "recipient-name" class="col-form-label" text-align="center">Monto</label>
+              <label for="recipient-name" class="col-form-label" text-align="center">Monto</label>
               <div class="col">
                 <input type="text" class="form-control" placeholder="Cantidad" [(ngModel)]="service.amount" name="cantidadInput">
               </div>
             </div>
             <div class="input-group mb-3">
-              <label for = "recipient-name" class="col-form-label" text-align="center">Fecha</label>
+              <label for="recipient-name" class="col-form-label" text-align="center">Día de pago</label>
               <div class="col">
                 <input type="number" class="form-control" [(ngModel)]="service.payDay" name="diaInput">
               </div>
@@ -111,7 +111,7 @@
             <div class="form-group">
               <label for="recipient-name" class="col-form-label">Efectivo/Transferencia</label>
               <select class="custom-select" [(ngModel)]="service.typePay" name="pagoSelect">
-                <option *ngFor="let typo of typoPago" value="{{typo.id}}">{{typo.tipo}}</option>
+                <option *ngFor="let type of typePay | async" value="{{ type }}">{{type.tipo}}</option>
               </select>
             </div>
           </form>
