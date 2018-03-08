@@ -13,7 +13,7 @@ import { Environment } from '../enviorments/enviorment';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 
-import { CuentasCobrarService } from '../services/cuentas_cobrar.service';
+import { CuentasCobrarProvider } from '../providers/cuentas_cobrar';
 
 @NgModule({
   declarations: [
@@ -39,7 +39,7 @@ import { CuentasCobrarService } from '../services/cuentas_cobrar.service';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    CuentasCobrarService
+    CuentasCobrarProvider
   ]
 })
 export class AppModule {}

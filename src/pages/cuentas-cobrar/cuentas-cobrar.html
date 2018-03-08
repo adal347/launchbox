@@ -36,12 +36,12 @@
       <td>efectivo</td>
       <td><ion-toggle ></ion-toggle></td>
       <td>
-        <button color = "update" ion-button icon-left item-left data-toggle="modal" data-target="#updateEntryModal">
+        <button color="update" ion-button icon-left item-left data-toggle="modal" data-target="#updateEntryModal">
           <ion-icon ios="ios-create" md="md-create"></ion-icon>Editar
         </button>
       </td>
-      <td><button color = "retrieve" ion-button icon-left item-left><ion-icon ios="ios-clipboard" md="md-clipboard"></ion-icon>Detalles</button></td>
-      <td><button  color = "danger" ion-button icon-left item-left data-toggle="modal" data-target="#deleteEntryModal"><ion-icon ios="ios-trash" md="md-trash"></ion-icon>Eliminar</button></td>
+      <td><button color="retrieve" ion-button icon-left item-left><ion-icon ios="ios-clipboard" md="md-clipboard"></ion-icon>Detalles</button></td>
+      <td><button  color="danger" ion-button icon-left item-left data-toggle="modal" data-target="#deleteEntryModal"><ion-icon ios="ios-trash" md="md-trash"></ion-icon>Eliminar</button></td>
     </tr>
   </table>
   <br/>
@@ -54,11 +54,11 @@
 
   <!--MODALS FOR BUTTONS-->
   <!--Modal of 'generic Modal'-->
-  <div class="modal fade" id="newEntryModal" tabindex="-1" role="dialog"  aria-hidden="true" >
+  <div class="modal fade" id="newEntryModal" tabindex="-1" role="dialog"  aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" >Ingreso de cuenta nueva</h5>
+          <h5 class="modal-title">Ingreso de cuenta nueva</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -68,19 +68,19 @@
             <div class="form-group">
               <label for="recipient-name" class="col-form-label">No. de Box</label>
               <select class="custom-select" [(ngModel)]="service.box" name="boxSelect">
-                <option *ngFor="let box of boxes | async" value="{{box}}">{{box.id}}</option>
+                <option *ngFor="let box of boxes | async" value="{{ box }}">{{ box.id }}</option>
               </select>
             </div>
             <div class="form-group">
-              <label for="recipient-name" class="col-form-label">Status</label>
+              <label for="recipient-name" class="col-form-label">Estatus</label>
               <select class="custom-select" [(ngModel)]="service.statusBox" name="statusSelect">
-                <option *ngFor="let status of statusBoxes" value="{{status.id}}">{{status.type}}</option>
+                <option *ngFor="let status of statusBoxes | async" value="{{ status }}">{{ status.type }}</option>
               </select>
             </div>
             <div>
               <label for="recipient-name" class="col-form-label">Tipo de box</label>
               <select class="custom-select" [(ngModel)]="service.typeBox" name="typoSelect">
-                <option *ngFor="let typo of typoBoxes" value="{{typo.id}}">{{typo.nombre}}</option>
+                <option *ngFor="let type of typeBoxes | async" value="{{ type }}">{{ type.nombre }}</option>
               </select>
             </div>
             <div class="form-row">
