@@ -14,6 +14,7 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 
 import { CuentasCobrarService } from '../services/cuentas_cobrar.service';
+import { FirebaseProvider } from '../providers/firebase/firebase';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { CuentasCobrarService } from '../services/cuentas_cobrar.service';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    CuentasCobrarService
+    CuentasCobrarService,
+    FirebaseProvider
   ]
 })
 export class AppModule {}

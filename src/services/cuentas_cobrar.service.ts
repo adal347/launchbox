@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AngularFireDatabase } from 'angularfire2/database';
+import { AngularFireDatabase, FireListObservable} from 'angularfire2/database';
 
 @Injectable()
 export class CuentasCobrarService {
@@ -7,7 +7,7 @@ export class CuentasCobrarService {
 	db: AngularFireDatabase;
 	s;
   public createNewEntry(service) {
-  	let box = {
+  	/*let box = {
   		id: service.box,
   		tipoId: service.typeBox,
   		statusId: service.statusBox
@@ -26,7 +26,7 @@ export class CuentasCobrarService {
   		montoRenta: service.amount,
   		inquilinoId:null
 
-  	}
+  	}*/
   	//this.s = this.db.list('boxes').push(box);
 
     console.log('createNewEntryService');
