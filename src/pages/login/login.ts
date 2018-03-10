@@ -1,7 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AngularFireAuth } from 'angularfire2/auth';
-import { LoggedinPage } from '../loggedin/loggedin';
 import { CuentasCobrarPage } from '../cuentas-cobrar/cuentas-cobrar';
 import { CommonsProvider } from '../../providers/commons';
 
@@ -23,8 +22,8 @@ export class LoginPage {
     @ViewChild('email') email;
     @ViewChild('password') password;
 
-  constructor(private alertCtrl: AlertController, private fire: AngularFireAuth,
-              public navCtrl: NavController, public navParams: NavParams,) {
+  constructor(private fire: AngularFireAuth, public navCtrl: NavController,
+              public navParams: NavParams, private commons: CommonsProvider) {
   }
 
   ionViewDidLoad() {
@@ -40,9 +39,9 @@ export class LoginPage {
     })
     .catch(error =>{
       if (error.code === 'auth/invalid-email') {
-        CommonsProvider.createAlert('Hubo un problema', 'El formato de correo no es correcto');
+        this.commons.createAlert('Hubo un problema', 'El formato de correo no es correcto');
       } else {
-        CommonsProvider.createAlert('Hubo un problema', 'Usuario o contraseña invalida');
+        this.commons.createAlert('Hubo un problema', 'Usuario o contraseña invalida');
       }
     });
   }

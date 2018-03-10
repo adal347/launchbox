@@ -23,7 +23,8 @@ export class CuentasCobrarPage {
   typePay: Observable<any[]>;
   service: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public cuentasCobrarProvider: CuentasCobrarProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,
+              public cuentasCobrarProvider: CuentasCobrarProvider) {
     this.boxes = this.cuentasCobrarProvider.getBoxes();
   	this.statusBoxes = this.cuentasCobrarProvider.getBoxStatus();
   	this.typeBoxes = this.cuentasCobrarProvider.getTypeBox();

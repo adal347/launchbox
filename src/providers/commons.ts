@@ -2,13 +2,7 @@ import { Injectable } from '@angular/core';
 import { AlertController } from 'ionic-angular';
 
 @Injectable()
-export class CuentasCobrarProvider {
-
-	boxesRef: AngularFireList<any>;
-	boxesStatusRef: AngularFireList<any>;
-	typeBoxRef: AngularFireList<any>;
-	typePayRef: AngularFireList<any>;
-	tenantsRef: AngularFireList<any>;
+export class CommonsProvider {
 
 	constructor(public alertCtrl: AlertController) {
 	}

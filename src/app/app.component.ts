@@ -52,7 +52,7 @@ export class MyApp {
 
   logout(){
     this.fire.auth.signOut().then(data => {
-        this.navCtrl.setRoot(LoginPage)
+        this.nav.setRoot(LoginPage)
     })
     .catch(error =>{
       CommonsProvider.createAlert('Hubo un problema', 'Cierre de sesion no exitoso');

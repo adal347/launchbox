@@ -3,13 +3,11 @@ import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 
 import { MyApp } from './app.component';
-import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login/login';
-import { RegisterPage } from '../pages/register/register';
-import { LoggedinPage } from '../pages/loggedin/loggedin';
-import { MapPage } from '../pages/map/map';
 import { CuentasCobrarPage } from '../pages/cuentas-cobrar/cuentas-cobrar';
 import { CuentasPagarPage } from '../pages/cuentas-pagar/cuentas-pagar';
+import { MapPage } from '../pages/map/map';
+import { RegisterPage } from '../pages/register/register';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -24,13 +22,11 @@ import { CommonsProvider } from '../providers/commons';
 @NgModule({
   declarations: [
     MyApp,
-    HomePage,
-    MapPage,
-    CuentasCobrarPage,
     LoginPage,
-    RegisterPage,
-    LoggedinPage,
-    CuentasPagarPage
+    CuentasCobrarPage,
+    CuentasPagarPage,
+    MapPage,
+    RegisterPage
   ],
   imports: [
     BrowserModule,
@@ -42,13 +38,11 @@ import { CommonsProvider } from '../providers/commons';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage,
-    MapPage,
+    LoginPage,
     CuentasCobrarPage,
     CuentasPagarPage,
-    LoginPage,
+    MapPage,
     RegisterPage,
-    LoggedinPage
   ],
   providers: [
     StatusBar,
