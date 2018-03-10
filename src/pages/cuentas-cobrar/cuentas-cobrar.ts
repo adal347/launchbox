@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { AngularFireDatabase } from 'angularfire2/database';
 import { CuentasCobrarProvider } from '../../providers/cuentas_cobrar';
 import { Observable } from 'rxjs/Observable';
 
@@ -24,14 +23,12 @@ export class CuentasCobrarPage {
   typePay: Observable<any[]>;
   service: any;
 
-  constructor(public db:AngularFireDatabase, public navCtrl: NavController,
-              public navParams: NavParams, public cuentasCobrarProvider: CuentasCobrarProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public cuentasCobrarProvider: CuentasCobrarProvider) {
     this.boxes = this.cuentasCobrarProvider.getBoxes();
   	this.statusBoxes = this.cuentasCobrarProvider.getBoxStatus();
   	this.typeBoxes = this.cuentasCobrarProvider.getTypeBox();
   	this.typePay = this.cuentasCobrarProvider.getTypePay();
     this.service = {};
-    console.log(this.boxes);
   }
 
   createNewEntry() {
