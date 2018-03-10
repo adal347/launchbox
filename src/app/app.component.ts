@@ -55,5 +55,6 @@ export class MyApp {
     .catch(error =>{
         console.log('got an error: ', error);
     });
+  }
 
 }
