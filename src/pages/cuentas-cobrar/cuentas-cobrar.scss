@@ -1,8 +1,8 @@
 page-cuentas-cobrar {
-	h1{
+	h1 {
 		text-align: center;
 	}
-	table{
+	table {
 		margin: 0;
 		border-collapse: collapse;
 		width: 100%;
@@ -16,36 +16,15 @@ page-cuentas-cobrar {
 	tr:nth-child(even) {
     background-color: #dddddd;
 	}
-	#headerTable th{
+	#headerTable th {
 		text-align: center;
 		background-color: #000000;
 		color: #ffffff;
 	}
-	.actions{
-		text-align: center;
+	.fade {
+		background-color: rgba(0,0,0,0.8);
 	}
-	.action1 button{
-		color: #ffffff;
-		background-color: #EEAD51;
-	}
-	.action2 button{
-		color:#ffffff;
-		background-color:#5AC3E1; 
-	}
-	.action3 button{
-		color: #ffffff;
-		background-color: #E24C4C;
-	}
-	table td button{
-		color: #ffffff;
-		background-color: #99c9db;
-		margin: 0;
-		padding-top: 15px;
-		padding-right: 25px;
-		padding-bottom: 15px;
-		padding-left: 25px;
-		border-radius: 10px;
-		
+	.form-control, .btn-secondary, .btn-primary {
+		font-size: 15px;
 	}
 }
-
