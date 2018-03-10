@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AngularFireDatabase, /*FirebaseListObservable,*/ AngularFireList } from 'angularfire2/database';
+import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 
 @Injectable()
 export class CuentasCobrarProvider {
@@ -25,11 +25,11 @@ export class CuentasCobrarProvider {
   	// 	statusId: service.statusBox.id
   	// };
 		// this.updateBox(service.box.key, box);
-  	let tenant = {
-  		name:service.nameTenant,
-  		lastname: service.lastnameTenant
-  	}
-		console.log(this.findTenant(tenant));
+  	// let tenant = {
+  	// 	name:service.nameTenant,
+  	// 	lastname: service.lastnameTenant
+  	// }
+		// console.log(this.findTenant(tenant));
   	// let cuentasCobrar = {
   	// 	id: null,
   	// 	boxId: service.box,
@@ -53,19 +53,19 @@ export class CuentasCobrarProvider {
 		});
 	}
 
-	public findTenant(tenant) {
-		let tenants = this.db.list('tenants', ref => ref.orderByChild('lastname').equalTo(tenant.lastname))
-									.snapshotChanges().map( data => {
-			data.map(c => ({ key: c.payload.key, ...c.payload.val() }));
-		});
-		console.log(tenants);
-		for (let i = 0; i < tenants.length; i++) {
-			console.log(tenants[i]);
-			console.log('not here');
-			if (tenants[i].name === tenant.name) return true;
-		}
-		return false;
-	}
+	// public findTenant(tenant) {
+	// 	let tenants = this.db.list('tenants', ref => ref.orderByChild('lastname').equalTo(tenant.lastname))
+	// 								.snapshotChanges().map( data => {
+	// 		data.map(c => ({ key: c.payload.key, ...c.payload.val() }));
+	// 	});
+	// 	console.log(tenants);
+	// 	for (let i = 0; i < tenants.length; i++) {
+	// 		console.log(tenants[i]);
+	// 		console.log('not here');
+	// 		if (tenants[i].name === tenant.name) return true;
+	// 	}
+	// 	return false;
+	// }
 
 	public getBoxStatus() {
 		return this.boxesStatusRef.snapshotChanges().map( data => {
