@@ -7,21 +7,22 @@ import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login/login';
 import { RegisterPage } from '../pages/register/register';
 import { LoggedinPage } from '../pages/loggedin/loggedin';
+import { MapPage } from '../pages/map/map';
+import { CuentasCobrarPage } from '../pages/cuentas-cobrar/cuentas-cobrar';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { Environment } from '../enviorments/enviorment';
 import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
-
-
-
-
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
+    MapPage,
+    CuentasCobrarPage,
     LoginPage,
     RegisterPage,
     LoggedinPage
@@ -30,12 +31,15 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
     BrowserModule,
     IonicModule.forRoot(MyApp),
     AngularFireModule.initializeApp(Environment.firebase),
+    AngularFireDatabaseModule,
     AngularFireAuthModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
     HomePage,
+    MapPage,
+    CuentasCobrarPage,
     LoginPage,
     RegisterPage,
     LoggedinPage
