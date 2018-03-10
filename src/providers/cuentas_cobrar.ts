@@ -13,23 +13,23 @@ export class CuentasCobrarProvider {
 	constructor(public db: AngularFireDatabase) {
 		this.boxesRef = this.db.list('boxes');
 		this.boxesStatusRef = this.db.list('statusBox');
-		this.typeBoxRef = this.db.list('typoBox');
-		this.typePayRef = this.db.list('typoPago');
+		this.typeBoxRef = this.db.list('typeBox');
+		this.typePayRef = this.db.list('typePay');
 		this.tenantsRef = this.db.list('tenants');
 	}
 
   public createNewEntry(service) {
   	// let box = {
   	// 	id: service.box.id,
-  	// 	tipo: service.typeBox.id,
-  	// 	status: service.statusBox.id
+  	// 	typeId: service.typeBox.id,
+  	// 	statusId: service.statusBox.id
   	// };
 		// this.updateBox(service.box.key, box);
   	let tenant = {
-  		name:service.nameInquilino,
-  		lastname: service.lastNameInquilino
+  		name:service.nameTenant,
+  		lastname: service.lastnameTenant
   	}
-		this.findTenant(tenant);
+		console.log(this.findTenant(tenant));
   	// let cuentasCobrar = {
   	// 	id: null,
   	// 	boxId: service.box,
@@ -44,7 +44,7 @@ export class CuentasCobrarProvider {
   }
 
 	public updateBox(key, box) {
-		this.boxesRef.update(service.box.key, box);
+		this.boxesRef.update(key, box);
 	}
 
 	public getBoxes() {
@@ -54,8 +54,17 @@ export class CuentasCobrarProvider {
 	}
 
 	public findTenant(tenant) {
-		let tenantQuery = this.db.collection('tenants', ref => ref.where('lastname', '==', tenant.lastname).where('name', '==', tenant.name));
-		tenantQuery.subscribe(tenants => console.log(tenants));
+		let tenants = this.db.list('tenants', ref => ref.orderByChild('lastname').equalTo(tenant.lastname))
+									.snapshotChanges().map( data => {
+			data.map(c => ({ key: c.payload.key, ...c.payload.val() }));
+		});
+		console.log(tenants);
+		for (let i = 0; i < tenants.length; i++) {
+			console.log(tenants[i]);
+			console.log('not here');
+			if (tenants[i].name === tenant.name) return true;
+		}
+		return false;
 	}
 
 	public getBoxStatus() {
