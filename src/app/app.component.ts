@@ -6,6 +6,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { LoginPage } from '../pages/login/login';
 import { MapPage } from '../pages/map/map';
 import { CuentasCobrarPage } from '../pages/cuentas-cobrar/cuentas-cobrar';
+import { CuentasPagarPage } from '../pages/cuentas-pagar/cuentas-pagar';
 
 import { AngularFireAuth } from 'angularfire2/auth';
 
@@ -25,8 +26,9 @@ export class MyApp {
 
     // used for an example of ngFor and navigation
     this.pages = [
-      { title: 'Mapa', component: MapPage },
-      { title: 'Cuentas por cobrar', component: CuentasCobrarPage }
+      { title: 'Cuentas por cobrar', component: CuentasCobrarPage },
+      { title: 'Cuentas por pagar', component: CuentasPagarPage },
+      { title: 'Mapa', component: MapPage }
     ];
 
   }

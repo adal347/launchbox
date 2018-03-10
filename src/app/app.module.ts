@@ -9,6 +9,7 @@ import { RegisterPage } from '../pages/register/register';
 import { LoggedinPage } from '../pages/loggedin/loggedin';
 import { MapPage } from '../pages/map/map';
 import { CuentasCobrarPage } from '../pages/cuentas-cobrar/cuentas-cobrar';
+import { CuentasPagarPage } from '../pages/cuentas-pagar/cuentas-pagar';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -16,6 +17,8 @@ import { Environment } from '../enviorments/enviorment';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
+
+import { CuentasCobrarProvider } from '../providers/cuentas_cobrar';
 
 @NgModule({
   declarations: [
@@ -25,7 +28,8 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
     CuentasCobrarPage,
     LoginPage,
     RegisterPage,
-    LoggedinPage
+    LoggedinPage,
+    CuentasPagarPage
   ],
   imports: [
     BrowserModule,
@@ -40,6 +44,7 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
     HomePage,
     MapPage,
     CuentasCobrarPage,
+    CuentasPagarPage,
     LoginPage,
     RegisterPage,
     LoggedinPage
@@ -47,7 +52,8 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    CuentasCobrarProvider
   ]
 })
 export class AppModule {}
