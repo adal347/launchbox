@@ -34,9 +34,9 @@ export class RegisterPage {
     })
     .catch(error =>{
       if (error.code === 'auth/invalid-email') {
-        this.createAlert('Hubo un problema', 'El formato de correo no es correcto');
+        CommonsProvider.createAlert('Hubo un problema', 'El formato de correo no es correcto');
       } else {
-        this.createAlert('Hubo un problema', 'La contraseña debe contener mínimo 3 caracteres');
+        CommonsProvider.createAlert('Hubo un problema', 'La contraseña debe contener mínimo 3 caracteres');
       }
     });
   }

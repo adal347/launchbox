@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angu
 import { AngularFireAuth } from 'angularfire2/auth';
 import { LoggedinPage } from '../loggedin/loggedin';
 import { CuentasCobrarPage } from '../cuentas-cobrar/cuentas-cobrar';
+import { CommonsProvider } from '../../providers/commons';
 
 
 /**
@@ -30,27 +31,18 @@ export class LoginPage {
     console.log('ionViewDidLoad LoginPage');
   }
 
-  createAlert(title, message) {
-    let alert = this.alertCtrl.create({
-      title: title,
-      subTitle: message,
-      buttons: ['Dismiss']
-    });
-    alert.present();
-  }
-
 
   signInUser(){
-    
+
     this.fire.auth.signInWithEmailAndPassword(this.email.value, this.password.value)
     .then(data =>{
         this.navCtrl.setRoot(CuentasCobrarPage);
     })
     .catch(error =>{
       if (error.code === 'auth/invalid-email') {
-        this.createAlert('Hubo un problema', 'El formato de correo no es correcto');
+        CommonsProvider.createAlert('Hubo un problema', 'El formato de correo no es correcto');
       } else {
-        this.createAlert('Hubo un problema', 'Usuario o contraseña invalida');
+        CommonsProvider.createAlert('Hubo un problema', 'Usuario o contraseña invalida');
       }
     });
   }

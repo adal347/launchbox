@@ -9,6 +9,7 @@ import { CuentasCobrarPage } from '../pages/cuentas-cobrar/cuentas-cobrar';
 import { CuentasPagarPage } from '../pages/cuentas-pagar/cuentas-pagar';
 
 import { AngularFireAuth } from 'angularfire2/auth';
+import { CommonsProvider } from '../providers/commons';
 
 @Component({
   templateUrl: 'app.html'
@@ -51,11 +52,10 @@ export class MyApp {
 
   logout(){
     this.fire.auth.signOut().then(data => {
-        console.log('User has logged out: ', this.fire.auth.currentUser);
         this.navCtrl.setRoot(LoginPage)
     })
     .catch(error =>{
-        console.log('got an error: ', error);
+      CommonsProvider.createAlert('Hubo un problema', 'Cierre de sesion no exitoso');
     });
   }
 

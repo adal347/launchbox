@@ -19,6 +19,7 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 
 import { CuentasCobrarProvider } from '../providers/cuentas_cobrar';
+import { CommonsProvider } from '../providers/commons';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import { CuentasCobrarProvider } from '../providers/cuentas_cobrar';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    CuentasCobrarProvider
+    CuentasCobrarProvider,
+    CommonsProvider
   ]
 })
 export class AppModule {}
