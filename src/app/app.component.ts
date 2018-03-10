@@ -22,7 +22,8 @@ export class MyApp {
   pages: Array<{title: string, component: any}>;
 
   constructor(public platform: Platform, public statusBar: StatusBar,
-              public splashScreen: SplashScreen, private fire: AngularFireAuth) {
+              public splashScreen: SplashScreen, private fire: AngularFireAuth,
+              private commons: CommonsProvider) {
     this.initializeApp();
 
     // used for an example of ngFor and navigation
@@ -55,7 +56,7 @@ export class MyApp {
         this.nav.setRoot(LoginPage)
     })
     .catch(error =>{
-      CommonsProvider.createAlert('Hubo un problema', 'Cierre de sesion no exitoso');
+      this.commons.createAlert('Hubo un problema', 'Cierre de sesion no exitoso');
     });
   }
 
