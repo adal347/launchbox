@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController  } from 'ionic-angular';
 import { AngularFireAuth } from 'angularfire2/auth';
 
 /**
@@ -16,32 +16,39 @@ import { AngularFireAuth } from 'angularfire2/auth';
 })
 export class RegisterPage {
 
-    @ViewChild('username') username;
+    @ViewChild('email') email;
     @ViewChild('password') password;
 
 
-  constructor(private fire: AngularFireAuth, public navCtrl: NavController, public navParams: NavParams) {
+  constructor(private fire: AngularFireAuth, public navCtrl: NavController,
+              public navParams: NavParams, private alertCtrl: AlertController) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad RegisterPage');
   }
 
+  createAlert(title, message) {
+    let alert = this.alertCtrl.create({
+      title: title,
+      subTitle: message,
+      buttons: ['Dismiss']
+    });
+    alert.present();
+  }
+
   registerUser(){
-    //send user info for creation
-    this.fire.auth.createUserWithEmailAndPassword(this.username.value, this.password.value)
-    
+    this.fire.auth.createUserWithEmailAndPassword(this.email.value, this.password.value)
     .then(data =>{
-        //log success info
-        console.log('got data: ', data);
+      this.createAlert('Registro Exitoso', 'Registraste a ' + this.email.value);
     })
     .catch(error =>{
-        //log error info
-        console.log('got an error: ', error);
+      if (error.code === 'auth/invalid-email') {
+        this.createAlert('Hubo un problema', 'El formato de correo no es correcto');
+      } else {
+        this.createAlert('Hubo un problema', 'La contraseña debe contener mínimo 3 caracteres');
+      }
     });
-
-    console.log("Would register user as: ", this.username.value, this.password.value);
-
   }
 
 }
