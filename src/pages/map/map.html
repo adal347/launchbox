@@ -22,8 +22,8 @@
       <ion-grid>
         <ion-row>
           <ion-col class="no-padding" *ngFor="let box of section1">
-            <ion-card [ngClass]="{ 'active-box' : (box.status === 1), 'requested-box' : (box.status === 3),
-                                   'coworking-box' : (box.status === 4) }">
+            <ion-card [ngClass]="{ 'active-box' : (box.statusId === 1), 'requested-box' : (box.statusId === 3),
+                                   'coworking-box' : (box.statusId === 4) }">
               <ion-card-header text-center>
                 {{ box.id }}
               </ion-card-header>
@@ -33,8 +33,8 @@
         <ion-row class="doble-sprout">
           <ion-col class="no-padding" col-4></ion-col>
           <ion-col class="no-padding" *ngFor="let box of section2">
-            <ion-card [ngClass]="{ 'active-box' : (box.status === 1), 'requested-box' : (box.status === 3),
-                                   'coworking-box' : (box.status === 4) }">
+            <ion-card [ngClass]="{ 'active-box' : (box.statusId === 1), 'requested-box' : (box.statusId === 3),
+                                   'coworking-box' : (box.statusId === 4) }">
               <ion-card-header text-center>
                 {{ box.id }}
               </ion-card-header>
@@ -47,8 +47,8 @@
             <h1>Planta</h1>
           </ion-col>
           <ion-col class="no-padding" *ngFor="let box of section3">
-            <ion-card [ngClass]="{ 'active-box' : (box.status === 1), 'requested-box' : (box.status === 3),
-                                   'coworking-box' : (box.status === 4) }">
+            <ion-card [ngClass]="{ 'active-box' : (box.statusId === 1), 'requested-box' : (box.statusId === 3),
+                                   'coworking-box' : (box.statusId === 4) }">
               <ion-card-header text-center>
                 {{ box.id }}
               </ion-card-header>
@@ -61,8 +61,8 @@
             <h1>Baja</h1>
           </ion-col>
           <ion-col class="no-padding" *ngFor="let box of section4">
-            <ion-card [ngClass]="{ 'active-box' : (box.status === 1), 'requested-box' : (box.status === 3),
-                                   'coworking-box' : (box.status === 4) }">
+            <ion-card [ngClass]="{ 'active-box' : (box.statusId === 1), 'requested-box' : (box.statusId === 3),
+                                   'coworking-box' : (box.statusId === 4) }">
               <ion-card-header text-center>
                 {{ box.id }}
               </ion-card-header>
@@ -72,8 +72,8 @@
         <ion-row>
           <ion-col class="no-padding" col-4></ion-col>
           <ion-col class="no-padding" *ngFor="let box of section5">
-            <ion-card [ngClass]="{ 'active-box' : (box.status === 1), 'requested-box' : (box.status === 3),
-                                   'coworking-box' : (box.status === 4) }">
+            <ion-card [ngClass]="{ 'active-box' : (box.statusId === 1), 'requested-box' : (box.statusId === 3),
+                                   'coworking-box' : (box.statusId === 4) }">
               <ion-card-header text-center>
                 {{ box.id }}
               </ion-card-header>
@@ -90,8 +90,8 @@
           </ion-col>
           <ion-col class="no-padding" col-2></ion-col>
           <ion-col class="no-padding" *ngFor="let box of section6">
-            <ion-card [ngClass]="{ 'active-box' : (box.status === 1), 'requested-box' : (box.status === 3),
-                                   'coworking-box' : (box.status === 4) }">
+            <ion-card [ngClass]="{ 'active-box' : (box.statusId === 1), 'requested-box' : (box.statusId === 3),
+                                   'coworking-box' : (box.statusId === 4) }">
               <ion-card-header text-center>
                 {{ box.id }}
               </ion-card-header>
@@ -108,8 +108,8 @@
           </ion-col>
           <ion-col class="no-padding" col-2></ion-col>
           <ion-col class="no-padding" *ngFor="let box of section7">
-            <ion-card [ngClass]="{ 'active-box' : (box.status === 1), 'requested-box' : (box.status === 3),
-                                   'coworking-box' : (box.status === 4) }">
+            <ion-card [ngClass]="{ 'active-box' : (box.statusId === 1), 'requested-box' : (box.statusId === 3),
+                                   'coworking-box' : (box.statusId === 4) }">
               <ion-card-header text-center>
                 {{ box.id }}
               </ion-card-header>
@@ -118,8 +118,8 @@
         </ion-row>
         <ion-row>
           <ion-col class="no-padding" *ngFor="let box of section8">
-            <ion-card [ngClass]="{ 'active-box' : (box.status === 1), 'requested-box' : (box.status === 3),
-                                   'coworking-box' : (box.status === 4) }">
+            <ion-card [ngClass]="{ 'active-box' : (box.statusId === 1), 'requested-box' : (box.statusId === 3),
+                                   'coworking-box' : (box.statusId === 4) }">
               <ion-card-header text-center>
                 {{ box.id }}
               </ion-card-header>
@@ -133,8 +133,8 @@
         <ion-row class="doble-sprout">
           <ion-col class="no-padding" col-4></ion-col>
           <ion-col class="no-padding" *ngFor="let box of section9">
-            <ion-card [ngClass]="{ 'active-box' : (box.status === 1), 'requested-box' : (box.status === 3),
-                                   'coworking-box' : (box.status === 4) }">
+            <ion-card [ngClass]="{ 'active-box' : (box.statusId === 1), 'requested-box' : (box.statusId === 3),
+                                   'coworking-box' : (box.statusId === 4) }">
               <ion-card-header text-center>
                 {{ box.id }}
               </ion-card-header>
@@ -200,8 +200,8 @@
             </ion-card>
           </ion-col>
           <ion-col class="no-padding" *ngFor="let box of section10">
-            <ion-card [ngClass]="{ 'active-box' : (box.status === 1), 'requested-box' : (box.status === 3),
-                                   'coworking-box' : (box.status === 4) }">
+            <ion-card [ngClass]="{ 'active-box' : (box.statusId === 1), 'requested-box' : (box.statusId === 3),
+                                   'coworking-box' : (box.statusId === 4) }">
               <ion-card-header text-center>
                 {{ box.id }}
               </ion-card-header>
