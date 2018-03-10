@@ -35,7 +35,7 @@ export class LoginPage {
 
     this.fire.auth.signInWithEmailAndPassword(this.email.value, this.password.value)
     .then(data =>{
-        this.navCtrl.setRoot(CuentasCobrarPage);
+      this.navCtrl.setRoot(CuentasCobrarPage);
     })
     .catch(error =>{
       if (error.code === 'auth/invalid-email') {

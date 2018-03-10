@@ -14,16 +14,34 @@
 
 
 <ion-content padding>
-  
+
   <ion-list>
+
+    <ion-item>
+      <ion-label floating>Nombre</ion-label>
+      <ion-input type="text" [(ngModel)]="user.name"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Apellidos</ion-label>
+      <ion-input [(ngModel)]="user.lastname"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Permisos</ion-label>
+      <ion-select [(ngModel)]="user.permission" interface="popover">
+        <ion-option *ngFor="let permission of permissions | async" [value]="permission">{{ permission.name }}</ion-option>
+      </ion-select>
+    </ion-item>
+
     <ion-item>
       <ion-label floating>Correo</ion-label>
-      <ion-input type="text" #email></ion-input>
+      <ion-input type="text" [(ngModel)]="user.email"></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label floating>Contraseña</ion-label>
-      <ion-input type="password" #password></ion-input>
+      <ion-input type="password" [(ngModel)]="user.password"></ion-input>
     </ion-item>
   </ion-list>
 

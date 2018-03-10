@@ -2,6 +2,8 @@ import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { CommonsProvider } from '../../providers/commons';
+import { UsersProvider } from '../../providers/users';
+import { Observable } from 'rxjs/Observable';
 
 /**
  * Generated class for the RegisterPage page.
@@ -17,12 +19,14 @@ import { CommonsProvider } from '../../providers/commons';
 })
 export class RegisterPage {
 
-    @ViewChild('email') email;
-    @ViewChild('password') password;
-
+  user: any;
+  permissions: Observable<any[]>;
 
   constructor(private fire: AngularFireAuth, public navCtrl: NavController,
-              public navParams: NavParams, private commons: CommonsProvider) {
+              public navParams: NavParams, private commons: CommonsProvider,
+              private usersProvider: UsersProvider) {
+    this.user = {};
+  	this.permissions = this.usersProvider.getPermissions();
   }
 
   ionViewDidLoad() {
@@ -30,9 +34,10 @@ export class RegisterPage {
   }
 
   registerUser(){
-    this.fire.auth.createUserWithEmailAndPassword(this.email.value, this.password.value)
+    this.usersProvider.createUser(this.user);
+    this.fire.auth.createUserWithEmailAndPassword(this.user.email, this.user.password)
     .then(data =>{
-      this.commons.createAlert('Registro Exitoso', 'Registraste a ' + this.email.value);
+      this.commons.createAlert('Registro Exitoso', 'Registraste a ' + this.user.email);
     })
     .catch(error =>{
       if (error.code === 'auth/invalid-email') {
