@@ -1,0 +1,224 @@
+<ion-header>
+
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Mapa</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <nav>
+    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+      <a class="nav-item nav-link active" id="nav-first-tab" data-toggle="tab" href="#nav-first" role="tab" aria-controls="nav-first" aria-selected="true">Planta Baja</a>
+      <a class="nav-item nav-link" id="nav-second-tab" data-toggle="tab" href="#nav-second" role="tab" aria-controls="nav-second" aria-selected="false">Planta Alta</a>
+    </div>
+  </nav>
+  <div class="tab-content" id="nav-tabContent">
+    <div class="tab-pane fade show active" id="nav-first" role="tabpanel" aria-labelledby="nav-first-tab">
+      <ion-grid>
+        <ion-row>
+          <ion-col class="no-padding" *ngFor="let box of section1">
+            <ion-card [ngClass]="{ 'active-box' : (box.statusId === 1), 'requested-box' : (box.statusId === 3),
+                                   'coworking-box' : (box.statusId === 4) }">
+              <ion-card-header text-center>
+                {{ box.id }}
+              </ion-card-header>
+            </ion-card>
+          </ion-col>
+        </ion-row>
+        <ion-row class="doble-sprout">
+          <ion-col class="no-padding" col-4></ion-col>
+          <ion-col class="no-padding" *ngFor="let box of section2">
+            <ion-card [ngClass]="{ 'active-box' : (box.statusId === 1), 'requested-box' : (box.statusId === 3),
+                                   'coworking-box' : (box.statusId === 4) }">
+              <ion-card-header text-center>
+                {{ box.id }}
+              </ion-card-header>
+            </ion-card>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col class="no-padding" col-1></ion-col>
+          <ion-col class="no-padding" col-3>
+            <h1>Planta</h1>
+          </ion-col>
+          <ion-col class="no-padding" *ngFor="let box of section3">
+            <ion-card [ngClass]="{ 'active-box' : (box.statusId === 1), 'requested-box' : (box.statusId === 3),
+                                   'coworking-box' : (box.statusId === 4) }">
+              <ion-card-header text-center>
+                {{ box.id }}
+              </ion-card-header>
+            </ion-card>
+          </ion-col>
+        </ion-row>
+        <ion-row class="doble-sprout">
+          <ion-col class="no-padding" col-1></ion-col>
+          <ion-col class="no-padding" col-3>
+            <h1>Baja</h1>
+          </ion-col>
+          <ion-col class="no-padding" *ngFor="let box of section4">
+            <ion-card [ngClass]="{ 'active-box' : (box.statusId === 1), 'requested-box' : (box.statusId === 3),
+                                   'coworking-box' : (box.statusId === 4) }">
+              <ion-card-header text-center>
+                {{ box.id }}
+              </ion-card-header>
+            </ion-card>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col class="no-padding" col-4></ion-col>
+          <ion-col class="no-padding" *ngFor="let box of section5">
+            <ion-card [ngClass]="{ 'active-box' : (box.statusId === 1), 'requested-box' : (box.statusId === 3),
+                                   'coworking-box' : (box.statusId === 4) }">
+              <ion-card-header text-center>
+                {{ box.id }}
+              </ion-card-header>
+            </ion-card>
+          </ion-col>
+        </ion-row>
+        <ion-row class="doble-sprout">
+          <ion-col class="no-padding" col-4>
+            <ion-card class="anexed-box">
+              <ion-card-header text-center class="text-white">
+                Sala de
+              </ion-card-header>
+            </ion-card>
+          </ion-col>
+          <ion-col class="no-padding" col-2></ion-col>
+          <ion-col class="no-padding" *ngFor="let box of section6">
+            <ion-card [ngClass]="{ 'active-box' : (box.statusId === 1), 'requested-box' : (box.statusId === 3),
+                                   'coworking-box' : (box.statusId === 4) }">
+              <ion-card-header text-center>
+                {{ box.id }}
+              </ion-card-header>
+            </ion-card>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col class="no-padding" col-4>
+            <ion-card class="anexed-box">
+              <ion-card-header class="text-white" text-center>
+                juntas
+              </ion-card-header>
+            </ion-card>
+          </ion-col>
+          <ion-col class="no-padding" col-2></ion-col>
+          <ion-col class="no-padding" *ngFor="let box of section7">
+            <ion-card [ngClass]="{ 'active-box' : (box.statusId === 1), 'requested-box' : (box.statusId === 3),
+                                   'coworking-box' : (box.statusId === 4) }">
+              <ion-card-header text-center>
+                {{ box.id }}
+              </ion-card-header>
+            </ion-card>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col class="no-padding" *ngFor="let box of section8">
+            <ion-card [ngClass]="{ 'active-box' : (box.statusId === 1), 'requested-box' : (box.statusId === 3),
+                                   'coworking-box' : (box.statusId === 4) }">
+              <ion-card-header text-center>
+                {{ box.id }}
+              </ion-card-header>
+            </ion-card>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+    <div class="tab-pane fade" id="nav-second" role="tabpanel" aria-labelledby="nav-second-tab">
+      <ion-grid>
+        <ion-row class="doble-sprout">
+          <ion-col class="no-padding" col-4></ion-col>
+          <ion-col class="no-padding" *ngFor="let box of section9">
+            <ion-card [ngClass]="{ 'active-box' : (box.statusId === 1), 'requested-box' : (box.statusId === 3),
+                                   'coworking-box' : (box.statusId === 4) }">
+              <ion-card-header text-center>
+                {{ box.id }}
+              </ion-card-header>
+            </ion-card>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col class="no-padding" col-1></ion-col>
+          <ion-col class="no-padding" col-3><h1>Planta</h1></ion-col>
+          <ion-col class="no-padding">
+            <ion-card>
+              <ion-card-header>
+                <br>
+              </ion-card-header>
+            </ion-card>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col class="no-padding" col-1></ion-col>
+          <ion-col class="no-padding" col-3><h1>Alta</h1></ion-col>
+          <ion-col class="no-padding" col-2>
+            <ion-card class="anexed-box">
+              <ion-card-header>
+                <br>
+              </ion-card-header>
+            </ion-card>
+          </ion-col>
+          <ion-col class="no-padding">
+            <ion-card class="anexed-box">
+              <ion-card-header text-center class="text-white">
+                Terraza
+              </ion-card-header>
+            </ion-card>
+          </ion-col>
+        </ion-row>
+        <ion-row><ion-col></ion-col></ion-row>
+        <ion-row><ion-col></ion-col></ion-row>
+        <ion-row><ion-col></ion-col></ion-row>
+        <ion-row><ion-col></ion-col></ion-row>
+        <ion-row>
+          <ion-col class="no-padding" col-6></ion-col>
+          <ion-col class="no-padding" col-2>
+            <ion-card class="anexed-box">
+              <ion-card-header text-center class="text-white">
+                Bodega
+              </ion-card-header>
+            </ion-card>
+          </ion-col>
+          <ion-col class="no-padding">
+            <ion-card class="anexed-box">
+              <ion-card-header text-center class="text-white">
+                Baños
+              </ion-card-header>
+            </ion-card>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col class="no-padding">
+            <ion-card class="anexed-box">
+              <ion-card-header text-center class="text-white">
+                Recepción
+              </ion-card-header>
+            </ion-card>
+          </ion-col>
+          <ion-col class="no-padding" *ngFor="let box of section10">
+            <ion-card [ngClass]="{ 'active-box' : (box.statusId === 1), 'requested-box' : (box.statusId === 3),
+                                   'coworking-box' : (box.statusId === 4) }">
+              <ion-card-header text-center>
+                {{ box.id }}
+              </ion-card-header>
+            </ion-card>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+  </div>
+  <ion-grid>
+    <ion-row>
+      <ion-col col-10>
+        <ion-col><button ion-button class="active-box"></button>Box Activo</ion-col>
+        <ion-col><button ion-button color="dark" outline></button>Box Inactivo</ion-col>
+        <ion-col><button ion-button class="requested-box"></button>Box Apartado</ion-col>
+        <ion-col><button ion-button class="coworking-box"></button>Box de Coworking</ion-col>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
