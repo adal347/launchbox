@@ -8,6 +8,7 @@ import { CuentasCobrarPage } from '../pages/cuentas-cobrar/cuentas-cobrar';
 import { CuentasPagarPage } from '../pages/cuentas-pagar/cuentas-pagar';
 import { MapPage } from '../pages/map/map';
 import { RegisterPage } from '../pages/register/register';
+import { CondensadoPage } from '../pages/condensado/condensado';
 
 import { AngularFireAuth } from 'angularfire2/auth';
 import { CommonsProvider } from '../providers/commons';
@@ -18,7 +19,7 @@ import { CommonsProvider } from '../providers/commons';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = LoginPage;
+  rootPage: any = CondensadoPage;
 
   pages: Array<{title: string, component: any}>;
 
@@ -32,7 +33,8 @@ export class MyApp {
       { title: 'Cuentas por cobrar', component: CuentasCobrarPage },
       { title: 'Cuentas por pagar', component: CuentasPagarPage },
       { title: 'Mapa', component: MapPage },
-      { title: 'Registrar usuario nuevo', component: RegisterPage }
+      { title: 'Registrar usuario nuevo', component: RegisterPage },
+      { title: 'Condensado del mes', component: CondensadoPage }
     ];
 
   }
