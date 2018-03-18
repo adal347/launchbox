@@ -14,15 +14,13 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { Environment } from '../enviorments/enviorment';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
-<<<<<<< HEAD
-import * as $ from 'jquery';
-=======
 import { AngularFireAuthModule } from 'angularfire2/auth';
 
 import { CuentasCobrarProvider } from '../providers/cuentas_cobrar';
 import { CommonsProvider } from '../providers/commons';
 import { UsersProvider } from '../providers/users';
->>>>>>> develop
+
+// import * as $ from 'jquery';
 
 @NgModule({
   declarations: [

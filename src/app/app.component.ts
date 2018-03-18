@@ -18,7 +18,7 @@ import { CommonsProvider } from '../providers/commons';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = LoginPage;
+  rootPage: any = CuentasPagarPage;
 
   pages: Array<{title: string, component: any}>;
 
@@ -32,12 +32,7 @@ export class MyApp {
       { title: 'Cuentas por cobrar', component: CuentasCobrarPage },
       { title: 'Cuentas por pagar', component: CuentasPagarPage },
       { title: 'Mapa', component: MapPage },
-<<<<<<< HEAD
-      { title: 'Cuentas por cobrar', component: CuentasCobrarPage },
-      { title: 'Cuentas por pagar', component: CuentasPagarPage }
-=======
       { title: 'Registrar usuario nuevo', component: RegisterPage }
->>>>>>> develop
     ];
 
   }
