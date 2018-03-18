@@ -1,7 +1,0 @@
-[ null, {
-    "id" : 1,
-    "tipo" : "Transferencia"
-  }, {
-    "id" : 2,
-    "tipo" : "Efectivo"
-  }]
