@@ -1,10 +1,3 @@
-<<<<<<< HEAD
-<!--
-  Generated template for the CuentasPagarPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
   <ion-navbar>
     <button ion-button menuToggle>
@@ -15,49 +8,49 @@
 </ion-header>
 
 <ion-content padding>
-<br>
-<ion-img width="80" height="80" src="../../assets/imgs/logo.png"></ion-img>
-<h1>Mes</h1>
-<br>
-<br>
+  <br>
+  <ion-img width="80" height="80" src="../../assets/imgs/logo.png"></ion-img>
+  <h1>Mes</h1>
+  <br>
+  <br>
 
-<table>
-	<tr id="headerTable">
-		<th colspan="100%">Cuentas por pagar</th>
-	</tr>
-	<tr>
-		<th>Servicio</th>
-		<th>Proveedor</th>
-		<th>Efectivo/Transferencia</th>
-		<th>Monto</th>
-		<th>Pagado</th>
-		<th>Por pagar</th>
-		<th>Fecha limite</th>
-		<th colspan="3">Botones</th>
-	</tr>
-	<tr>
-		<td>Renta Terrerno</td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td><button color = "update" ion-button icon-left item-left data-target="#updateEntryModal" data-toggle="modal" (click)="initModal(0)" ><ion-icon ios="ios-create" md="md-create"></ion-icon>Editar</button></td>
-      <td><button color = "retrieve" ion-button icon-left item-left (click)="initModal(2)" ><ion-icon ios="ios-clipboard" md="md-clipboard"></ion-icon>Detalles</button></td>
-      <td><button  color = "danger" ion-button icon-left item-left data-target="#newDeleteModal" data-toggle="modal" ><ion-icon ios="ios-trash" md="md-trash"></ion-icon>Eliminar</button></td>
-	</tr>
-</table>
-<h4>Total:</h4>
-<ion-buttons end>
+  <table>
+  	<tr id="headerTable">
+  		<th colspan="100%">Cuentas por pagar</th>
+  	</tr>
+  	<tr>
+  		<th>Servicio</th>
+  		<th>Proveedor</th>
+  		<th>Efectivo/Transferencia</th>
+  		<th>Monto</th>
+  		<th>Pagado</th>
+  		<th>Por pagar</th>
+  		<th>Fecha limite</th>
+  		<th colspan="3">Botones</th>
+  	</tr>
+  	<tr>
+  		<td>Renta Terrerno</td>
+  		<td></td>
+  		<td></td>
+  		<td></td>
+  		<td></td>
+  		<td></td>
+  		<td></td>
+  		<td><button color = "update" ion-button icon-left item-left data-target="#updateEntryModal" data-toggle="modal" (click)="initModal(0)" ><ion-icon ios="ios-create" md="md-create"></ion-icon>Editar</button></td>
+        <td><button color = "retrieve" ion-button icon-left item-left (click)="initModal(2)" ><ion-icon ios="ios-clipboard" md="md-clipboard"></ion-icon>Detalles</button></td>
+        <td><button  color = "danger" ion-button icon-left item-left data-target="#newDeleteModal" data-toggle="modal" ><ion-icon ios="ios-trash" md="md-trash"></ion-icon>Eliminar</button></td>
+  	</tr>
+  </table>
+  <h4>Total:</h4>
+  <ion-buttons end>
     <button color = "create" ion-button icon-right item-right data-toggle="modal" (click)="initModal(1)" data-target="#newEntryModal">
       Nueva Fila<ion-icon ios="ios-add-circle" md="md-add-circle"></ion-icon>
     </button>
   </ion-buttons>
-<br>
-<br>
+  <br>
+  <br>
 
-<!--Modal of new Entry (NUEVA FILA)-->
+  <!--Modal of new Entry (NUEVA FILA)-->
   <div class="modal fade" id="newEntryModal" tabindex="-1" role="dialog"  aria-hidden="true" >
    <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
@@ -68,6 +61,20 @@
           </button>
         </div>
         <div class="modal-body">
+          <ion-item>
+            <ion-label>Tipo de servicio</ion-label>
+            <ion-select [(ngModel)]="service.type" interface="popover">
+              <ion-option *ngFor="let box of boxes | async" [value]="box">{{ box.id }}</ion-option>
+            </ion-select>
+          </ion-item>
+          <ion-item>
+            <ion-label>Tipo de servicio</ion-label>
+            <ion-input type="text" [(ngModel)]="service.type"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label>Proveedor</ion-label>
+            <ion-input type="text" [(ngModel)]="service.provider"></ion-input>
+          </ion-item>
           <form>
             <div class="input-group mb-3">
               <label for = "recipient-name" class="col-form-label" text-align="center">Tipo de servicio</label>

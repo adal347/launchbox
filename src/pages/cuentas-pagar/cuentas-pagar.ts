@@ -22,11 +22,13 @@ export class CuentasPagarPage {
   typoPago: object[]=[];
   title: any;
   show: any;
+  service: any;
 
   constructor(public db:AngularFireDatabase, public navCtrl: NavController, public navParams: NavParams) {
   	this.title= 'Ingreso de nuevo servicio';
   	this.s= this.db.list('typoPago').valueChanges().subscribe(data => {
 		this.typoPago=data;
+    this.service = {};
 	});
   }
 
