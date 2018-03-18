@@ -16,14 +16,9 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 
-<<<<<<< HEAD
-import { CuentasCobrarService } from '../services/cuentas_cobrar.service';
-import { FirebaseProvider } from '../providers/firebase/firebase';
-=======
 import { CuentasCobrarProvider } from '../providers/cuentas_cobrar';
 import { CommonsProvider } from '../providers/commons';
 import { UsersProvider } from '../providers/users';
->>>>>>> develop
 
 @NgModule({
   declarations: [
@@ -54,14 +49,9 @@ import { UsersProvider } from '../providers/users';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-<<<<<<< HEAD
-    CuentasCobrarService,
-    FirebaseProvider
-=======
     CuentasCobrarProvider,
     CommonsProvider,
     UsersProvider
->>>>>>> develop
   ]
 })
 export class AppModule {}
