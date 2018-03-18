@@ -21,7 +21,7 @@
       <th>Tipo de Box</th>
       <th>Inquilino</th>
       <th>Monto</th>
-      <th>Fecha de pago</th>
+      <th>Día de pago</th>
       <th>Tipo de pago</th>
       <th>Pagado</th>
       <th colspan="100%"></th>
@@ -36,12 +36,12 @@
       <td>efectivo</td>
       <td><ion-toggle ></ion-toggle></td>
       <td>
-        <button color = "update" ion-button icon-left item-left data-toggle="modal" data-target="#updateEntryModal">
+        <button color="update" ion-button icon-left item-left data-toggle="modal" data-target="#updateEntryModal">
           <ion-icon ios="ios-create" md="md-create"></ion-icon>Editar
         </button>
       </td>
-      <td><button color = "retrieve" ion-button icon-left item-left><ion-icon ios="ios-clipboard" md="md-clipboard"></ion-icon>Detalles</button></td>
-      <td><button  color = "danger" ion-button icon-left item-left data-toggle="modal" data-target="#deleteEntryModal"><ion-icon ios="ios-trash" md="md-trash"></ion-icon>Eliminar</button></td>
+      <td><button color="retrieve" ion-button icon-left item-left><ion-icon ios="ios-clipboard" md="md-clipboard"></ion-icon>Detalles</button></td>
+      <td><button  color="danger" ion-button icon-left item-left data-toggle="modal" data-target="#deleteEntryModal"><ion-icon ios="ios-trash" md="md-trash"></ion-icon>Eliminar</button></td>
     </tr>
   </table>
   <br/>
@@ -54,67 +54,53 @@
 
   <!--MODALS FOR BUTTONS-->
   <!--Modal of 'generic Modal'-->
-  <div class="modal fade" id="newEntryModal" tabindex="-1" role="dialog"  aria-hidden="true" >
+  <div class="modal fade" id="newEntryModal" tabindex="-1" role="dialog"  aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" >Ingreso de cuenta nueva</h5>
+          <h5 class="modal-title">Ingreso de cuenta nueva</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
         <div class="modal-body">
-          <form>
-            <div class="form-group">
-              <label for="recipient-name" class="col-form-label">No. de Box</label>
-              <select class="custom-select" [(ngModel)]="service.box" name="boxSelect">
-                <option *ngFor="let box of boxes | async" value="{{box}}">{{box.id}}</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label for="recipient-name" class="col-form-label">Status</label>
-              <select class="custom-select" [(ngModel)]="service.statusBox" name="statusSelect">
-                <option *ngFor="let status of statusBoxes" value="{{status.id}}">{{status.type}}</option>
-              </select>
-            </div>
-            <div>
-              <label for="recipient-name" class="col-form-label">Tipo de box</label>
-              <select class="custom-select" [(ngModel)]="service.typeBox" name="typoSelect">
-                <option *ngFor="let typo of typoBoxes" value="{{typo.id}}">{{typo.nombre}}</option>
-              </select>
-            </div>
-            <div class="form-row">
-              <div class="col">
-                <label for = "nombreInquilino" class="col-form-label" text-align="center">Inquilino</label>
-              </div>
-              <div class="col">
-                <label for = "recipient-name" class="col-form-label"></label>
-                <input type="text" class="form-control" placeholder="Nombre" [(ngModel)]="service.nameInquilino" name="nombreInput">
-              </div>
-              <div class="col">
-                <label for = "recipient-name" class="col-form-label"></label>
-                <input type="text" class="form-control" placeholder="Apellido" [(ngModel)]="service.lastNameInquilino" name="apellidoInput">
-              </div>
-            </div>
-            <div class="input-group mb-3">
-              <label for = "recipient-name" class="col-form-label" text-align="center">Monto</label>
-              <div class="col">
-                <input type="text" class="form-control" placeholder="Cantidad" [(ngModel)]="service.amount" name="cantidadInput">
-              </div>
-            </div>
-            <div class="input-group mb-3">
-              <label for = "recipient-name" class="col-form-label" text-align="center">Fecha</label>
-              <div class="col">
-                <input type="number" class="form-control" [(ngModel)]="service.payDay" name="diaInput">
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="recipient-name" class="col-form-label">Efectivo/Transferencia</label>
-              <select class="custom-select" [(ngModel)]="service.typePay" name="pagoSelect">
-                <option *ngFor="let typo of typoPago" value="{{typo.id}}">{{typo.tipo}}</option>
-              </select>
-            </div>
-          </form>
+          <ion-item>
+            <ion-label>No. de Box</ion-label>
+            <ion-select [(ngModel)]="service.box" interface="popover">
+              <ion-option *ngFor="let box of boxes | async" [value]="box">{{ box.id }}</ion-option>
+            </ion-select>
+          </ion-item>
+          <ion-item>
+            <ion-label>Estatus</ion-label>
+            <ion-select [(ngModel)]="service.statusBox" interface="popover">
+              <ion-option *ngFor="let status of statusBoxes | async" [value]="status">{{ status.name }}</ion-option>
+            </ion-select>
+          </ion-item>
+          <ion-item>
+            <ion-label>Tipo de box</ion-label>
+            <ion-select [(ngModel)]="service.typeBox" interface="popover">
+              <ion-option *ngFor="let type of typeBoxes | async" [value]="type">{{ type.name }}</ion-option>
+            </ion-select>
+          </ion-item>
+          <ion-item>
+            <ion-label>Inquilino</ion-label>
+            <ion-input type="text" placeholder="Nombre(s)" [(ngModel)]="service.nameTenant"></ion-input>
+            <ion-input type="text" placeholder="Apellidos" [(ngModel)]="service.lastnameTenant"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label>Monto</ion-label>
+            <ion-input type="text" [(ngModel)]="service.amount"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label>Día de pago</ion-label>
+            <ion-input type="text" [(ngModel)]="service.payDay"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label>Efectivo/Transferencia</ion-label>
+            <ion-select [(ngModel)]="service.typePay" interface="popover">
+              <ion-option *ngFor="let type of typePay | async" [value]="type">{{ type.name }}</ion-option>
+            </ion-select>
+          </ion-item>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>

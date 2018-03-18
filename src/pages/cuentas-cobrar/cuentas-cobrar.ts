@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { AngularFireList, AngularFireDatabase } from 'angularfire2/database';
-import { CuentasCobrarService } from '../../services/cuentas_cobrar.service';
+import { CuentasCobrarProvider } from '../../providers/cuentas_cobrar';
+import { Observable } from 'rxjs/Observable';
 
 /**
  * Generated class for the CuentasCobrarPage page.
@@ -17,39 +17,23 @@ import { CuentasCobrarService } from '../../services/cuentas_cobrar.service';
 })
 export class CuentasCobrarPage {
 
-  boxesRef: AngularFireList<any>;
   boxes: Observable<any[]>
-  statusBoxes: object[]=[];
-  typoBoxes: object[]=[];
-  typoPago:object[]=[];
+  statusBoxes: Observable<any[]>;
+  typeBoxes: Observable<any[]>;
+  typePay: Observable<any[]>;
   service: any;
-  s;
 
-  constructor(public db:AngularFireDatabase, public navCtrl: NavController,
-              public navParams: NavParams, public cuentasCobrarService: CuentasCobrarService) {
-    this.boxesRef = this.db.list('boxes');
-    this.boxes = this.boxesRef.snapshotChanges().map( data => {
-      return data.map(c => ({ key: c.payload.key, ...c.payload.val() }));
-	});
-  	this.s= this.db.list('statusBox').valueChanges().subscribe(data => {
-  		this.statusBoxes=data;
-  	});
-  	this.s= this.db.list('typoBox').valueChanges().subscribe(data => {
-  		this.typoBoxes=data;
-  	});
-  	this.s= this.db.list('typoPago').valueChanges().subscribe(data => {
-  		console.log(data);
-		this.typoPago=data;
-	});
-	this.service={};
-
+  constructor(public navCtrl: NavController, public navParams: NavParams,
+              public cuentasCobrarProvider: CuentasCobrarProvider) {
+    this.boxes = this.cuentasCobrarProvider.getBoxes();
+  	this.statusBoxes = this.cuentasCobrarProvider.getBoxStatus();
+  	this.typeBoxes = this.cuentasCobrarProvider.getTypeBox();
+  	this.typePay = this.cuentasCobrarProvider.getTypePay();
+    this.service = {};
   }
 
   createNewEntry() {
-  	console.log(this.service.box);
-  	//this.boxesRef.update();
-    this.cuentasCobrarService.createNewEntry(this.service);
-    console.log(this.boxes);
+    this.cuentasCobrarProvider.createNewEntry(this.service);
   }
 
   ionViewDidLoad() {
