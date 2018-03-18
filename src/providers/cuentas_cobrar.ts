@@ -25,21 +25,18 @@ export class CuentasCobrarProvider {
   	// 	statusId: service.statusBox.id
   	// };
 		// this.updateBox(service.box.key, box);
-  	// let tenant = {
-  	// 	name:service.nameTenant,
-  	// 	lastname: service.lastnameTenant
-  	// }
-		// console.log(this.findTenant(tenant));
-  	// let cuentasCobrar = {
-  	// 	id: null,
-  	// 	boxId: service.box,
-  	// 	pagoEfectuado: false,
-  	// 	diaPago: service.payDay,
-  	// 	tipoId:service.typePay,
-  	// 	montoRenta: service.amount,
-  	// 	inquilinoId:null
-		//
-  	// }
+  	let tenant = {
+  		name:service.nameTenant,
+  		lastname: service.lastnameTenant
+  	}
+		this.findTenant(tenant);
+		// let accountsReceivable = {
+		// 	boxId: service.box,
+		// 	paymentMade: false,
+		// 	payDay: service.payDay,
+		// 	typeId:service.typePay,
+		// 	amount: service.amount,
+		// }
 
   }
 
@@ -53,19 +50,12 @@ export class CuentasCobrarProvider {
 		});
 	}
 
-	// public findTenant(tenant) {
-	// 	let tenants = this.db.list('tenants', ref => ref.orderByChild('lastname').equalTo(tenant.lastname))
-	// 								.snapshotChanges().map( data => {
-	// 		data.map(c => ({ key: c.payload.key, ...c.payload.val() }));
-	// 	});
-	// 	console.log(tenants);
-	// 	for (let i = 0; i < tenants.length; i++) {
-	// 		console.log(tenants[i]);
-	// 		console.log('not here');
-	// 		if (tenants[i].name === tenant.name) return true;
-	// 	}
-	// 	return false;
-	// }
+	public findTenant(tenant) {
+		let tenants = this.db.list('tenants', ref => ref.orderByChild('lastname').equalTo(tenant.lastname))
+									.snapshotChanges().map( data => {
+			return data.map(c => ({ key: c.payload.key, ...c.payload.val() }));
+		});
+	}
 
 	public getBoxStatus() {
 		return this.boxesStatusRef.snapshotChanges().map( data => {
