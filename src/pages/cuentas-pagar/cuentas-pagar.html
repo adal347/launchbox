@@ -71,33 +71,33 @@
         <div class="modal-body">
           <ion-item>
             <ion-label>Tipo de servicio</ion-label>
-            <ion-input type="text" [(ngModel)]="service.service"></ion-input>
+            <ion-input type="text" [(ngModel)]="service.service" [disabled]="show"></ion-input>
           </ion-item>
           <ion-item>
             <ion-label>Proveedor</ion-label>
-            <ion-input type="text" [(ngModel)]="service.provider"></ion-input>
+            <ion-input type="text" [(ngModel)]="service.provider" [disabled]="show"></ion-input>
           </ion-item>
           <ion-item>
             <ion-label>Efectivo/Transferencia</ion-label>
-            <ion-select [(ngModel)]="service.typePay" interface="popover">
+            <ion-select [(ngModel)]="service.typePay" interface="popover" [disabled]="show">
               <ion-option *ngFor="let type of typePay | async" [value]="type">{{ type.name }}</ion-option>
             </ion-select>
           </ion-item>
           <ion-item>
             <ion-label>Monto</ion-label>
-            <ion-input type="text" [(ngModel)]="service.amount"></ion-input>
+            <ion-input type="text" [(ngModel)]="service.amount" [disabled]="show"></ion-input>
           </ion-item>
           <ion-item>
             <ion-label>Pagado</ion-label>
-            <ion-input type="text" [(ngModel)]="service.paid"></ion-input>
+            <ion-input type="text" [(ngModel)]="service.paid" [disabled]="show"></ion-input>
           </ion-item>
           <ion-item>
             <ion-label>Por Pagar</ion-label>
-            <ion-input type="text" [(ngModel)]="service.toPay"></ion-input>
+            <ion-input type="text" [(ngModel)]="service.toPay" [disabled]="show"></ion-input>
           </ion-item>
           <ion-item>
             <ion-label>Fecha limite</ion-label>
-            <ion-input type="date" [(ngModel)]="service.limitDate"></ion-input>
+            <ion-input type="date" [(ngModel)]="service.limitDate" [disabled]="show"></ion-input>
           </ion-item>
         </div>
         <div class="modal-footer">
