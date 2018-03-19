@@ -24,7 +24,7 @@ export class CuentasPagarProvider {
 		this.billsRef.push(bill);
   }
 
-	public updateBox(bill) {
+	public updateBill(bill) {
 		this.billsRef.update(bill.key, bill);
 	}
 
