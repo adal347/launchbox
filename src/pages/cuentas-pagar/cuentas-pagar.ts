@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { AngularFireDatabase} from 'angularfire2/database';
+import { CuentasCobrarProvider } from '../../providers/cuentas_cobrar';
+import { CuentasPagarProvider } from '../../providers/cuentas_pagar';
 /**
  * Generated class for the CuentasPagarPage page.
  *
@@ -15,36 +16,50 @@ import { AngularFireDatabase} from 'angularfire2/database';
 })
 export class CuentasPagarPage {
 
-	s;
-  boxes: object[]=[];
-  statusBoxes: object[]=[];
-  typoBoxes: object[]=[];
-  typoPago: object[]=[];
+  typePay: Observable<any[]>;
+  bills: Observable<any[]>;
   title: any;
   show: any;
   service: any;
 
-  constructor(public db:AngularFireDatabase, public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,
+              public cuentasCobrarProvider: CuentasCobrarProvider,
+              public cuentasPagarProvider: CuentasPagarProvider) {
+    this.typePay = this.cuentasCobrarProvider.getTypePay();
+    this.bills = this.cuentasPagarProvider.getBills();
   	this.title= 'Ingreso de nuevo servicio';
-  	this.s= this.db.list('typoPago').valueChanges().subscribe(data => {
-		this.typoPago=data;
     this.service = {};
-	});
   }
 
-  initModal(type){
+  initModal(type) {
   	this.show = false;
-  	if (type==1) {
-  		this.title= 'Ingreso de nuevo servicio';
+  	if (type == 1) {
+  		this.title = 'Ingreso de nuevo servicio';
   	}
-  	else if (type==0) {
+  	else if (type == 0) {
   		this.title = 'Editar servicio';
   	}
   	else{
   		this.title = 'Ver detalles del servicio';
-  		this.show=true;
+  		this.show = true;
   	}
-  	$('#newEntryModal').modal();
+  	// $('#newEntryModal').modal();
+  }
+
+  submitService() {
+    if (this.title === 'Editar servicio') {
+      this.updateEntry();
+    } else {
+      this.createNewEntry();
+    }
+  }
+
+  createNewEntry() {
+    this.cuentasPagarProvider.createNewEntry(this.service);
+  }
+
+  updateEntry() {
+    // this.cuentasPagarProvider.createNewEntry(this.service);
   }
 
   ionViewDidLoad() {

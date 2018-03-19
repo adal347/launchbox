@@ -8,11 +8,11 @@
 </ion-header>
 
 <ion-content padding>
-  <br>
+  <!-- <br>
   <ion-img width="80" height="80" src="../../assets/imgs/logo.png"></ion-img>
   <h1>Mes</h1>
   <br>
-  <br>
+  <br> -->
 
   <table>
   	<tr id="headerTable">
@@ -28,17 +28,17 @@
   		<th>Fecha limite</th>
   		<th colspan="3">Botones</th>
   	</tr>
-  	<tr>
-  		<td>Renta Terrerno</td>
-  		<td></td>
-  		<td></td>
-  		<td></td>
-  		<td></td>
-  		<td></td>
-  		<td></td>
+  	<tr *ngFor="let bill of bills | async">
+  		<td>{{ bill.service }}</td>
+  		<td>{{ bill.provider }}</td>
+  		<td>{{ bill.typePay.name }}</td>
+  		<td>{{ bill.amount }}</td>
+  		<td>{{ bill.paid }}</td>
+  		<td>{{ bill.toPay }}</td>
+  		<td>{{ bill.limitDate }}</td>
   		<td><button color = "update" ion-button icon-left item-left data-target="#updateEntryModal" data-toggle="modal" (click)="initModal(0)" ><ion-icon ios="ios-create" md="md-create"></ion-icon>Editar</button></td>
-        <td><button color = "retrieve" ion-button icon-left item-left (click)="initModal(2)" ><ion-icon ios="ios-clipboard" md="md-clipboard"></ion-icon>Detalles</button></td>
-        <td><button  color = "danger" ion-button icon-left item-left data-target="#newDeleteModal" data-toggle="modal" ><ion-icon ios="ios-trash" md="md-trash"></ion-icon>Eliminar</button></td>
+      <td><button color = "retrieve" ion-button icon-left item-left (click)="initModal(2)" ><ion-icon ios="ios-clipboard" md="md-clipboard"></ion-icon>Detalles</button></td>
+      <td><button  color = "danger" ion-button icon-left item-left data-target="#newDeleteModal" data-toggle="modal" ><ion-icon ios="ios-trash" md="md-trash"></ion-icon>Eliminar</button></td>
   	</tr>
   </table>
   <h4>Total:</h4>
@@ -47,8 +47,6 @@
       Nueva Fila<ion-icon ios="ios-add-circle" md="md-add-circle"></ion-icon>
     </button>
   </ion-buttons>
-  <br>
-  <br>
 
   <!--Modal of new Entry (NUEVA FILA)-->
   <div class="modal fade" id="newEntryModal" tabindex="-1" role="dialog"  aria-hidden="true" >
@@ -63,74 +61,45 @@
         <div class="modal-body">
           <ion-item>
             <ion-label>Tipo de servicio</ion-label>
-            <ion-select [(ngModel)]="service.type" interface="popover">
-              <ion-option *ngFor="let box of boxes | async" [value]="box">{{ box.id }}</ion-option>
-            </ion-select>
-          </ion-item>
-          <ion-item>
-            <ion-label>Tipo de servicio</ion-label>
             <ion-input type="text" [(ngModel)]="service.type"></ion-input>
           </ion-item>
           <ion-item>
             <ion-label>Proveedor</ion-label>
             <ion-input type="text" [(ngModel)]="service.provider"></ion-input>
           </ion-item>
-          <form>
-            <div class="input-group mb-3">
-              <label for = "recipient-name" class="col-form-label" text-align="center">Tipo de servicio</label>
-              <div class="col">
-                <input type="text" class="form-control" placeholder="Nombre" [disabled]="show">
-              </div>
-            </div>
-            <div class="input-group mb-3">
-              <label for = "recipient-name" class="col-form-label" text-align="center">Proveedor</label>
-              <div class="col">
-                <input type="text" class="form-control" placeholder="Nombre" [disabled]="show">
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="recipient-name" class="col-form-label">Efectivo/Transferencia</label>
-              <select class="custom-select" [disabled]="show">
-                <option *ngFor="let typo of typoPago" value="{{typo.id}}">{{typo.tipo}}</option>
-              </select>
-            </div>
-            <div class="input-group mb-3">
-              <label for = "recipient-name" class="col-form-label" text-align="center">Monto</label>
-              <div class="col">
-                <input type="text" class="form-control" placeholder="Cantidad" [disabled]="show">
-              </div>
-            </div>
-            <div class="input-group mb-3">
-              <label for = "recipient-name" class="col-form-label" text-align="center">Pagado</label>
-              <div class="col">
-                <input type="text" class="form-control" placeholder="Cantidad" [disabled]="show">
-              </div>
-            </div>
-            <div class="input-group mb-3">
-              <label for = "recipient-name" class="col-form-label" text-align="center">Por pagar</label>
-              <div class="col">
-                <input type="text" class="form-control" placeholder="Cantidad" [disabled]="show">
-              </div>
-            </div>
-            <div class="input-group mb-3">
-              <label for = "recipient-name" class="col-form-label" text-align="center">Fecha limite</label>
-              <div class="col">
-                <input type="text" class="form-control" placeholder="0/0/0" [disabled]="show">
-              </div>
-            </div>
-
-          </form>
+          <ion-item>
+            <ion-label>Efectivo/Transferencia</ion-label>
+            <ion-select [(ngModel)]="service.typePay" interface="popover">
+              <ion-option *ngFor="let type of typePay | async" [value]="type">{{ type.name }}</ion-option>
+            </ion-select>
+          </ion-item>
+          <ion-item>
+            <ion-label>Monto</ion-label>
+            <ion-input type="text" [(ngModel)]="service.amount"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label>Pagado</ion-label>
+            <ion-input type="text" [(ngModel)]="service.paid"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label>Por Pagar</ion-label>
+            <ion-input type="text" [(ngModel)]="service.toPay"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label>Fecha limite</ion-label>
+            <ion-input type="date" [(ngModel)]="service.limitDate"></ion-input>
+          </ion-item>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-          <button type="button" class="btn btn-primary" *ngIf="!show">Guardar</button>
+          <button type="button" class="btn btn-primary" *ngIf="!show" (click)="submitService()">Guardar</button>
         </div>
       </div>
     </div>
   </div>
-<!--Modal of new END-->
+  <!--Modal of new END-->
 
-<!--Modal of new Entry (NUEVA FILA)-->
+  <!--Modal of new Entry (NUEVA FILA)-->
   <div class="modal fade" id="newDeleteModal" tabindex="-1" role="dialog"  aria-hidden="true" >
   	<div class="modal-dialog modal-dialog-centered" role="document">
   	  <div class="modal-content">
