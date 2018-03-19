@@ -31,7 +31,6 @@
     "bootstrap": "^4.0.0",
     "cordova": "^8.0.0",
     "firebase": "^4.10.0",
-    "ionic": "^3.19.1",
     "ionic-angular": "3.9.2",
     "ionicons": "3.0.0",
     "jquery": "^3.3.1",
@@ -41,7 +40,11 @@
   },
   "devDependencies": {
     "@ionic/app-scripts": "3.1.8",
+<<<<<<< HEAD
     "@types/bootstrap": "^4.0.0",
+=======
+    "ionic": "3.20.0",
+>>>>>>> feature/cuentas-cobrar
     "typescript": "2.4.2"
   },
   "description": "An Ionic project"
