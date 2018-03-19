@@ -8,11 +8,6 @@
 </ion-header>
 
 <ion-content padding>
-  <!-- <br>
-  <ion-img width="80" height="80" src="../../assets/imgs/logo.png"></ion-img>
-  <h1>Mes</h1>
-  <br>
-  <br> -->
 
   <table>
   	<tr id="headerTable">
@@ -36,9 +31,24 @@
   		<td>{{ bill.paid }}</td>
   		<td>{{ bill.toPay }}</td>
   		<td>{{ bill.limitDate }}</td>
-  		<td><button color = "update" ion-button icon-left item-left data-target="#updateEntryModal" data-toggle="modal" (click)="initModal(0)" ><ion-icon ios="ios-create" md="md-create"></ion-icon>Editar</button></td>
-      <td><button color = "retrieve" ion-button icon-left item-left (click)="initModal(2)" ><ion-icon ios="ios-clipboard" md="md-clipboard"></ion-icon>Detalles</button></td>
-      <td><button  color = "danger" ion-button icon-left item-left data-target="#newDeleteModal" data-toggle="modal" ><ion-icon ios="ios-trash" md="md-trash"></ion-icon>Eliminar</button></td>
+  		<td>
+        <button color="update" ion-button icon-left item-left data-target="#newEntryModal"
+                data-toggle="modal" (click)="initModal(0, bill)">
+          <ion-icon ios="ios-create" md="md-create"></ion-icon>Editar
+        </button>
+      </td>
+      <td>
+        <button color="retrieve" ion-button icon-left item-left data-target="#newEntryModal"
+                data-toggle="modal" (click)="initModal(2, bill)">
+          <ion-icon ios="ios-clipboard" md="md-clipboard"></ion-icon>Detalles
+        </button>
+      </td>
+      <td>
+        <button color="danger" ion-button icon-left item-left data-target="#newDeleteModal"
+                data-toggle="modal" (click)="billToDelete = bill">
+          <ion-icon ios="ios-trash" md="md-trash"></ion-icon>Eliminar
+        </button>
+      </td>
   	</tr>
   </table>
   <h4>Total:</h4>
@@ -61,7 +71,7 @@
         <div class="modal-body">
           <ion-item>
             <ion-label>Tipo de servicio</ion-label>
-            <ion-input type="text" [(ngModel)]="service.type"></ion-input>
+            <ion-input type="text" [(ngModel)]="service.service"></ion-input>
           </ion-item>
           <ion-item>
             <ion-label>Proveedor</ion-label>
@@ -92,7 +102,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-          <button type="button" class="btn btn-primary" *ngIf="!show" (click)="submitService()">Guardar</button>
+          <button type="button" class="btn btn-primary" data-dismiss="modal" *ngIf="!show" (click)="submitService()">Guardar</button>
         </div>
       </div>
     </div>
@@ -112,7 +122,7 @@
         <div class="modal-body">Estas seguro que desea eliminar el servicio?</div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-          <button type="button" class="btn btn-primary">Eliminar</button>
+          <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="deleteEntry()">Eliminar</button>
         </div>
       </div>
     </div>

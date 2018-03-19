@@ -13,7 +13,7 @@ export class CuentasPagarProvider {
 
   public createNewEntry(service) {
 		let bill = {
-			service: service.type,
+			service: service.service,
 			provider: service.provider,
 			typePay: service.typePay,
 			amount: service.amount || null,
@@ -34,7 +34,7 @@ export class CuentasPagarProvider {
     });
 	}
 
-	public removeBills(bill) {
+	public removeBill(bill) {
 		this.billsRef.remove(bill.key);
 	}
 }

@@ -21,8 +21,6 @@ import { CuentasPagarProvider } from '../providers/cuentas_pagar';
 import { CommonsProvider } from '../providers/commons';
 import { UsersProvider } from '../providers/users';
 
-// import * as $ from 'jquery';
-
 @NgModule({
   declarations: [
     MyApp,

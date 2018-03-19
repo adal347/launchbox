@@ -21,6 +21,7 @@ export class CuentasPagarPage {
   title: any;
   show: any;
   service: any;
+  billToDelete: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
               public cuentasCobrarProvider: CuentasCobrarProvider,
@@ -29,21 +30,23 @@ export class CuentasPagarPage {
     this.bills = this.cuentasPagarProvider.getBills();
   	this.title= 'Ingreso de nuevo servicio';
     this.service = {};
+    this.billToDelete = {};
   }
 
-  initModal(type) {
+  initModal(type, bill) {
   	this.show = false;
   	if (type == 1) {
   		this.title = 'Ingreso de nuevo servicio';
   	}
   	else if (type == 0) {
+      this.service = bill;
   		this.title = 'Editar servicio';
   	}
   	else{
+      this.show = true;
+      this.service = bill;
   		this.title = 'Ver detalles del servicio';
-  		this.show = true;
   	}
-  	// $('#newEntryModal').modal();
   }
 
   submitService() {
@@ -60,6 +63,10 @@ export class CuentasPagarPage {
 
   updateEntry() {
     // this.cuentasPagarProvider.createNewEntry(this.service);
+  }
+
+  deleteEntry() {
+    this.cuentasPagarProvider.removeBill(this.billToDelete);
   }
 
   ionViewDidLoad() {
