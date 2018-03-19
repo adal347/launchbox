@@ -21,7 +21,9 @@ export class CuentasCobrarPage {
   statusBoxes: Observable<any[]>;
   typeBoxes: Observable<any[]>;
   typePay: Observable<any[]>;
+  accountsReceivable: Observable<any[]>;
   service: any;
+  accountReceivableToDelete: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
               public cuentasCobrarProvider: CuentasCobrarProvider) {
@@ -29,11 +31,17 @@ export class CuentasCobrarPage {
   	this.statusBoxes = this.cuentasCobrarProvider.getBoxStatus();
   	this.typeBoxes = this.cuentasCobrarProvider.getTypeBox();
   	this.typePay = this.cuentasCobrarProvider.getTypePay();
+  	this.accountsReceivable = this.cuentasCobrarProvider.getAccountsReceivable();
     this.service = {};
+    this.accountReceivableToDelete = {};
   }
 
   createNewEntry() {
     this.cuentasCobrarProvider.createNewEntry(this.service);
+  }
+
+  deleteEntry() {
+    this.cuentasCobrarProvider.removeEntry(this.accountReceivableToDelete);
   }
 
   ionViewDidLoad() {

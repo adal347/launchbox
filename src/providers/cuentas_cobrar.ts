@@ -9,6 +9,7 @@ export class CuentasCobrarProvider {
 	typeBoxRef: AngularFireList<any>;
 	typePayRef: AngularFireList<any>;
 	tenantsRef: AngularFireList<any>;
+	accountsReceivableRef: AngularFireList<any>;
 
 	constructor(public db: AngularFireDatabase) {
 		this.boxesRef = this.db.list('boxes');
@@ -16,43 +17,79 @@ export class CuentasCobrarProvider {
 		this.typeBoxRef = this.db.list('typeBox');
 		this.typePayRef = this.db.list('typePay');
 		this.tenantsRef = this.db.list('tenants');
+		this.accountsReceivableRef = this.db.list('accountsReceivable');
 	}
 
   public createNewEntry(service) {
-  	// let box = {
-  	// 	id: service.box.id,
-  	// 	typeId: service.typeBox.id,
-  	// 	statusId: service.statusBox.id
-  	// };
-		// this.updateBox(service.box.key, box);
+  	let box = {
+  		id: service.box.id,
+  		type: service.typeBox,
+  		status: service.statusBox
+  	};
   	let tenant = {
-  		name:service.nameTenant,
-  		lastname: service.lastnameTenant
+  		name: service.nameTenant || null,
+  		lastname: service.lastnameTenant || null
   	}
-		this.findTenant(tenant);
-		// let accountsReceivable = {
-		// 	boxId: service.box,
-		// 	paymentMade: false,
-		// 	payDay: service.payDay,
-		// 	typeId:service.typePay,
-		// 	amount: service.amount,
-		// }
+		let accountsReceivable = {
+			box: box,
+			paymentMade: false,
+			payDay: service.payDay || null,
+			type: service.typePay || null,
+			amount: service.amount || null,
+			payDate: null
+		}
+		this.updateBox(service.box.key, box).then(response => {
+			if (!tenant.name) {
+				this.createNewAccountReceivable(null, accountsReceivable);
+			} else {
+				this.findTenant(tenant, accountsReceivable);
+			}
+		});
 
   }
 
+  public createNewTentant(tenant, accountsReceivable) {
+  	this.tenantsRef.push(tenant);
+		this.findTenant(tenant, accountsReceivable);
+  }
+
+  public createNewAccountReceivable(tenant, accountsReceivable) {
+		accountsReceivable['tenant'] = tenant;
+  	this.accountsReceivableRef.push(accountsReceivable);
+  }
+
 	public updateBox(key, box) {
-		this.boxesRef.update(key, box);
+		return new Promise((resolve, reject) => {
+			this.boxesRef.update(key, box);
+			resolve();
+		});
+	}
+
+	public findTenant(tenant, accountsReceivable) {
+		let tenants = this.db.list('tenants', ref => ref.orderByChild('lastname').equalTo(tenant.lastname))
+									.snapshotChanges().map( data => {
+			return data.map(c => ({ key: c.payload.key, ...c.payload.val() }));
+		});
+		tenants.forEach(items => {
+			if (items.length === 0) {
+				this.createNewTentant(tenant, accountsReceivable);
+			} else {
+				let flag = false;
+				for (let i = 0; i < items.length; i++) {
+					if (items[i].name === tenant.name) {
+						flag = true;
+						this.createNewAccountReceivable(tenant, accountsReceivable);
+					}
+				}
+				if (!flag) {
+					this.createNewTentant(tenant, accountsReceivable);
+				}
+			}
+		});
 	}
 
 	public getBoxes() {
 		return this.boxesRef.snapshotChanges().map( data => {
-			return data.map(c => ({ key: c.payload.key, ...c.payload.val() }));
-		});
-	}
-
-	public findTenant(tenant) {
-		let tenants = this.db.list('tenants', ref => ref.orderByChild('lastname').equalTo(tenant.lastname))
-									.snapshotChanges().map( data => {
 			return data.map(c => ({ key: c.payload.key, ...c.payload.val() }));
 		});
 	}
@@ -73,5 +110,15 @@ export class CuentasCobrarProvider {
 		return this.typePayRef.snapshotChanges().map( data => {
       return data.map(c => ({ key: c.payload.key, ...c.payload.val() }));
     });
+	}
+
+	public getAccountsReceivable() {
+		return this.accountsReceivableRef.snapshotChanges().map( data => {
+      return data.map(c => ({ key: c.payload.key, ...c.payload.val() }));
+    });
+	}
+
+	public removeEntry(accountReceivable) {
+		this.accountsReceivableRef.remove(accountReceivable.key);
 	}
 }
