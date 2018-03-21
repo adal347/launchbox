@@ -23,6 +23,7 @@ export class CuentasPagarPage {
   show: any;
   service: any;
   billToDelete: any;
+  amountTotal: number = 0;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
               public cuentasCobrarProvider: CuentasCobrarProvider,
@@ -32,14 +33,14 @@ export class CuentasPagarPage {
   	this.title= 'Ingreso de nuevo servicio';
     this.service = {};
     this.billToDelete = {};
+    this.totalAmount();
   }
 
   initModal(type, bill) {
   	this.show = false;
   	if (type == 1) {
+      this.service = {};
   		this.title = 'Ingreso de nuevo servicio';
-          this.service = {};
-
 
   	} else if (type == 0) {
       this.service = bill;
@@ -49,6 +50,22 @@ export class CuentasPagarPage {
       this.service = bill;
   		this.title = 'Ver detalles del servicio';
   	}
+  }
+
+  totalAmount() {
+    this.bills.forEach((arrayBills) => {
+      arrayBills.forEach((bill) => {
+        this.amountTotal += Number(bill.amount);
+      });
+    });
+  }
+
+  totalPaid() {
+
+  }
+
+  totalToPaid() {
+    
   }
 
   submitService() {
