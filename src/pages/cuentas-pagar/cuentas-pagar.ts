@@ -23,8 +23,8 @@ export class CuentasPagarPage {
   show: any;
   service: any;
   billToDelete: any;
-  amountTotal: number = 0;
   month: any;
+  amountTotal: number = 0;
   paidTotal: number = 0;
   toPaidTotal: number = 0;
 
@@ -44,7 +44,6 @@ export class CuentasPagarPage {
 
   initModal(type, bill) {
   	this.show = false;
-    console.log(this.service);
   	if (type == 1) {
       this.service = {};
   		this.title = 'Ingreso de nuevo servicio';
@@ -77,7 +76,7 @@ export class CuentasPagarPage {
     this.bills.forEach((arrayBills) => {
       arrayBills.forEach((bill) => {
         if (bill.toPay) {
-         this.toPaidTotal += Number(bill.toPay);  
+         this.toPaidTotal += Number(bill.toPay);
         }
       });
     });

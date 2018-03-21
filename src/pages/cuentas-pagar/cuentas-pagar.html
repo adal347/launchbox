@@ -8,9 +8,7 @@
 </ion-header>
 
 <ion-content padding>
-  <img alt="logo" style="width: 122px; height: 92px;" src="./assets/imgs/logo.png"> 
-  <!-- <ion-img height="80" src="./assets/imgs/logo.png" width="80"></ion-img> -->
- <!-- <ion-img style="width: 80px; height: 80px;" src="/assets/imgs/logo.png"></ion-img> -->
+  <img alt="logo" style="width: 122px; height: 92px;" src="./assets/imgs/logo.png">
 
   <table>
   	<tr id="headerTable">
@@ -49,11 +47,9 @@
       </td>
   	</tr>
   </table>
-   <h4> Monto Total: {{ amountTotal }} </h4>
-   <h4> Pagado Total: {{ paidTotal }} </h4>
-   <h4> Por Pagar Total: {{ toPaidTotal }} </h4>
-   <!--<h4> Por Pagar Total: {{ amountTotal }} </h4> -->
-
+  <h4>Monto Total: {{ amountTotal }}</h4>
+  <h4>Pagado Total: {{ paidTotal }}</h4>
+  <h4>Por Pagar Total: {{ toPaidTotal }}</h4>
   <ion-buttons end>
     <button color = "create" ion-button icon-right item-right data-toggle="modal" (click)="initModal(1)" data-target="#newEntryModal">
       Nueva Fila<ion-icon ios="ios-add-circle" md="md-add-circle"></ion-icon>
