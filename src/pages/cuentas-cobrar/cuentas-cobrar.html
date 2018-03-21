@@ -38,14 +38,12 @@
       <td><div *ngIf="accountReceivable.type">{{ accountReceivable.type.name }}</div></td>
       <td><ion-toggle [(ngModel)]="accountReceivable.paymentMade" (ionChange)="updatePay(accountReceivable)"></ion-toggle></td>
       <td>
-        <button color="update" ion-button icon-left item-left data-toggle="modal" data-target="#updateEntryModal">
-          <ion-icon ios="ios-create" md="md-create"></ion-icon>Editar
+        <button color="update" ion-button icon-only icon-left data-toggle="modal" data-target="#updateEntryModal">
+          <ion-icon ios="ios-create" md="md-create"></ion-icon>
         </button>
       </td>
-      <td><button color="retrieve" ion-button icon-left item-left><ion-icon ios="ios-clipboard" md="md-clipboard"></ion-icon>Detalles</button></td>
-      <td><button color="danger" ion-button icon-left item-left data-toggle="modal"
-                  data-target="#deleteEntryModal" (click)="accountReceivableToDelete = accountReceivable">
-        <ion-icon ios="ios-trash" md="md-trash"></ion-icon>Eliminar
+      <td><button color="danger" ion-button icon-only icon-left  data-toggle="modal" data-target="#deleteEntryModal" (click)="accountReceivableToDelete = accountReceivable">
+        <ion-icon ios="ios-trash" md="md-trash"></ion-icon>
       </button></td>
     </tr>
   </table>
