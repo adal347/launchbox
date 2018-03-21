@@ -16,9 +16,9 @@ export class CuentasPagarProvider {
 			service: service.service,
 			provider: service.provider,
 			typePay: service.typePay,
-			amount: service.amount || null,
-			paid: service.paid || null,
-			toPay: service.toPay || null,
+			amount: service.amount || 0,
+			paid: service.paid || 0,
+			toPay: service.toPay || 0,
 			limitDate: service.limitDate || null
 		};
 		this.billsRef.push(bill);

@@ -36,9 +36,10 @@ export class CuentasPagarPage {
 
   initModal(type, bill) {
   	this.show = false;
+    this.service = {};
   	if (type == 1) {
-      this.service = {};
   		this.title = 'Ingreso de nuevo servicio';
+
   	} else if (type == 0) {
       this.service = bill;
   		this.title = 'Editar servicio';
