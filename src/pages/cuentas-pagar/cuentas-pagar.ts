@@ -23,6 +23,7 @@ export class CuentasPagarPage {
   show: any;
   service: any;
   billToDelete: any;
+  month: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
               public cuentasCobrarProvider: CuentasCobrarProvider,
@@ -32,6 +33,7 @@ export class CuentasPagarPage {
   	this.title= 'Ingreso de nuevo servicio';
     this.service = {};
     this.billToDelete = {};
+    this.month = 'Marzo';
   }
 
   initModal(type, bill) {
