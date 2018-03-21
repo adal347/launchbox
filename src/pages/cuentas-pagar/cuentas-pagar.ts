@@ -24,6 +24,7 @@ export class CuentasPagarPage {
   service: any;
   billToDelete: any;
   amountTotal: number = 0;
+  month: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
               public cuentasCobrarProvider: CuentasCobrarProvider,
@@ -34,6 +35,7 @@ export class CuentasPagarPage {
     this.service = {};
     this.billToDelete = {};
     this.totalAmount();
+    this.month = 'Marzo';
   }
 
   initModal(type, bill) {

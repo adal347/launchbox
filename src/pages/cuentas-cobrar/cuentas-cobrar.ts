@@ -24,6 +24,7 @@ export class CuentasCobrarPage {
   accountsReceivable: Observable<any[]>;
   service: any;
   accountReceivableToDelete: any;
+  month: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
               public cuentasCobrarProvider: CuentasCobrarProvider) {
@@ -34,6 +35,7 @@ export class CuentasCobrarPage {
   	this.accountsReceivable = this.cuentasCobrarProvider.getAccountsReceivable();
     this.service = {};
     this.accountReceivableToDelete = {};
+    this.month = 'Marzo';
   }
 
   createNewEntry() {
