@@ -50,7 +50,7 @@ export class CuentasCobrarProvider {
 
   public createNewTentant(tenant, accountsReceivable) {
   	this.tenantsRef.push(tenant);
-		this.findTenant(tenant, accountsReceivable);
+		//this.findTenant(tenant, accountsReceivable);
   }
 
   public createNewAccountReceivable(tenant, accountsReceivable) {
