@@ -46,6 +46,16 @@ export class CuentasCobrarPage {
     this.cuentasCobrarProvider.removeEntry(this.accountReceivableToDelete);
   }
 
+  updatePay(accountReceivable) {
+    if (accountReceivable.paymentMade) {
+      let payDate = new Date();
+      accountReceivable['payDate'] = payDate;
+    } else {
+      accountReceivable['payDate'] = null;
+    }
+    this.cuentasCobrarProvider.updateAccountReceivable(accountReceivable);
+  }
+
   ionViewDidLoad() {
     console.log('ionViewDidLoad CuentasCobrarPage');
   }

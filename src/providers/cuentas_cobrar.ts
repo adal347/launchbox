@@ -65,6 +65,10 @@ export class CuentasCobrarProvider {
 		});
 	}
 
+	public updateAccountReceivable(accountReceivable) {
+		this.accountsReceivableRef.update(accountReceivable.key, accountReceivable);
+	}
+
 	public findTenant(tenant, accountsReceivable) {
 		let tenants = this.db.list('tenants', ref => ref.orderByChild('lastname').equalTo(tenant.lastname))
 									.snapshotChanges().map( data => {

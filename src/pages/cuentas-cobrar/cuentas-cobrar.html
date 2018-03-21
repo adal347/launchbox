@@ -35,7 +35,7 @@
       <td>{{ accountReceivable.amount }}</td>
       <td>{{ accountReceivable.payDay }}</td>
       <td><div *ngIf="accountReceivable.type">{{ accountReceivable.type.name }}</div></td>
-      <td><ion-toggle ></ion-toggle></td>
+      <td><ion-toggle [(ngModel)]="accountReceivable.paymentMade" (ionChange)="updatePay(accountReceivable)"></ion-toggle></td>
       <td>
         <button ion-button icon-only color="update" data-toggle="modal" data-target="#updateEntryModal">
           <ion-icon ios="ios-create" md="md-create"></ion-icon>
@@ -50,7 +50,7 @@
   <br/>
   <br/>
   <ion-buttons end>
-    <button color = "create" ion-button icon-right item-right data-toggle="modal" data-target="#newEntryModal" (click)="service={}">
+    <button color="create" ion-button icon-right item-right data-toggle="modal" data-target="#newEntryModal">
       Nuevo<ion-icon ios="ios-add-circle" md="md-add-circle"></ion-icon>
     </button>
   </ion-buttons>
