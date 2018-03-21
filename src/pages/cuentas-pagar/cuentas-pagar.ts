@@ -25,6 +25,8 @@ export class CuentasPagarPage {
   billToDelete: any;
   amountTotal: number = 0;
   month: any;
+  paidTotal: number = 0;
+  toPaidTotal: number = 0;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
               public cuentasCobrarProvider: CuentasCobrarProvider,
@@ -35,6 +37,8 @@ export class CuentasPagarPage {
     this.service = {};
     this.billToDelete = {};
     this.totalAmount();
+    this.totalPaid();
+    this.totalToPaid();
     this.month = 'Marzo';
   }
 
@@ -63,11 +67,23 @@ export class CuentasPagarPage {
   }
 
   totalPaid() {
-
+    this.bills.forEach((arrayBills) => {
+      arrayBills.forEach((bill) => {
+        if (bill.paid) {
+         this.paidTotal += Number(bill.paid);
+        }
+      });
+    });
   }
 
   totalToPaid() {
-    
+    this.bills.forEach((arrayBills) => {
+      arrayBills.forEach((bill) => {
+        if (bill.toPay) {
+         this.toPaidTotal += Number(bill.toPay);
+        }
+      });
+    });
   }
 
   submitService() {
