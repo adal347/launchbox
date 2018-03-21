@@ -44,6 +44,7 @@ export class CuentasPagarPage {
 
   initModal(type, bill) {
   	this.show = false;
+    console.log(this.service);
   	if (type == 1) {
       this.service = {};
   		this.title = 'Ingreso de nuevo servicio';
@@ -51,10 +52,6 @@ export class CuentasPagarPage {
   	} else if (type == 0) {
       this.service = bill;
   		this.title = 'Editar servicio';
-  	} else{
-      this.show = true;
-      this.service = bill;
-  		this.title = 'Ver detalles del servicio';
   	}
   }
 
@@ -80,7 +77,7 @@ export class CuentasPagarPage {
     this.bills.forEach((arrayBills) => {
       arrayBills.forEach((bill) => {
         if (bill.toPay) {
-         this.toPaidTotal += Number(bill.toPay);
+         this.toPaidTotal += Number(bill.toPay);  
         }
       });
     });
