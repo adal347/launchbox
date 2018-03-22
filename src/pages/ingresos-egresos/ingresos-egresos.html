@@ -15,6 +15,7 @@
 
 
 <ion-content padding>
+  <img alt="logo" style="width: 122px; height: 92px;" src="./assets/imgs/logo.png">
 <br>
 <h1>Mes</h1>
 <br>
@@ -40,9 +41,19 @@
 		<td></td>
 		<td></td>
 		<td></td>
-		<td><button color = "update" ion-button icon-left item-left data-target="#updateEntryModal" data-toggle="modal"><ion-icon ios="ios-create" md="md-create"></ion-icon>Editar</button></td>
-      <td><button color = "retrieve" ion-button icon-left item-left><ion-icon ios="ios-clipboard" md="md-clipboard"></ion-icon>Detalles</button></td>
-      <td><button  color = "danger" ion-button icon-left item-left><ion-icon ios="ios-trash" md="md-trash"></ion-icon>Eliminar</button></td>
+		<td>
+      <button ion-button icon-only color="update" data-target="#newEntryModal"
+                data-toggle="modal" (click)="initModal(0, bill)">
+          <ion-icon ios="ios-create" md="md-create"></ion-icon>
+        </button>
+      </td>
+
+      <td>
+        <button ion-button icon-only color="danger" data-target="#newDeleteModal"
+                data-toggle="modal" (click)="billToDelete = bill">
+          <ion-icon ios="ios-trash" md="md-trash"></ion-icon>
+        </button>
+    </td>
 	</tr>	
 </table>
 
@@ -55,9 +66,6 @@
   </ion-buttons>
 <br>
 <br>
-
-
-
 
 <table>
 	<tr id="headerTable">
@@ -77,9 +85,17 @@
 		<td></td>
 		<td></td>
 		<td></td>
-		<td><button color = "update" ion-button icon-left item-left data-target="#updateEntryModal" data-toggle="modal"><ion-icon ios="ios-create" md="md-create"></ion-icon>Editar</button></td>
-      <td><button color = "retrieve" ion-button icon-left item-left><ion-icon ios="ios-clipboard" md="md-clipboard"></ion-icon>Detalles</button></td>
-      <td><button  color = "danger" ion-button icon-left item-left><ion-icon ios="ios-trash" md="md-trash"></ion-icon>Eliminar</button></td>
+		<td>
+      <button ion-button icon-only color="update" data-target="#newEntryModal" data-toggle="modal" (click)="initModal(0, bill)">
+          <ion-icon ios="ios-create" md="md-create"></ion-icon>
+        </button>
+      </td>
+
+      <td>
+        <button ion-button icon-only color="danger" data-target="#newDeleteModal" data-toggle="modal" (click)="billToDelete = bill">
+          <ion-icon ios="ios-trash" md="md-trash"></ion-icon>
+        </button>
+    </td>
 	</tr>	
 </table>
 
