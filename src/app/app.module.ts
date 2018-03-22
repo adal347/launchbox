@@ -7,6 +7,7 @@ import { LoginPage } from '../pages/login/login';
 import { CuentasCobrarPage } from '../pages/cuentas-cobrar/cuentas-cobrar';
 import { CuentasPagarPage } from '../pages/cuentas-pagar/cuentas-pagar';
 import { MapPage } from '../pages/map/map';
+import { IngresosEgresosPage } from '../pages/ingresos-egresos/ingresos-egresos';
 import { RegisterPage } from '../pages/register/register';
 import { CondensadoPage } from '../pages/condensado/condensado';
 
@@ -18,6 +19,7 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 
 import { CuentasCobrarProvider } from '../providers/cuentas_cobrar';
+import { CuentasPagarProvider } from '../providers/cuentas_pagar';
 import { CommonsProvider } from '../providers/commons';
 import { UsersProvider } from '../providers/users';
 
@@ -28,8 +30,9 @@ import { UsersProvider } from '../providers/users';
     CuentasCobrarPage,
     CuentasPagarPage,
     MapPage,
-    RegisterPage,
-    CondensadoPage
+    CondensadoPage,
+    IngresosEgresosPage,
+    RegisterPage
   ],
   imports: [
     BrowserModule,
@@ -45,6 +48,7 @@ import { UsersProvider } from '../providers/users';
     CuentasCobrarPage,
     CuentasPagarPage,
     MapPage,
+    IngresosEgresosPage,
     RegisterPage,
     CondensadoPage
   ],
@@ -53,6 +57,7 @@ import { UsersProvider } from '../providers/users';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     CuentasCobrarProvider,
+    CuentasPagarProvider,
     CommonsProvider,
     UsersProvider
   ]

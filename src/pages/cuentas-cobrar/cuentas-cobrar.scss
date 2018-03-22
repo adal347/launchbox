@@ -1,7 +1,4 @@
 page-cuentas-cobrar {
-	h1 {
-		text-align: center;
-	}
 	table {
 		margin: 0;
 		border-collapse: collapse;
@@ -26,5 +23,9 @@ page-cuentas-cobrar {
 	}
 	.form-control, .btn-secondary, .btn-primary {
 		font-size: 15px;
+	}
+	img{
+		width: 20px;
+		float: left;
 	}
 }
