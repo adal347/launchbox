@@ -8,9 +8,8 @@
 </ion-header>
 
 <ion-content padding>
-  <h1>Tabla principal del mes</h1>
-  <br/>
-  <br/>
+  <img alt="logo" style="width: 122px; height: 92px;" src="./assets/imgs/logo.png">
+  <h1>Tabla principal del mes de {{ month }}</h1>
   <table>
     <tr id="headerTable">
       <th colspan="100%">Cuentas por Cobrar</th>
@@ -38,11 +37,12 @@
       <td><div *ngIf="accountReceivable.type">{{ accountReceivable.type.name }}</div></td>
       <td><ion-toggle [(ngModel)]="accountReceivable.paymentMade" (ionChange)="updatePay(accountReceivable)"></ion-toggle></td>
       <td>
-        <button color="update" ion-button icon-only icon-left data-toggle="modal" data-target="#updateEntryModal">
+        <button ion-button icon-only color="update" data-toggle="modal" data-target="#updateEntryModal">
           <ion-icon ios="ios-create" md="md-create"></ion-icon>
         </button>
       </td>
-      <td><button color="danger" ion-button icon-only icon-left  data-toggle="modal" data-target="#deleteEntryModal" (click)="accountReceivableToDelete = accountReceivable">
+      <td><button ion-button icon-only color="danger" data-toggle="modal"
+                  data-target="#deleteEntryModal" (click)="accountReceivableToDelete = accountReceivable">
         <ion-icon ios="ios-trash" md="md-trash"></ion-icon>
       </button></td>
     </tr>

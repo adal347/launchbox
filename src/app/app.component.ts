@@ -18,8 +18,8 @@ import { CommonsProvider } from '../providers/commons';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = CuentasCobrarPage;
-
+  rootPage: any = CuentasPagarPage;
+  
   pages: Array<{title: string, component: any}>;
 
   constructor(public platform: Platform, public statusBar: StatusBar,

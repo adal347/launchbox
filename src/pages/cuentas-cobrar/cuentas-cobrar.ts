@@ -24,6 +24,7 @@ export class CuentasCobrarPage {
   accountsReceivable: Observable<any[]>;
   service: any;
   accountReceivableToDelete: any;
+  month: any;
   amount: number = 0;
   activeBoxes: number = 0;
   takenBoxes: number = 0;
@@ -38,6 +39,7 @@ export class CuentasCobrarPage {
   	this.accountsReceivable = this.cuentasCobrarProvider.getAccountsReceivable();
     this.service = {};
     this.accountReceivableToDelete = {};
+    this.month = 'Marzo';
     this.totalAmount();
     this.numActiveBoxes();
     this.numTakenBoxes();
@@ -64,7 +66,7 @@ export class CuentasCobrarPage {
   totalAmount(){
      this.accountsReceivable.forEach((arrayAccounts)=>{
        arrayAccounts.forEach((account)=>{
-        
+
          if(account.amount){
           this.amount += Number(account.amount);
          }
