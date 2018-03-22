@@ -8,9 +8,8 @@
 </ion-header>
 
 <ion-content padding>
-  <h1>Tabla principal del mes</h1>
-  <br/>
-  <br/>
+  <img alt="logo" style="width: 122px; height: 92px;" src="./assets/imgs/logo.png">
+  <h1>Tabla principal del mes de {{ month }}</h1>
   <table>
     <tr id="headerTable">
       <th colspan="100%">Cuentas por Cobrar</th>
@@ -26,31 +25,60 @@
       <th>Pagado</th>
       <th colspan="100%"></th>
     </tr>
-    <tr>
-      <td>1</td>
-      <td>activo</td>
-      <td>Fruit box</td>
-      <td>Jacob Tafolla</td>
-      <td>4000 </td>
-      <td>16</td>
-      <td>efectivo</td>
-      <td><ion-toggle ></ion-toggle></td>
+    <tr *ngFor="let accountReceivable of accountsReceivable | async">
+      <td>{{ accountReceivable.box.id }}</td>
+      <td>{{ accountReceivable.box.status.name }}</td>
+      <td>{{ accountReceivable.box.type.name }}</td>
+      <td><div *ngIf="accountReceivable.tenant">
+        {{ accountReceivable.tenant.name }} {{ accountReceivable.tenant.lastname }}
+      </div></td>
+      <td> $ {{ accountReceivable.amount }}</td>
+      <td>{{ accountReceivable.payDay }}</td>
+      <td><div *ngIf="accountReceivable.type">{{ accountReceivable.type.name }}</div></td>
+      <td><ion-toggle [(ngModel)]="accountReceivable.paymentMade" (ionChange)="updatePay(accountReceivable)"></ion-toggle></td>
       <td>
-        <button color="update" ion-button icon-left item-left data-toggle="modal" data-target="#updateEntryModal">
-          <ion-icon ios="ios-create" md="md-create"></ion-icon>Editar
+        <button ion-button icon-only color="update" data-toggle="modal" data-target="#updateEntryModal">
+          <ion-icon ios="ios-create" md="md-create"></ion-icon>
         </button>
       </td>
-      <td><button color="retrieve" ion-button icon-left item-left><ion-icon ios="ios-clipboard" md="md-clipboard"></ion-icon>Detalles</button></td>
-      <td><button  color="danger" ion-button icon-left item-left data-toggle="modal" data-target="#deleteEntryModal"><ion-icon ios="ios-trash" md="md-trash"></ion-icon>Eliminar</button></td>
+      <td><button ion-button icon-only color="danger" data-toggle="modal"
+                  data-target="#deleteEntryModal" (click)="accountReceivableToDelete = accountReceivable">
+        <ion-icon ios="ios-trash" md="md-trash"></ion-icon>
+      </button></td>
     </tr>
   </table>
   <br/>
   <br/>
   <ion-buttons end>
-    <button color = "create" ion-button icon-right item-right data-toggle="modal" data-target="#newEntryModal">
+    <button color="create" ion-button icon-right item-right data-toggle="modal" data-target="#newEntryModal">
       Nuevo<ion-icon ios="ios-add-circle" md="md-add-circle"></ion-icon>
     </button>
   </ion-buttons>
+  <table style = "width: 25%; display: inline-table;">
+    <tr>
+      <td><strong>No. de boxes activos</strong></td>
+      <td>{{activeBoxes}}</td>
+    </tr>
+    <tr>
+      <td><strong>No de boxes apartados</strong></td>
+      <td>{{takenBoxes}}</td>
+    </tr>
+    <tr>
+      <td><strong>Suma</strong></td>
+      <td>{{activeBoxes + takenBoxes}}</td>
+    </tr>
+    <tr>
+      <td><strong>No. de boxes disponibles</strong></td>
+      <td>{{freeBoxes}}</td>
+    </tr>
+    
+  </table>
+  <table style="width: 25%; display: inline-table;">
+    <tr>
+      <td><strong>Total: </strong></td>
+      <td> ${{amount}}</td>
+    </tr>
+  </table>
 
   <!--MODALS FOR BUTTONS-->
   <!--Modal of 'generic Modal'-->
@@ -104,7 +132,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-          <button type="button" class="btn btn-primary" (click)="createNewEntry()">Guardar</button>
+          <button type="button" class="btn btn-primary" (click)="createNewEntry()" data-dismiss="modal">Guardar</button>
         </div>
       </div>
     </div>
@@ -122,11 +150,11 @@
           </button>
         </div>
         <div class="modal-body">
-          ¿Estas seguro de que quieres eliminar la cuenta?
+          ¿Estas seguro de que quieres eliminar esta cuenta por cobrar?
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-          <button type="button" class="btn btn-primary">Eliminar</button>
+          <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="deleteEntry()">Eliminar</button>
         </div>
       </div>
     </div>

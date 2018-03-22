@@ -1,0 +1,65 @@
+page-ingresos-egresos {
+	table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+	}
+
+	td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+	}
+
+	tr:nth-child(even) {
+    background-color: #dddddd;
+	}
+	#headerTable th{
+		text-align: center;
+		background-color: #000000;
+		color: #ffffff;
+	}
+
+	.actions{
+		text-align: center;
+	}
+	.action1 button{
+		color: #ffffff;
+		background-color: #EEAD51;
+	}
+	.action2 button{
+		color:#ffffff;
+		background-color:#5AC3E1; 
+	}
+	.action3 button{
+		color: #ffffff;
+		background-color: #E24C4C;
+	}
+	table td button{
+		color: #ffffff;
+		background-color: #99c9db;
+		margin: 0;
+		padding-top: 15px;
+		padding-right: 25px;
+		padding-bottom: 15px;
+		padding-left: 25px;
+		border-radius: 10px;
+	}
+	table td p{
+		margin: 0;
+		padding-top:4px;
+		padding-left: 30px;
+	}
+	img{
+		width: 20px;
+		float: left;
+	}
+
+	.fade{
+		background-color: rgba(0,0,0,0.8);
+	}
+	.form-control, .btn-secondary, .btn-primary{
+		font-size: 15px;
+	}
+
+}

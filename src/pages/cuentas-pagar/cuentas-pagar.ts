@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { AngularFireDatabase} from 'angularfire2/database';
+import { CuentasCobrarProvider } from '../../providers/cuentas_cobrar';
+import { CuentasPagarProvider } from '../../providers/cuentas_pagar';
+import { Observable } from 'rxjs/Observable';
 /**
  * Generated class for the CuentasPagarPage page.
  *
@@ -15,22 +17,89 @@ import { AngularFireDatabase} from 'angularfire2/database';
 })
 export class CuentasPagarPage {
 
-	s;
-  boxes: object[]=[];
-  statusBoxes: object[]=[];
-  typoBoxes: object[]=[];
-  
+  typePay: Observable<any[]>;
+  bills: Observable<any[]>;
+  title: any;
+  show: any;
+  service: any;
+  billToDelete: any;
+  month: any;
+  amountTotal: number = 0;
+  paidTotal: number = 0;
+  toPaidTotal: number = 0;
 
-  constructor(public db:AngularFireDatabase, public navCtrl: NavController, public navParams: NavParams) {
-  	this.s = this.db.list('boxes').valueChanges().subscribe( data => {
-		this.boxes=data;
-	});
-	this.s= this.db.list('statusBox').valueChanges().subscribe(data => {
-		this.statusBoxes=data;
-	});
-	this.s= this.db.list('typoBox').valueChanges().subscribe(data => {
-		this.typoBoxes=data;
-	});
+  constructor(public navCtrl: NavController, public navParams: NavParams,
+              public cuentasCobrarProvider: CuentasCobrarProvider,
+              public cuentasPagarProvider: CuentasPagarProvider) {
+    this.typePay = this.cuentasCobrarProvider.getTypePay();
+    this.bills = this.cuentasPagarProvider.getBills();
+  	this.title= 'Ingreso de nuevo servicio';
+    this.service = {};
+    this.billToDelete = {};
+    this.totalAmount();
+    this.totalPaid();
+    this.totalToPaid();
+    this.month = 'Marzo';
+  }
+
+  initModal(type, bill) {
+  	this.show = false;
+  	if (type == 1) {
+      this.service = {};
+  		this.title = 'Ingreso de nuevo servicio';
+
+  	} else if (type == 0) {
+      this.service = bill;
+  		this.title = 'Editar servicio';
+  	}
+  }
+
+  totalAmount() {
+    this.bills.forEach((arrayBills) => {
+      arrayBills.forEach((bill) => {
+        this.amountTotal += Number(bill.amount);
+      });
+    });
+  }
+
+  totalPaid() {
+    this.bills.forEach((arrayBills) => {
+      arrayBills.forEach((bill) => {
+        if (bill.paid) {
+         this.paidTotal += Number(bill.paid);
+        }
+      });
+    });
+  }
+
+  totalToPaid() {
+    this.bills.forEach((arrayBills) => {
+      arrayBills.forEach((bill) => {
+        if (bill.toPay) {
+         this.toPaidTotal += Number(bill.toPay);
+        }
+      });
+    });
+  }
+
+  submitService() {
+    if (this.title === 'Editar servicio') {
+      this.updateEntry();
+    } else {
+      this.createNewEntry();
+    }
+  }
+
+  createNewEntry() {
+    this.cuentasPagarProvider.createNewEntry(this.service);
+  }
+
+  updateEntry() {
+    this.cuentasPagarProvider.updateBill(this.service);
+  }
+
+  deleteEntry() {
+    this.cuentasPagarProvider.removeBill(this.billToDelete);
   }
 
   ionViewDidLoad() {

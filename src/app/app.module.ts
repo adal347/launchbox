@@ -17,6 +17,7 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 
 import { CuentasCobrarProvider } from '../providers/cuentas_cobrar';
+import { CuentasPagarProvider } from '../providers/cuentas_pagar';
 import { CommonsProvider } from '../providers/commons';
 import { UsersProvider } from '../providers/users';
 
@@ -50,6 +51,7 @@ import { UsersProvider } from '../providers/users';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     CuentasCobrarProvider,
+    CuentasPagarProvider,
     CommonsProvider,
     UsersProvider
   ]
