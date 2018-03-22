@@ -7,6 +7,7 @@ import { LoginPage } from '../pages/login/login';
 import { CuentasCobrarPage } from '../pages/cuentas-cobrar/cuentas-cobrar';
 import { CuentasPagarPage } from '../pages/cuentas-pagar/cuentas-pagar';
 import { MapPage } from '../pages/map/map';
+import { IngresosEgresosPage } from '../pages/ingresos-egresos/ingresos-egresos';
 import { RegisterPage } from '../pages/register/register';
 import { CondensadoPage } from '../pages/condensado/condensado';
 
@@ -33,8 +34,9 @@ export class MyApp {
       { title: 'Cuentas por cobrar', component: CuentasCobrarPage },
       { title: 'Cuentas por pagar', component: CuentasPagarPage },
       { title: 'Mapa', component: MapPage },
-      { title: 'Registrar usuario nuevo', component: RegisterPage },
-      { title: 'Condensado del mes', component: CondensadoPage }
+      { title: 'Ingresos/Egresos', component: IngresosEgresosPage },
+      { title: 'Condensado del mes', component: CondensadoPage },
+      { title: 'Registrar usuario nuevo', component: RegisterPage }
     ];
 
   }
