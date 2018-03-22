@@ -7,6 +7,7 @@ import { LoginPage } from '../pages/login/login';
 import { CuentasCobrarPage } from '../pages/cuentas-cobrar/cuentas-cobrar';
 import { CuentasPagarPage } from '../pages/cuentas-pagar/cuentas-pagar';
 import { MapPage } from '../pages/map/map';
+import { IngresosEgresosPage } from '../pages/ingresos-egresos/ingresos-egresos';
 import { RegisterPage } from '../pages/register/register';
 
 import { AngularFireAuth } from 'angularfire2/auth';
@@ -32,6 +33,7 @@ export class MyApp {
       { title: 'Cuentas por cobrar', component: CuentasCobrarPage },
       { title: 'Cuentas por pagar', component: CuentasPagarPage },
       { title: 'Mapa', component: MapPage },
+      { title: 'Ingresos/Egresos', component: IngresosEgresosPage },
       { title: 'Registrar usuario nuevo', component: RegisterPage }
     ];
 
