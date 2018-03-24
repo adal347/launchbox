@@ -7,7 +7,7 @@ import { LoginPage } from '../pages/login/login';
 import { CuentasCobrarPage } from '../pages/cuentas-cobrar/cuentas-cobrar';
 import { CuentasPagarPage } from '../pages/cuentas-pagar/cuentas-pagar';
 import { MapPage } from '../pages/map/map';
-import { RegisterPage } from '../pages/register/register';
+import { UsersPage } from '../pages/users/users';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -28,7 +28,7 @@ import { UsersProvider } from '../providers/users';
     CuentasCobrarPage,
     CuentasPagarPage,
     MapPage,
-    RegisterPage
+    UsersPage
   ],
   imports: [
     BrowserModule,
@@ -44,7 +44,7 @@ import { UsersProvider } from '../providers/users';
     CuentasCobrarPage,
     CuentasPagarPage,
     MapPage,
-    RegisterPage,
+    UsersPage
   ],
   providers: [
     StatusBar,

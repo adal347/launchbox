@@ -26,5 +26,8 @@ export class UsersProvider {
     });
 	}
 
+	public removeUser(user) {
+		this.usersRef.remove(user.key);
+	}
 
 }

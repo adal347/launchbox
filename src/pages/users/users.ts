@@ -5,19 +5,12 @@ import { CommonsProvider } from '../../providers/commons';
 import { UsersProvider } from '../../providers/users';
 import { Observable } from 'rxjs/Observable';
 
-/**
- * Generated class for the RegisterPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-
 @IonicPage()
 @Component({
-  selector: 'page-register',
-  templateUrl: 'register.html',
+  selector: 'page-users',
+  templateUrl: 'users.html',
 })
-export class RegisterPage {
+export class UsersPage {
 
   user: any;
   permissions: Observable<any[]>;
@@ -30,7 +23,7 @@ export class RegisterPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad RegisterPage');
+    console.log('ionViewDidLoad UsersPage');
   }
 
   registerUser(){
