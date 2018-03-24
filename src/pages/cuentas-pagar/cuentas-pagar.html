@@ -44,14 +44,25 @@
       </td>
   	</tr>
   </table>
-  <h4>Monto Total: {{ amountTotal }}</h4>
-  <h4>Pagado Total: {{ paidTotal }}</h4>
-  <h4>Por Pagar Total: {{ toPaidTotal }}</h4>
   <ion-buttons end>
     <button color="create" ion-button icon-right item-right data-toggle="modal" (click)="initModal(1)" data-target="#newEntryModal">
       Nueva Fila<ion-icon ios="ios-add-circle" md="md-add-circle"></ion-icon>
     </button>
   </ion-buttons>
+  <table style="width: 25%; display: inline-table;">
+    <tr>
+      <td><strong>Monto Total: </strong></td>
+      <td> $ {{ amountTotal }}</td>
+    </tr>
+    <tr>
+      <td><strong>Total Pagado: </strong></td>
+      <td> $ {{ paidTotal }}</td>
+    </tr>
+    <tr>
+      <td><strong>Total por Pagar: </strong></td>
+      <td> $ {{ toPaidTotal }}</td>
+    </tr>
+  </table>
 
   <!--Modal of new Entry (NUEVA FILA)-->
   <div class="modal fade" id="newEntryModal" tabindex="-1" role="dialog"  aria-hidden="true" >
