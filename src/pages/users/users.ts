@@ -13,6 +13,7 @@ import { Observable } from 'rxjs/Observable';
 export class UsersPage {
 
   user: any;
+  title: any;
   permissions: Observable<any[]>;
   users: Observable<any[]>;
 
@@ -44,7 +45,6 @@ export class UsersPage {
   }
 
   initModal(type, user) {
-  	this.show = false;
   	if (type == 1) {
       this.user = {};
   		this.title = 'Registrar nuevo usuario';
