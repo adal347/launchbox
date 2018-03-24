@@ -14,12 +14,14 @@ export class UsersPage {
 
   user: any;
   permissions: Observable<any[]>;
+  users: Observable<any[]>;
 
   constructor(private fire: AngularFireAuth, public navCtrl: NavController,
               public navParams: NavParams, private commons: CommonsProvider,
               private usersProvider: UsersProvider) {
     this.user = {};
   	this.permissions = this.usersProvider.getPermissions();
+  	this.users = this.usersProvider.getUsers();
   }
 
   ionViewDidLoad() {
@@ -39,6 +41,18 @@ export class UsersPage {
         this.commons.createAlert('Hubo un problema', 'La contraseña debe contener mínimo 3 caracteres');
       }
     });
+  }
+
+  initModal(type, user) {
+  	this.show = false;
+  	if (type == 1) {
+      this.user = {};
+  		this.title = 'Registrar nuevo usuario';
+
+  	} else if (type == 0) {
+      this.user = user;
+  		this.title = 'Actualizar usuario';
+  	}
   }
 
 }

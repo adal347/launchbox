@@ -15,7 +15,7 @@ export class UsersProvider {
 		this.usersRef.push({
 			name: user.name,
 			lastname: user.lastname,
-			permissionId: user.permission.id,
+			permission: user.permission,
 			email: user.email
 		});
 	}
@@ -24,6 +24,13 @@ export class UsersProvider {
 		return this.permissionsRef.snapshotChanges().map( data => {
       return data.map(c => ({ key: c.payload.key, ...c.payload.val() }));
     });
+	}
+
+	public getUsers() {
+		return this.usersRef.snapshotChanges().map( data => {
+      return data.map(c => ({ key: c.payload.key, ...c.payload.val() }));
+    });
+
 	}
 
 	public removeUser(user) {
