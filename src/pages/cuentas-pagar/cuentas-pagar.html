@@ -22,7 +22,7 @@
   		<th>Pagado</th>
   		<th>Por pagar</th>
   		<th>Fecha limite</th>
-  		<th colspan="3">Botones</th>
+  		<th colspan="3">Opciones</th>
   	</tr>
   	<tr *ngFor="let bill of bills | async">
   		<td>{{ bill.service }}</td>
@@ -33,14 +33,11 @@
   		<td>$ {{ bill.toPay }}</td>
   		<td>{{ bill.limitDate }}</td>
   		<td>
-        <button ion-button icon-only color="update" data-target="#newEntryModal"
+        <button ion-button icon-only clear color="update" data-target="#newEntryModal"
                 data-toggle="modal" (click)="initModal(0, bill)">
           <ion-icon ios="ios-create" md="md-create"></ion-icon>
         </button>
-      </td>
-
-      <td>
-        <button ion-button icon-only color="danger" data-target="#newDeleteModal"
+        <button ion-button icon-only clear color="danger" data-target="#newDeleteModal"
                 data-toggle="modal" (click)="billToDelete = bill">
           <ion-icon ios="ios-trash" md="md-trash"></ion-icon>
         </button>
@@ -51,7 +48,7 @@
   <h4>Pagado Total: {{ paidTotal }}</h4>
   <h4>Por Pagar Total: {{ toPaidTotal }}</h4>
   <ion-buttons end>
-    <button color = "create" ion-button icon-right item-right data-toggle="modal" (click)="initModal(1)" data-target="#newEntryModal">
+    <button color="create" ion-button icon-right item-right data-toggle="modal" (click)="initModal(1)" data-target="#newEntryModal">
       Nueva Fila<ion-icon ios="ios-add-circle" md="md-add-circle"></ion-icon>
     </button>
   </ion-buttons>

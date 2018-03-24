@@ -24,9 +24,9 @@ export class CuentasPagarPage {
   service: any;
   billToDelete: any;
   month: any;
-  amountTotal: number = 0;
-  paidTotal: number = 0;
-  toPaidTotal: number = 0;
+  amountTotal: number;
+  paidTotal: number;
+  toPaidTotal: number;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
               public cuentasCobrarProvider: CuentasCobrarProvider,
@@ -36,9 +36,7 @@ export class CuentasPagarPage {
   	this.title= 'Ingreso de nuevo servicio';
     this.service = {};
     this.billToDelete = {};
-    this.totalAmount();
-    this.totalPaid();
-    this.totalToPaid();
+    this.updateTotals();
     this.month = 'Marzo';
   }
 
@@ -56,6 +54,7 @@ export class CuentasPagarPage {
 
   totalAmount() {
     this.bills.forEach((arrayBills) => {
+      this.amountTotal = 0;
       arrayBills.forEach((bill) => {
         this.amountTotal += Number(bill.amount);
       });
@@ -64,6 +63,7 @@ export class CuentasPagarPage {
 
   totalPaid() {
     this.bills.forEach((arrayBills) => {
+      this.paidTotal = 0;
       arrayBills.forEach((bill) => {
         if (bill.paid) {
          this.paidTotal += Number(bill.paid);
@@ -74,12 +74,19 @@ export class CuentasPagarPage {
 
   totalToPaid() {
     this.bills.forEach((arrayBills) => {
+      this.toPaidTotal = 0;
       arrayBills.forEach((bill) => {
         if (bill.toPay) {
          this.toPaidTotal += Number(bill.toPay);
         }
       });
     });
+  }
+
+  updateTotals() {
+    this.totalAmount();
+    this.totalPaid();
+    this.totalToPaid();
   }
 
   submitService() {
@@ -92,14 +99,17 @@ export class CuentasPagarPage {
 
   createNewEntry() {
     this.cuentasPagarProvider.createNewEntry(this.service);
+    this.updateTotals();
   }
 
   updateEntry() {
     this.cuentasPagarProvider.updateBill(this.service);
+    this.updateTotals();
   }
 
   deleteEntry() {
     this.cuentasPagarProvider.removeBill(this.billToDelete);
+    this.updateTotals();
   }
 
   ionViewDidLoad() {
