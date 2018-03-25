@@ -11,7 +11,7 @@
 <ion-content padding>
   <img alt="logo" style="width: 122px; height: 92px;" src="./assets/imgs/logo.png">
 <br>
-<h1>Mes</h1>
+<h1>{{month}}</h1>
 <br>
 <br>
 <!--TABLA INGRESOS-->
@@ -81,8 +81,7 @@
 		<td> $</td>
 		<td></td>
 		<td>
-      <!-- debe llevar: (click)="initModal(0, bill)-->
-      <button ion-button icon-only color="update" data-target="#updateEntryModalEgreso" data-toggle="modal">
+      <button ion-button icon-only color="update" data-target="#updateEntryModalEgreso" data-toggle="modal" (click)="initModal(0, bill)">
           <ion-icon ios="ios-create" md="md-create"></ion-icon>
         </button>
       </td>

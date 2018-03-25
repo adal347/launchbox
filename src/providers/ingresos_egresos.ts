@@ -1,17 +1,25 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 
-@Injectable()
-export class CuentasPagarProvider {
+/*
+  Generated class for the IngresosEgresosProvider provider.
 
+  See https://angular.io/guide/dependency-injection for more info on providers
+  and Angular DI.
+*/
+@Injectable()
+export class IngresosEgresosProvider {
 	accountsReceivableRef: AngularFireList<any>;
 	billsRef: AngularFireList<any>;
+	boxesRef: AngularFireList<any>;
+	boxesStatusRef: AngularFireList<any>;
+	typeBoxRef: AngularFireList<any>;
 
-	constructor(public db: AngularFireDatabase) {
+  	constructor(public db: AngularFireDatabase) {
 		this.billsRef = this.db.list('bills');
 	}
 
-  public createNewEntry(service) {
+	public createNewEntry(service) {
 		let bill = {
 			service: service.service,
 			provider: service.provider,
@@ -22,19 +30,27 @@ export class CuentasPagarProvider {
 			limitDate: service.limitDate || null
 		};
 		this.billsRef.push(bill);
-  }
-
-	public updateBill(bill) {
-		this.billsRef.update(bill.key, bill);
+  	}
+  	public getBoxes() {
+		return this.boxesRef.snapshotChanges().map( data => {
+			return data.map(c => ({ key: c.payload.key, ...c.payload.val() }));
+		});
 	}
 
-	public getBills() {
-		return this.billsRef.snapshotChanges().map( data => {
+	public getBoxStatus() {
+		return this.boxesStatusRef.snapshotChanges().map( data => {
       return data.map(c => ({ key: c.payload.key, ...c.payload.val() }));
     });
 	}
 
-	public removeBill(bill) {
-		this.billsRef.remove(bill.key);
+	public getTypeBox() {
+		return this.typeBoxRef.snapshotChanges().map( data => {
+      return data.map(c => ({ key: c.payload.key, ...c.payload.val() }));
+    });
 	}
+
+  	public removeEntry(accountReceivable) {
+		this.accountsReceivableRef.remove(accountReceivable.key);
+	}
+
 }
