@@ -1,15 +1,9 @@
-<!--
-  Generated template for the IngresosEgresosPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
   <ion-navbar>
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>ingresos-egresos</ion-title>
+    <ion-title>Ingresos-egresos</ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -20,7 +14,7 @@
 <h1>Mes</h1>
 <br>
 <br>
-
+<!--TABLA INGRESOS-->
 <table>
 	<tr id="headerTable">
 		<th colspan="100%">Ingresos</th>
@@ -42,7 +36,7 @@
 		<td></td>
 		<td></td>
 		<td>
-      <button ion-button icon-only color="update" data-target="#newEntryModal"
+      <button ion-button icon-only color="update" data-target="#newEntryModalIngreso"
                 data-toggle="modal" (click)="initModal(0, bill)">
           <ion-icon ios="ios-create" md="md-create"></ion-icon>
         </button>
@@ -57,16 +51,17 @@
 	</tr>	
 </table>
 
-<h4>Total:</h4>
+<h4>Subtotal: $</h4>
+
 
 <ion-buttons end>
-    <button color = "create" ion-button icon-right item-right data-toggle="modal" data-target="#newEntryModal">
+    <button color = "create" ion-button icon-right item-right data-toggle="modal" data-target="#newEntryModalIngreso">
       Nueva Fila<ion-icon ios="ios-add-circle" md="md-add-circle"></ion-icon>
     </button>
   </ion-buttons>
 <br>
 <br>
-
+<!--TABLA EGRESOS-->
 <table>
 	<tr id="headerTable">
 		<th colspan="100%">Egresos</th>
@@ -83,10 +78,11 @@
 		<td>01/18/2018</td>
 		<td></td>
 		<td></td>
-		<td></td>
+		<td> $</td>
 		<td></td>
 		<td>
-      <button ion-button icon-only color="update" data-target="#newEntryModal" data-toggle="modal" (click)="initModal(0, bill)">
+      <!-- debe llevar: (click)="initModal(0, bill)-->
+      <button ion-button icon-only color="update" data-target="#updateEntryModalEgreso" data-toggle="modal">
           <ion-icon ios="ios-create" md="md-create"></ion-icon>
         </button>
       </td>
@@ -99,16 +95,16 @@
 	</tr>	
 </table>
 
-<h4>Total:</h4>
+<h4>Subtotal: $</h4>
 
 <ion-buttons end>
-    <button color = "create" ion-button icon-right item-right data-toggle="modal" data-target="#newEntryModal">
+    <button color = "create" ion-button icon-right item-right data-toggle="modal" data-target="#newEntryModalEgreso">
       Nueva Fila<ion-icon ios="ios-add-circle" md="md-add-circle"></ion-icon>
     </button>
   </ion-buttons>
 
-<!--Modal of new Entry(editar)-->
-  <div class="modal fade" id="updateEntryModal" tabindex="-1" role="dialog"  aria-hidden="true" >
+<!--Modal of new Entry(editar|Ingresos)-->
+  <div class="modal fade" id="updateEntryModalIngreso" tabindex="-1" role="dialog"  aria-hidden="true" >
    <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -127,9 +123,53 @@
   </div>
 <!--Modal of new END-->
 
+<!--Modal of new Entry(editar|Egresos)-->
+  <div class="modal fade" id="updateEntryModalEgreso" tabindex="-1" role="dialog"  aria-hidden="true" >
+   <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" >Editar egreso</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <ion-item>
+            <ion-label>Fecha</ion-label>
+            <ion-input type="date"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label>Descripción</ion-label>
+            <ion-input type="text"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label>Proveedor</ion-label>
+            <ion-input type="name"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label>Total</ion-label>
+            <ion-input type="number"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label>Rubro</ion-label>
+            <ion-select  interface="popover" [disabled]="show">
+              <ion-option ></ion-option>
+            </ion-select>
+          </ion-item>
+        </div>
 
-<!--Modal of new Entry (NUEVA FILA)-->
-  <div class="modal fade" id="newEntryModal" tabindex="-1" role="dialog"  aria-hidden="true" >
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+          <button type="button" class="btn btn-primary">Guardar cambios</button>
+        </div>
+      </div>
+    </div>
+  </div>
+<!--Modal of new END-->
+
+
+<!--Modal of new Entry (NUEVA FILA|Ingresos)-->
+  <div class="modal fade" id="newEntryModalIngreso" tabindex="-1" role="dialog"  aria-hidden="true" >
    <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -143,7 +183,7 @@
             <div class="input-group mb-3">
               <label for = "recipient-name" class="col-form-label" text-align="center">Fecha</label>
               <div class="col">
-                <input type="text" class="form-control" placeholder="00/00/00000">
+                <input type="date" class="form-control" placeholder="00/00/00000">
               </div>
             </div>
             <div class="input-group mb-3">
@@ -159,8 +199,6 @@
                 <input type="text" class="form-control" placeholder="Nombre">
               </div>
             </div>
-
-
             <div class="input-group mb-3">
               <label for = "recipient-name" class="col-form-label" text-align="center">Total</label>
               <div class="col">
@@ -190,5 +228,68 @@
     </div>
   </div>
 <!--Modal of new END-->
+
+<!--Modal of new Entry (NUEVA FILA|Egresos)-->
+  <div class="modal fade" id="newEntryModalEgreso" tabindex="-1" role="dialog"  aria-hidden="true" >
+   <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" >Nuevo Egreso</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <ion-item>
+            <ion-label>Fecha</ion-label>
+            <ion-input type="date"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label>Descripción</ion-label>
+            <ion-input type="text"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label>Proveedor</ion-label>
+            <ion-input type="name"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label>Total</ion-label>
+            <ion-input type="number"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label>Rubro</ion-label>
+            <ion-select  interface="popover" [disabled]="show">
+              <ion-option ></ion-option>
+            </ion-select>
+          </ion-item>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+          <button type="button" class="btn btn-primary">Guardar cambios</button>
+        </div>
+      </div>
+    </div>
+  </div>
+<!--Modal of new END-->
+<!--Modal of new Delete (Borrar fila)-->
+  <div class="modal fade" id="newDeleteModal" tabindex="-1" role="dialog"  aria-hidden="true" >
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+         <h5 class="modal-title" >Eliminar Servicio</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">Estas seguro que desea eliminar el servicio?</div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+          <button type="button" class="btn btn-primary" data-dismiss="modal" >(click)="deleteEntry()"Eliminar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
 
 </ion-content>
