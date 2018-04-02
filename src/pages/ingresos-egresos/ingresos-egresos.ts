@@ -19,6 +19,7 @@ export class IngresosEgresosPage {
   service: any;
   title: any;
   month: any;
+  subAmount: number = 0;
   amount: number = 0;
 
 
@@ -34,6 +35,7 @@ export class IngresosEgresosPage {
 	});
   this.month = 'Marzo';
 
+  this.subTotalAmount();
   this.totalAmount();
   }
 
@@ -43,6 +45,9 @@ export class IngresosEgresosPage {
 
   deleteEntry() {
     this.ingresosEgresosProvider.removeEntry(this.accountsReceivable);
+  }
+  subTotalAmount(){
+
   }
   totalAmount(){
 
