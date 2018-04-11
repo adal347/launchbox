@@ -21,6 +21,7 @@ import { CuentasCobrarProvider } from '../providers/cuentas_cobrar';
 import { CuentasPagarProvider } from '../providers/cuentas_pagar';
 import { CommonsProvider } from '../providers/commons';
 import { UsersProvider } from '../providers/users';
+import { TenantsProvider } from '../providers/tenants';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,8 @@ import { UsersProvider } from '../providers/users';
     CuentasCobrarProvider,
     CuentasPagarProvider,
     CommonsProvider,
-    UsersProvider
+    UsersProvider,
+    TenantsProvider
   ]
 })
 export class AppModule {}

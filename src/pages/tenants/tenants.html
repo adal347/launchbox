@@ -22,19 +22,99 @@
   		<th colspan="100%">Inquilinos</th>
   	</tr>
   	<tr>
-  		<th colspan="3">Opciones</th>
+      <th>Nombre</th>
+      <th>Telefono</th>
+      <th>Mail</th>
+      <th>Fecha de ingreso</th>
+      <th>Fecha de salida</th>
+  		<th>Opciones</th>
   	</tr>
   	<tr *ngFor="let tenant of tenants | async">
+      <td>{{ tenant.name }}</td>
+      <td>{{ tenant.phone }}</td>
+      <td>{{ tenant.email }}</td>
+      <td>{{ tenant.startContract }}</td>
+      <td>{{ tenant.endContract }}</td>
   		<td>
-        <button ion-button icon-only clear color="update" data-target="#newUserModal"
-                data-toggle="modal" (click)="initModal(0, user)">
+        <button ion-button icon-only clear color="update" data-target="#tenantModal"
+                data-toggle="modal" (click)="initModal(0, tenant)">
           <ion-icon ios="ios-create" md="md-create"></ion-icon>
         </button>
-        <button ion-button icon-only clear color="danger" data-target="#deleteUserModal"
-                data-toggle="modal" (click)="userToDelete = user">
+        <button ion-button icon-only clear color="danger" data-target="#deleteModal"
+                data-toggle="modal" (click)="tenantToDelete = tenant">
           <ion-icon ios="ios-trash" md="md-trash"></ion-icon>
         </button>
       </td>
   	</tr>
   </table>
+  <ion-buttons end>
+    <button color="create" ion-button icon-right item-right data-toggle="modal" (click)="initModal(1)" data-target="#tenantModal">
+      Registrar Inquilno<ion-icon ios="ios-add-circle" md="md-add-circle"></ion-icon>
+    </button>
+  </ion-buttons>
+
+  <div class="modal fade" id="tenantModal" tabindex="-1" role="dialog"  aria-hidden="true">
+   <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" >{{ title }}</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <ion-list>
+
+            <ion-item>
+              <ion-label floating>Nombre Completo</ion-label>
+              <ion-input type="text" [(ngModel)]="tenant.name"></ion-input>
+            </ion-item>
+
+            <ion-item>
+              <ion-label floating>Teléfono</ion-label>
+              <ion-input [(ngModel)]="tenant.phone"></ion-input>
+            </ion-item>
+
+            <ion-item>
+              <ion-label floating>Correo</ion-label>
+              <ion-input type="text" [(ngModel)]="tenant.email"></ion-input>
+            </ion-item>
+
+            <ion-item>
+              <ion-label>Fecha de ingreso</ion-label>
+              <ion-input type="date" [(ngModel)]="tenant.startContract"></ion-input>
+            </ion-item>
+
+            <ion-item>
+              <ion-label>Fecha de salida</ion-label>
+              <ion-input type="date" [(ngModel)]="tenant.endContract"></ion-input>
+            </ion-item>
+          </ion-list>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+          <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="registerTenant()">Registrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog"  aria-hidden="true">
+  	<div class="modal-dialog modal-dialog-centered" role="document">
+  	  <div class="modal-content">
+  	   	<div class="modal-header">
+  	   	 <h5 class="modal-title" >Eliminar Inquilino</h5>
+  	   	  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">Estas seguro que desea eliminar el inquilino?</div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+          <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="deleteTenant()">Eliminar</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </ion-content>
