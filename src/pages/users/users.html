@@ -30,8 +30,7 @@
   		<td>{{ user.permission.name }}</td>
   		<td>{{ user.email }}</td>
   		<td>
-        <button ion-button icon-only clear color="update" data-target="#newUserModal"
-                data-toggle="modal" (click)="initModal(0, user)">
+        <button ion-button icon-only clear color="update" (click)="initModal(0, user)">
           <ion-icon ios="ios-create" md="md-create"></ion-icon>
         </button>
         <button ion-button icon-only clear color="danger" data-target="#deleteUserModal"
