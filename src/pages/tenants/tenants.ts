@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
 import { TenantsProvider } from '../../providers/tenants';
 import { Observable } from 'rxjs/Observable';
 
@@ -21,7 +21,8 @@ export class TenantsPage {
   title: any;
   tenantToDelete: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private tenantsProvider: TenantsProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,
+              private tenantsProvider: TenantsProvider, public modalCtrl : ModalController) {
     this.tenant = {};
     this.tenants = this.tenantsProvider.getTenants();
   }
@@ -34,10 +35,8 @@ export class TenantsPage {
       this.tenant = tenant;
   		this.title = 'Actualizar inquilino';
   	}
-  }
-
-  registerTenant(){
-    this.tenantsProvider.createTentant(this.tenant);
+    let modalPage = this.modalCtrl.create('ModalTenantPage', { title: this.title, tenant: this.tenant });
+    modalPage.present();
   }
 
   deleteTenant() {
