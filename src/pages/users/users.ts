@@ -5,32 +5,28 @@ import { CommonsProvider } from '../../providers/commons';
 import { UsersProvider } from '../../providers/users';
 import { Observable } from 'rxjs/Observable';
 
-/**
- * Generated class for the RegisterPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-
 @IonicPage()
 @Component({
-  selector: 'page-register',
-  templateUrl: 'register.html',
+  selector: 'page-users',
+  templateUrl: 'users.html',
 })
-export class RegisterPage {
+export class UsersPage {
 
   user: any;
+  title: any;
   permissions: Observable<any[]>;
+  users: Observable<any[]>;
 
   constructor(private fire: AngularFireAuth, public navCtrl: NavController,
               public navParams: NavParams, private commons: CommonsProvider,
               private usersProvider: UsersProvider) {
     this.user = {};
   	this.permissions = this.usersProvider.getPermissions();
+  	this.users = this.usersProvider.getUsers();
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad RegisterPage');
+    console.log('ionViewDidLoad UsersPage');
   }
 
   registerUser(){
@@ -46,6 +42,17 @@ export class RegisterPage {
         this.commons.createAlert('Hubo un problema', 'La contraseña debe contener mínimo 3 caracteres');
       }
     });
+  }
+
+  initModal(type, user) {
+  	if (type == 1) {
+      this.user = {};
+  		this.title = 'Registrar nuevo usuario';
+
+  	} else if (type == 0) {
+      this.user = user;
+  		this.title = 'Actualizar usuario';
+  	}
   }
 
 }
