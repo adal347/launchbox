@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
 import { TenantsProvider } from '../../providers/tenants';
+import { CommonsProvider } from '../../providers/commons';
 import { Observable } from 'rxjs/Observable';
 
 /**
@@ -22,7 +23,8 @@ export class TenantsPage {
   tenantToDelete: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
-              private tenantsProvider: TenantsProvider, public modalCtrl : ModalController) {
+              private tenantsProvider: TenantsProvider, public modalCtrl : ModalController,
+              private commons: CommonsProvider) {
     this.tenant = {};
     this.tenants = this.tenantsProvider.getTenants();
   }
@@ -40,7 +42,12 @@ export class TenantsPage {
   }
 
   deleteTenant() {
-    this.tenantsProvider.removeTenant(this.tenantToDelete);
+    this.tenantsProvider.removeTenant(this.tenantToDelete).then(() => {
+      this.commons.createAlert('Eliminación Exitosa', 'El inquilino se eliminó correctamente');
+    })
+    .catch(error => {
+      this.commons.createAlert('Algo salió mal', 'Hubo un problema al eliminar al inquilino');
+    });
   }
 
   ionViewDidLoad() {

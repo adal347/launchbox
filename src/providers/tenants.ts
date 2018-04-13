@@ -9,19 +9,38 @@ export class TenantsProvider {
     this.tenantsRef = this.db.list('tenants');
 	}
 
-  public createTentant(tenant) {
-  	this.tenantsRef.push(tenant);
-  }
-
-	public getTenants() {
-		return this.tenantsRef.snapshotChanges().map( data => {
+  public getTenants() {
+    return this.tenantsRef.snapshotChanges().map( data => {
       return data.map(c => ({ key: c.payload.key, ...c.payload.val() }));
     });
 
+  }
+
+  public createTenant(tenant) {
+    let self = this;
+    let promise = new Promise((resolve, reject) => {
+      self.tenantsRef.push(tenant);
+      resolve();
+    });
+    return promise;
+  }
+
+	public updateTenant(tenant) {
+    let self = this;
+    let promise = new Promise((resolve, reject) => {
+      this.tenantsRef.update(tenant.key, tenant);
+      resolve();
+    });
+    return promise;
 	}
 
 	public removeTenant(tenant) {
-		this.tenantsRef.remove(tenant.key);
+    let self = this;
+    let promise = new Promise((resolve, reject) => {
+      this.tenantsRef.remove(tenant.key);
+      resolve();
+    });
+    return promise;
 	}
 
 }
