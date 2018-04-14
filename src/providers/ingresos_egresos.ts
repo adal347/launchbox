@@ -34,7 +34,16 @@ export class IngresosEgresosProvider {
 		public updateEntry(entry) {
 	    let self = this;
 	    let promise = new Promise((resolve, reject) => {
-	      this.incomeRef.update(entry.key, entry);
+	      self.incomeRef.update(entry.key, entry);
+	      resolve();
+	    });
+	    return promise;
+		}
+
+		public removeIncome(entry) {
+	    let self = this;
+	    let promise = new Promise((resolve, reject) => {
+	      self.incomeRef.remove(entry.key);
 	      resolve();
 	    });
 	    return promise;

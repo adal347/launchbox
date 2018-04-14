@@ -40,14 +40,14 @@
           <ion-icon ios="ios-create" md="md-create"></ion-icon>
         </button>
         <button ion-button icon-only clear color="danger" data-target="#deleteIncomeModal"
-                data-toggle="modal" (click)="incomeToDelete = income">
+                data-toggle="modal" (click)="entryToDelete = entry">
           <ion-icon ios="ios-trash" md="md-trash"></ion-icon>
         </button>
       </td>
   	</tr>
   </table>
 
-  <h4>Total de Ingresos: $</h4>
+  <h4>Total de Ingresos: ${{ incomeTotal }}</h4>
 
 
   <ion-buttons end>
@@ -152,7 +152,7 @@
         <div class="modal-body">Estas seguro que desea eliminar el ingreso?</div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-          <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="deleteIncome()">Eliminar</button>
+          <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="deleteEntry()">Eliminar</button>
         </div>
       </div>
     </div>
