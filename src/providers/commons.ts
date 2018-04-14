@@ -11,7 +11,7 @@ export class CommonsProvider {
     let alert = this.alertCtrl.create({
       title: title,
       subTitle: message,
-      buttons: ['Dismiss']
+      buttons: ['OK']
     });
     alert.present();
   }
