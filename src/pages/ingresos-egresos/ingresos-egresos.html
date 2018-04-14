@@ -10,244 +10,92 @@
 
 <ion-content padding>
   <img alt="logo" style="width: 122px; height: 92px;" src="./assets/imgs/logo.png">
-<br>
-<h1>{{month}}</h1>
-<br>
-<br>
-<!--TABLA INGRESOS-->
-<table>
-	<tr id="headerTable">
-		<th colspan="100%">Ingresos</th>
-	</tr>
-	<tr>
-		<th>Fecha</th>
-		<th>Descripcción</th>
-		<th>Recibo</th>
-		<th>Total</th>
-		<th>Rubro</th>
-		<th>Box</th>
-		<th colspan="3">Botones</th>
-	</tr>
-	<tr>
-		<td>01/18/2018</td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td>
-      <button ion-button icon-only color="update" data-target = "#updateEntryModalIngreso"
-                data-toggle="modal" (click)="initModal(0, bill)">
+  <br>
+  <h1>{{ month }}</h1>
+  <br>
+  <br>
+  <!--TABLA INGRESOS-->
+  <table>
+  	<tr id="headerTable">
+  		<th colspan="100%">Ingresos</th>
+  	</tr>
+  	<tr>
+  		<th>Fecha</th>
+  		<th>Descripcción</th>
+  		<th>Recibo</th>
+  		<th>Total</th>
+  		<th>Rubro</th>
+  		<th>Box</th>
+  		<th>Botones</th>
+  	</tr>
+  	<tr>
+  		<td>01/18/2018</td>
+  		<td></td>
+  		<td></td>
+  		<td></td>
+  		<td></td>
+  		<td></td>
+  		<td>
+        <button ion-button icon-only clear color="update" (click)="initModalIncome(0, {})">
           <ion-icon ios="ios-create" md="md-create"></ion-icon>
         </button>
-      </td>
-
-      <td>
-        <button ion-button icon-only color="danger" data-target="#newDeleteModal"
-                data-toggle="modal" (click)="billToDelete = bill">
+        <button ion-button icon-only clear color="danger" data-target="#deleteIncomeModal"
+                data-toggle="modal" (click)="incomeToDelete = income">
           <ion-icon ios="ios-trash" md="md-trash"></ion-icon>
         </button>
-    </td>
-	</tr>	
-</table>
+      </td>
+  	</tr>
+  </table>
 
-<h4>Subtotal: $</h4>
+  <h4>Total de Ingresos: $</h4>
 
 
-<ion-buttons end>
-    <button color = "create" ion-button icon-right item-right data-toggle="modal" data-target="#newEntryModalIngreso">
+  <ion-buttons end>
+    <button color="create" ion-button icon-right (click)="initModalIncome(1)">
       Nueva Fila<ion-icon ios="ios-add-circle" md="md-add-circle"></ion-icon>
     </button>
   </ion-buttons>
-<br>
-<br>
-<!--TABLA EGRESOS-->
-<table>
-	<tr id="headerTable">
-		<th colspan="100%">Egresos</th>
-	</tr>
-	<tr>
-		<th>Fecha</th>
-		<th>Descripcción</th>
-		<th>Proveedor</th>
-		<th>Total</th>
-		<th>Rubro</th>
-		<th colspan="3">Botones</th>
-	</tr>
-	<tr>
-		<td>01/18/2018</td>
-		<td></td>
-		<td></td>
-		<td> $</td>
-		<td></td>
-		<td>
-      <button ion-button icon-only color="update" data-target="#updateEntryModalEgreso" data-toggle="modal" (click)="initModal(0, bill)">
-          <ion-icon ios="ios-create" md="md-create"></ion-icon>
-        </button>
+  <br>
+  <br>
+  <!--TABLA EGRESOS-->
+  <table>
+  	<tr id="headerTable">
+  		<th colspan="100%">Egresos</th>
+  	</tr>
+  	<tr>
+  		<th>Fecha</th>
+  		<th>Descripcción</th>
+  		<th>Proveedor</th>
+  		<th>Total</th>
+  		<th>Rubro</th>
+  		<th>Botones</th>
+  	</tr>
+  	<tr>
+  		<td>01/18/2018</td>
+  		<td></td>
+  		<td></td>
+  		<td> $</td>
+  		<td></td>
+  		<td>
+        <button ion-button icon-only clear color="update" (click)="initModal(0, bill)">
+            <ion-icon ios="ios-create" md="md-create"></ion-icon>
+          </button>
+          <button ion-button icon-only clear color="danger" (click)="billToDelete = bill">
+            <ion-icon ios="ios-trash" md="md-trash"></ion-icon>
+          </button>
       </td>
+  	</tr>
+  </table>
 
-      <td>
-        <button ion-button icon-only color="danger" data-target="#newDeleteModal" data-toggle="modal" (click)="billToDelete = bill">
-          <ion-icon ios="ios-trash" md="md-trash"></ion-icon>
-        </button>
-    </td>
-	</tr>	
-</table>
+  <h4>Subtotal: $</h4>
 
-<h4>Subtotal: $</h4>
-
-<ion-buttons end>
-    <button color = "create" ion-button icon-right item-right data-toggle="modal" data-target="#newEntryModalEgreso">
+  <ion-buttons end>
+    <button color="create" ion-button icon-right>
       Nueva Fila<ion-icon ios="ios-add-circle" md="md-add-circle"></ion-icon>
     </button>
   </ion-buttons>
 
-<!--Modal of new Entry(editar|Ingresos)-->
- <div class="modal fade" id="updateEntryModalIngreso" tabindex="-1" role="dialog"  aria-hidden="true" >
-   <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" >Editar Ingreso</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <ion-item>
-            <ion-label>Fecha</ion-label>
-            <ion-input type="date"></ion-input>
-          </ion-item>
-          <ion-item>
-            <ion-label>Descripción</ion-label>
-            <ion-input type="text"></ion-input>
-          </ion-item>
-          <ion-item>
-            <ion-label>Recibo</ion-label>
-            <ion-input type="text"></ion-input>
-          </ion-item>
-          <ion-item>
-            <ion-label>Total</ion-label>
-            <ion-input type="number"></ion-input>
-          </ion-item>
-          <ion-item>
-            <ion-label>Rubro</ion-label>
-            <ion-select  interface="popover" [disabled]="show">
-              <ion-option ></ion-option>
-            </ion-select>
-          </ion-item>
-          <ion-item>
-            <ion-label>Box</ion-label>
-            <ion-select  interface="popover" [disabled]="show">
-              <ion-option ></ion-option>
-            </ion-select>
-          </ion-item>
-        </div>
-
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-          <button type="button" class="btn btn-primary">Guardar cambios</button>
-        </div>
-      </div>
-    </div>
-  </div>
-<!--Modal of new END-->
-
-<!--Modal of new Entry(editar|Egresos)-->
-  <div class="modal fade" id="updateEntryModalEgreso" tabindex="-1" role="dialog"  aria-hidden="true" >
-   <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" >Editar egreso</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <ion-item>
-            <ion-label>Fecha</ion-label>
-            <ion-input type="date"></ion-input>
-          </ion-item>
-          <ion-item>
-            <ion-label>Descripción</ion-label>
-            <ion-input type="text"></ion-input>
-          </ion-item>
-          <ion-item>
-            <ion-label>Proveedor</ion-label>
-            <ion-input type="name"></ion-input>
-          </ion-item>
-          <ion-item>
-            <ion-label>Total</ion-label>
-            <ion-input type="number"></ion-input>
-          </ion-item>
-          <ion-item>
-            <ion-label>Rubro</ion-label>
-            <ion-select  interface="popover" [disabled]="show">
-              <ion-option ></ion-option>
-            </ion-select>
-          </ion-item>
-        </div>
-
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-          <button type="button" class="btn btn-primary">Guardar cambios</button>
-        </div>
-      </div>
-    </div>
-  </div>
-<!--Modal of new END-->
-
-
-<!--Modal of new Entry (NUEVA FILA|Ingresos)-->
-  <div class="modal fade" id="newEntryModalIngreso" tabindex="-1" role="dialog"  aria-hidden="true" >
-   <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" >Nuevo Ingreso</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <ion-item>
-            <ion-label>Fecha</ion-label>
-            <ion-input type="date"></ion-input>
-          </ion-item>
-          <ion-item>
-            <ion-label>Descripción</ion-label>
-            <ion-input type="text"></ion-input>
-          </ion-item>
-          <ion-item>
-            <ion-label>Recibo</ion-label>
-            <ion-input type="text"></ion-input>
-          </ion-item>
-          <ion-item>
-            <ion-label>Total</ion-label>
-            <ion-input type="number"></ion-input>
-          </ion-item>
-          <ion-item>
-            <ion-label>Rubro</ion-label>
-            <ion-select  interface="popover" [disabled]="show">
-              <ion-option ></ion-option>
-            </ion-select>
-          </ion-item>
-          <ion-item>
-            <ion-label>Box</ion-label>
-            <ion-select  interface="popover" [disabled]="show">
-              <ion-option ></ion-option>
-            </ion-select>
-          </ion-item>
-        </div>
-
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-          <button type="button" class="btn btn-primary">Guardar</button>
-        </div>
-      </div>
-    </div>
-  </div>
-<!--Modal of new END-->
-
-<!--Modal of new Entry (NUEVA FILA|Egresos)-->
+  <!--Modal of new Entry (NUEVA FILA|Egresos)-->
   <div class="modal fade" id="newEntryModalEgreso" tabindex="-1" role="dialog"  aria-hidden="true" >
    <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
@@ -289,25 +137,24 @@
       </div>
     </div>
   </div>
-<!--Modal of new END-->
-<!--Modal of new Delete (Borrar fila)-->
-  <div class="modal fade" id="newDeleteModal" tabindex="-1" role="dialog"  aria-hidden="true" >
+  <!--Modal of new END-->
+
+  <!--Modal of new Delete (Borrar fila)-->
+  <div class="modal fade" id="deleteIncomeModal" tabindex="-1" role="dialog"  aria-hidden="true" >
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header">
-         <h5 class="modal-title" >Eliminar fila </h5>
+         <h5 class="modal-title" >Eliminar Ingreso</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <div class="modal-body">Estas seguro que desea eliminar la fila?</div>
+        <div class="modal-body">Estas seguro que desea eliminar el ingreso?</div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-          <button type="button" class="btn btn-primary" data-dismiss="modal" >(click)="deleteEntry()"Eliminar</button>
+          <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="deleteIncome()">Eliminar</button>
         </div>
       </div>
     </div>
   </div>
-
-
 </ion-content>

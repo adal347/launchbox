@@ -7,12 +7,46 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>ModalIncomePage</ion-title>
+    <ion-title>Nuevo Ingreso</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
+  <ion-list>
+    <ion-item>
+      <ion-label>Fecha</ion-label>
+      <ion-input type="date" [(ngModel)]="income.date"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Descripción</ion-label>
+      <ion-input type="text" [(ngModel)]="income.description"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Recibo</ion-label>
+      <ion-input type="text" [(ngModel)]="income.whoGet"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Total</ion-label>
+      <ion-input type="number" [(ngModel)]="income.total"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Rubro</ion-label>
+      <ion-select interface="popover" [(ngModel)]="income.type">
+        <ion-option></ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label>Box</ion-label>
+      <ion-select interface="popover" [(ngModel)]="income.box">
+        <ion-option></ion-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
 
+  <ion-buttons end>
+    <button ion-button (click)="dismiss()">Cancelar</button>
+    <button ion-button color="secondary" (click)="submitTenant()">Guardar</button>
+  </ion-buttons>
 </ion-content>

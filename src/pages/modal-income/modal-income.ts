@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
+import { CommonsProvider } from '../../providers/commons';
+import { TenantsProvider } from '../../providers/tenants';
 
 /**
  * Generated class for the ModalIncomePage page.
@@ -14,12 +16,22 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'modal-income.html',
 })
 export class ModalIncomePage {
+  title: any;
+  income: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,
+              private tenantsProvider: TenantsProvider, public viewCtrl: ViewController,
+              private commons: CommonsProvider) {
+    this.title = this.navParams.get('title');
+    this.income = this.navParams.get('income');
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ModalIncomePage');
+  }
+
+  dismiss() {
+    this.viewCtrl.dismiss();
   }
 
 }
