@@ -31,7 +31,15 @@ export class ModalPage {
       this.disabled = this.navParams.get('disabled');
   }
 
-  registerUser(){
+  submitUser() {
+    if (this.title === 'Actualizar usuario') {
+      this.updateUser();
+    } else {
+      this.registerUser();
+    }
+  }
+
+  registerUser() {
     this.usersProvider.createUser(this.user);
     this.fire.auth.createUserWithEmailAndPassword(this.user.email, this.user.password)
     .then(data =>{
@@ -44,6 +52,9 @@ export class ModalPage {
         this.commons.createAlert('Hubo un problema', 'La contraseña debe contener mínimo 3 caracteres');
       }
     });
+  }
+
+  updateUser() {
   }
 
   ionViewDidLoad() {

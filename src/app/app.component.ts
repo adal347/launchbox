@@ -19,7 +19,7 @@ import { CommonsProvider } from '../providers/commons';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = TenantsPage;
+  rootPage: any = UsersPage;
 
   pages: Array<{title: string, component: any}>;
 
