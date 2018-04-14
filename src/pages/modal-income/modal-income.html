@@ -33,20 +33,18 @@
     </ion-item>
     <ion-item>
       <ion-label>Rubro</ion-label>
-      <ion-select interface="popover" [(ngModel)]="income.type">
-        <ion-option></ion-option>
-      </ion-select>
+      <ion-input type="text" [(ngModel)]="income.type"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label>Box</ion-label>
       <ion-select interface="popover" [(ngModel)]="income.box">
-        <ion-option></ion-option>
+        <ion-option *ngFor="let box of boxes | async" [value]="box">{{ box.id }}</ion-option>
       </ion-select>
     </ion-item>
   </ion-list>
 
   <ion-buttons end>
     <button ion-button (click)="dismiss()">Cancelar</button>
-    <button ion-button color="secondary" (click)="submitTenant()">Guardar</button>
+    <button ion-button color="secondary" (click)="submitIncome()">Guardar</button>
   </ion-buttons>
 </ion-content>

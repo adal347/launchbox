@@ -11,6 +11,9 @@ import { Observable } from 'rxjs/Observable';
 export class IngresosEgresosPage {
 
   month: any;
+  title: any;
+  income: any;
+  
   constructor(public navCtrl: NavController, public navParams: NavParams,
               public ingresosEgresosProvider: IngresosEgresosProvider,
               public modalCtrl: ModalController) {
@@ -19,7 +22,7 @@ export class IngresosEgresosPage {
     // this.totalIncome();
     // this.totalExpenses();
   }
-  
+
   initModalIncome(type, income) {
     if (type == 1) {
       this.income = {};
