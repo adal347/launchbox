@@ -8,6 +8,7 @@ import { CuentasCobrarPage } from '../pages/cuentas-cobrar/cuentas-cobrar';
 import { CuentasPagarPage } from '../pages/cuentas-pagar/cuentas-pagar';
 import { MapPage } from '../pages/map/map';
 import { UsersPage } from '../pages/users/users';
+import { TenantsPage } from '../pages/tenants/tenants';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -20,6 +21,7 @@ import { CuentasCobrarProvider } from '../providers/cuentas_cobrar';
 import { CuentasPagarProvider } from '../providers/cuentas_pagar';
 import { CommonsProvider } from '../providers/commons';
 import { UsersProvider } from '../providers/users';
+import { TenantsProvider } from '../providers/tenants';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,8 @@ import { UsersProvider } from '../providers/users';
     CuentasCobrarPage,
     CuentasPagarPage,
     MapPage,
-    UsersPage
+    UsersPage,
+    TenantsPage
   ],
   imports: [
     BrowserModule,
@@ -44,7 +47,8 @@ import { UsersProvider } from '../providers/users';
     CuentasCobrarPage,
     CuentasPagarPage,
     MapPage,
-    UsersPage
+    UsersPage,
+    TenantsPage
   ],
   providers: [
     StatusBar,
@@ -53,7 +57,8 @@ import { UsersProvider } from '../providers/users';
     CuentasCobrarProvider,
     CuentasPagarProvider,
     CommonsProvider,
-    UsersProvider
+    UsersProvider,
+    TenantsProvider
   ]
 })
 export class AppModule {}

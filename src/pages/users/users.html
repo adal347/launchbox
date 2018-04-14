@@ -30,8 +30,7 @@
   		<td>{{ user.permission.name }}</td>
   		<td>{{ user.email }}</td>
   		<td>
-        <button ion-button icon-only clear color="update" data-target="#newUserModal"
-                data-toggle="modal" (click)="initModal(0, user)">
+        <button ion-button icon-only clear color="update" (click)="initModal(0, user)">
           <ion-icon ios="ios-create" md="md-create"></ion-icon>
         </button>
         <button ion-button icon-only clear color="danger" data-target="#deleteUserModal"
@@ -42,59 +41,10 @@
   	</tr>
   </table>
   <ion-buttons end>
-    <button color="create" ion-button icon-right item-right data-toggle="modal" (click)="initModal(1)" data-target="#newUserModal">
+    <button color="create" ion-button icon-right item-right (click)="initModal(1)">
       Registrar usuario<ion-icon ios="ios-add-circle" md="md-add-circle"></ion-icon>
     </button>
   </ion-buttons>
-
-  <div class="modal fade" id="newUserModal" tabindex="-1" role="dialog"  aria-hidden="true" >
-   <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" >{{ title }}</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <ion-list>
-
-            <ion-item>
-              <ion-label floating>Nombre</ion-label>
-              <ion-input type="text" [(ngModel)]="user.name"></ion-input>
-            </ion-item>
-
-            <ion-item>
-              <ion-label floating>Apellidos</ion-label>
-              <ion-input [(ngModel)]="user.lastname"></ion-input>
-            </ion-item>
-
-            <ion-item>
-              <ion-label floating>Permisos</ion-label>
-              <ion-select [(ngModel)]="user.permission" interface="popover">
-                <ion-option *ngFor="let permission of permissions | async" [value]="permission">{{ permission.name }}</ion-option>
-              </ion-select>
-            </ion-item>
-
-            <ion-item>
-              <ion-label floating>Correo</ion-label>
-              <ion-input type="text" [(ngModel)]="user.email"></ion-input>
-            </ion-item>
-
-            <ion-item>
-              <ion-label floating>Contraseña</ion-label>
-              <ion-input type="password" [(ngModel)]="user.password"></ion-input>
-            </ion-item>
-          </ion-list>
-
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-          <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="registerUser()">Registrar</button>
-        </div>
-      </div>
-    </div>
-  </div>
 
   <div class="modal fade" id="deleteUserModal" tabindex="-1" role="dialog"  aria-hidden="true" >
   	<div class="modal-dialog modal-dialog-centered" role="document">
