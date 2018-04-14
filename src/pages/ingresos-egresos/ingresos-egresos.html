@@ -28,15 +28,15 @@
   		<th>Box</th>
   		<th>Botones</th>
   	</tr>
-  	<tr>
-  		<td>01/18/2018</td>
-  		<td></td>
-  		<td></td>
-  		<td></td>
-  		<td></td>
-  		<td></td>
+  	<tr *ngFor="let entry of income | async">
+  		<td>{{ entry.date }}</td>
+  		<td>{{ entry.description }}</td>
+  		<td>{{ entry.whoGet }}</td>
+  		<td>{{ entry.total}}</td>
+  		<td>{{ entry.type }}</td>
+  		<td>{{ entry.box.id }}</td>
   		<td>
-        <button ion-button icon-only clear color="update" (click)="initModalIncome(0, {})">
+        <button ion-button icon-only clear color="update" (click)="initModalIncome(0, entry)">
           <ion-icon ios="ios-create" md="md-create"></ion-icon>
         </button>
         <button ion-button icon-only clear color="danger" data-target="#deleteIncomeModal"

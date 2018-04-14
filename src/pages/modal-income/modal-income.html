@@ -17,27 +17,27 @@
   <ion-list>
     <ion-item>
       <ion-label>Fecha</ion-label>
-      <ion-input type="date" [(ngModel)]="income.date"></ion-input>
+      <ion-input type="date" [(ngModel)]="entry.date"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label>Descripción</ion-label>
-      <ion-input type="text" [(ngModel)]="income.description"></ion-input>
+      <ion-input type="text" [(ngModel)]="entry.description"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label>Recibo</ion-label>
-      <ion-input type="text" [(ngModel)]="income.whoGet"></ion-input>
+      <ion-input type="text" [(ngModel)]="entry.whoGet"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label>Total</ion-label>
-      <ion-input type="number" [(ngModel)]="income.total"></ion-input>
+      <ion-input type="number" [(ngModel)]="entry.total"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label>Rubro</ion-label>
-      <ion-input type="text" [(ngModel)]="income.type"></ion-input>
+      <ion-input type="text" [(ngModel)]="entry.type"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label>Box</ion-label>
-      <ion-select interface="popover" [(ngModel)]="income.box">
+      <ion-select interface="popover" [(ngModel)]="entry.box">
         <ion-option *ngFor="let box of boxes | async" [value]="box">{{ box.id }}</ion-option>
       </ion-select>
     </ion-item>
@@ -45,6 +45,6 @@
 
   <ion-buttons end>
     <button ion-button (click)="dismiss()">Cancelar</button>
-    <button ion-button color="secondary" (click)="submitIncome()">Guardar</button>
+    <button ion-button color="secondary" (click)="submitEntry()">Guardar</button>
   </ion-buttons>
 </ion-content>

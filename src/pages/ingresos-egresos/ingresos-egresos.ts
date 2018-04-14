@@ -12,27 +12,29 @@ export class IngresosEgresosPage {
 
   month: any;
   title: any;
-  income: any;
-  
+  entry: any
+  income: Observable<any[]>;
+
   constructor(public navCtrl: NavController, public navParams: NavParams,
               public ingresosEgresosProvider: IngresosEgresosProvider,
               public modalCtrl: ModalController) {
     this.month = 'Marzo';
+    this.income = this.ingresosEgresosProvider.getIncome();
 
     // this.totalIncome();
     // this.totalExpenses();
   }
 
-  initModalIncome(type, income) {
+  initModalIncome(type, entry) {
     if (type == 1) {
-      this.income = {};
+      this.entry = {};
       this.title = 'Nuevo Ingreso';
 
     } else if (type == 0) {
-      this.income = income;
+      this.entry = entry;
       this.title = 'Actualizar Ingreso';
     }
-    let modalPage = this.modalCtrl.create('ModalIncomePage', { title: this.title, income: this.income });
+    let modalPage = this.modalCtrl.create('ModalIncomePage', { title: this.title, entry: this.entry });
     modalPage.present();
   }
 

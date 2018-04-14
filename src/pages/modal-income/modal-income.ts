@@ -19,7 +19,7 @@ import { Observable } from 'rxjs/Observable';
 })
 export class ModalIncomePage {
   title: any;
-  income: any;
+  entry: any;
   boxes: Observable<any[]>
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
@@ -28,19 +28,19 @@ export class ModalIncomePage {
               public cuentasCobrarProvider: CuentasCobrarProvider) {
     this.boxes = this.cuentasCobrarProvider.getBoxes();
     this.title = this.navParams.get('title');
-    this.income = this.navParams.get('income');
+    this.entry = this.navParams.get('entry');
   }
 
-  submitIncome() {
+  submitEntry() {
     if (this.title === 'Actualizar Ingreso') {
-      this.updateIncome();
+      this.updateEntry();
     } else {
-      this.registerIncome();
+      this.registerEntry();
     }
   }
 
-  registerIncome() {
-    this.ingresosEgresosProvider.createIncome(this.income).then(() => {
+  registerEntry() {
+    this.ingresosEgresosProvider.createEntry(this.entry).then(() => {
       this.commons.createAlert('Registro Exitoso', 'El ingreso se registro correctamente');
       this.dismiss();
     })
@@ -49,15 +49,15 @@ export class ModalIncomePage {
     });
   }
 
-  // updateIncome() {
-  //   this.ingresosEgresosProvider.updateIncome(this.income).then(() => {
-  //     this.commons.createAlert('Actualización Exitosa', 'El ingreso se actualizo correctamente');
-  //     this.dismiss();
-  //   })
-  //   .catch(error => {
-  //     this.commons.createAlert('Algo salió mal', 'Hubo un problema al actualizar el ingreso');
-  //   });
-  // }
+  updateEntry() {
+    this.ingresosEgresosProvider.updateEntry(this.entry).then(() => {
+      this.commons.createAlert('Actualización Exitosa', 'El ingreso se actualizo correctamente');
+      this.dismiss();
+    })
+    .catch(error => {
+      this.commons.createAlert('Algo salió mal', 'Hubo un problema al actualizar el ingreso');
+    });
+  }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ModalIncomePage');
