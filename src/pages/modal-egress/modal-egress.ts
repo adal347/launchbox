@@ -17,6 +17,9 @@ import { CommonsProvider } from '../../providers/commons';
 })
 export class ModalEgressPage {
 
+  title: any;
+  egress: any;
+  
   constructor(public navCtrl: NavController, public navParams: NavParams,
               public viewCtrl: ViewController, private commons: CommonsProvider,
               public ingresosEgresosProvider: IngresosEgresosProvider) {
