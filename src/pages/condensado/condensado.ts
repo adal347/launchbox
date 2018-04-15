@@ -16,7 +16,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class CondensadoPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public documentViewer: DocumentViewer) {
+  constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
  	 downloadPDF(argument) {
  		// body...
