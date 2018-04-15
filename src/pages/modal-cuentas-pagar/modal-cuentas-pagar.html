@@ -20,7 +20,7 @@
           <ion-item>
             <ion-label>Efectivo/Transferencia</ion-label>
             <ion-select [(ngModel)]="service.typePay" interface="popover">
-              <ion-option *ngFor="let type of services | async" [value]="type">{{ type.name }}</ion-option>
+              <ion-option *ngFor="let type of typePay | async" [value]="type">{{type.name}}</ion-option>
             </ion-select>
           </ion-item>
           <ion-item>

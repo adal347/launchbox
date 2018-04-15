@@ -4,12 +4,7 @@ import { CommonsProvider } from '../../providers/commons';
 import { CuentasPagarProvider } from '../../providers/cuentas_pagar';
 import { CuentasCobrarProvider } from '../../providers/cuentas_cobrar';
 import { Observable } from 'rxjs/Observable';
-/**
- * Generated class for the ModalCuentasPagarPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+
 
 @IonicPage()
 @Component({
@@ -19,7 +14,6 @@ import { Observable } from 'rxjs/Observable';
 export class ModalCuentasPagarPage {
 	title: any;
 	service: any;
-  services : Observable<any[]>;
   typePay: Observable<any[]>;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
@@ -27,7 +21,7 @@ export class ModalCuentasPagarPage {
               private commons: CommonsProvider) {
   	this.title = this.navParams.get('title');
     this.service = this.navParams.get('service');
-    this.services = this.cuentasPagarProvider.getBills();
+    this.typePay = this.cuentasCobrarProvider.getTypePay();
   }
 
   submitService() {
