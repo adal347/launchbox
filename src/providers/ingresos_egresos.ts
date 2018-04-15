@@ -13,6 +13,7 @@ export class IngresosEgresosProvider {
 
   	constructor(public db: AngularFireDatabase) {
 			this.incomeRef = this.db.list('income');
+			this.expensesRef = this.db.list('expesnses');
 		}
 
 	  public getIncome() {
@@ -22,10 +23,26 @@ export class IngresosEgresosProvider {
 
 	  }
 
+	  public getExpenses() {
+	    return this.expensesRef.snapshotChanges().map( data => {
+	      return data.map(c => ({ key: c.payload.key, ...c.payload.val() }));
+	    });
+
+	  }
+
 		public createEntry(entry) {
 	    let self = this;
 	    let promise = new Promise((resolve, reject) => {
 	      self.incomeRef.push(entry);
+	      resolve();
+	    });
+	    return promise;
+		}
+
+		public createEgress(egress) {
+	    let self = this;
+	    let promise = new Promise((resolve, reject) => {
+	      self.expensesRef.push(egress);
 	      resolve();
 	    });
 	    return promise;

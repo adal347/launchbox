@@ -18,12 +18,14 @@ export class IngresosEgresosPage {
   incomeTotal: number = 0;
   entryToDelete: any;
   income: Observable<any[]>;
+  expenses: Observable<any[]>;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
               public ingresosEgresosProvider: IngresosEgresosProvider,
               public modalCtrl: ModalController, private commons: CommonsProvider) {
     this.month = 'Marzo';
     this.income = this.ingresosEgresosProvider.getIncome();
+    this.expenses = this.ingresosEgresosProvider.getExpenses();
 
     this.totalIncome();
     // this.totalExpenses();

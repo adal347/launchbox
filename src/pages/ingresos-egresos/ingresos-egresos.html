@@ -69,12 +69,12 @@
   		<th>Rubro</th>
   		<th>Botones</th>
   	</tr>
-  	<tr>
-  		<td></td>
-  		<td></td>
-  		<td></td>
-  		<td></td>
-  		<td></td>
+  	<tr *ngFor="let egress of expenses | async">
+  		<td>{{ egress.date }}</td>
+  		<td>{{ egress.description }}</td>
+  		<td>{{ egress.provider }}</td>
+  		<td>{{ egress.amount }}</td>
+  		<td>{{ egress.item }}</td>
   		<td>
         <button ion-button icon-only clear color="update" (click)="initModalExpenses(0, egress)">
           <ion-icon ios="ios-create" md="md-create"></ion-icon>

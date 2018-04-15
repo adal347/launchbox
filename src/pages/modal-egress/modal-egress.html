@@ -17,25 +17,23 @@
   <ion-list>
     <ion-item>
       <ion-label>Fecha</ion-label>
-      <ion-input type="date"></ion-input>
+      <ion-input type="date" [(ngModel)]="egress.date"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label>Descripción</ion-label>
-      <ion-input type="text"></ion-input>
+      <ion-input type="text" [(ngModel)]="egress.description"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label>Proveedor</ion-label>
-      <ion-input type="name"></ion-input>
+      <ion-input type="name" [(ngModel)]="egress.provider"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label>Total</ion-label>
-      <ion-input type="number"></ion-input>
+      <ion-input type="number" [(ngModel)]="egress.amount"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label>Rubro</ion-label>
-      <ion-select  interface="popover">
-        <ion-option ></ion-option>
-      </ion-select>
+      <ion-input type="text" [(ngModel)]="egress.item"></ion-input>
     </ion-item>
   </ion-list>
 
