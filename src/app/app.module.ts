@@ -18,7 +18,6 @@ import { Environment } from '../enviorments/enviorment';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
-import { DocumentViewer }  from '@ionic-native/document-viewer';  
 
 import { CuentasCobrarProvider } from '../providers/cuentas_cobrar';
 import { CuentasPagarProvider } from '../providers/cuentas_pagar';
