@@ -13,7 +13,28 @@
   <br>
   <h1>{{ month }}</h1>
   <br>
+  <table style = "width: 25%; display: inline-table;">
+    <tr>
+      <td><strong>Saldo inicial de {{ month }}</strong></td>
+      <td>$10000</td>
+    </tr>
+    <tr>
+      <td><strong>Total de Ingresos</strong></td>
+      <td>${{ incomeTotal }}</td>
+    </tr>
+    <tr>
+      <td><strong>Total de egresos</strong></td>
+      <td>${{ expensesTotal }}</td>
+    </tr>
+    <tr>
+      <td><strong>Saldo del mes</strong></td>
+      <td>${{ (10000 + incomeTotal) - expensesTotal }}</td>
+    </tr>
+
+  </table>
   <br>
+  <br>
+
   <!--TABLA INGRESOS-->
   <table>
   	<tr id="headerTable">
@@ -46,8 +67,6 @@
       </td>
   	</tr>
   </table>
-
-  <h4>Total de Ingresos: ${{ incomeTotal }}</h4>
 
   <ion-buttons end>
     <button color="create" ion-button icon-right (click)="initModalIncome(1)">
@@ -86,8 +105,6 @@
       </td>
   	</tr>
   </table>
-
-  <h4>Total de Egresos: ${{ expensesTotal }}</h4>
 
   <ion-buttons end>
     <button color="create" ion-button icon-right (click)="initModalExpenses(1)">

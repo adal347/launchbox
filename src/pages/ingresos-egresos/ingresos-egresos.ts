@@ -86,7 +86,6 @@ export class IngresosEgresosPage {
         }
       });
     });
-
   }
 
   totalExpenses() {
@@ -98,7 +97,6 @@ export class IngresosEgresosPage {
         }
       });
     });
-
   }
 
 
