@@ -57,6 +57,15 @@ export class IngresosEgresosProvider {
 	    return promise;
 		}
 
+		public updateEgress(egress) {
+	    let self = this;
+	    let promise = new Promise((resolve, reject) => {
+	      self.expensesRef.update(egress.key, egress);
+	      resolve();
+	    });
+	    return promise;
+		}
+
 		public removeIncome(entry) {
 	    let self = this;
 	    let promise = new Promise((resolve, reject) => {
