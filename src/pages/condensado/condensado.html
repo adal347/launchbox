@@ -1,0 +1,111 @@
+<ion-header>
+
+ <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Condensado del mes</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <img alt="logo" style="width: 122px; height: 92px;" src="./assets/imgs/logo.png">
+
+<ion-content padding>
+	<table style="width: 25%; display: inline-table;">
+		<tr id="headerTable">
+			<th>Ingreso</th>
+			<th>Monto</th>
+		</tr>
+		<tr>
+			<td>Ventas</td>
+			<td> $ </td><tr>
+
+			<th></th>
+			<th></th>
+		</tr>
+	</table>
+	<table style="width: 25%; display: inline-table;">
+		<tr id="headerTable">
+			<th>Egreso</th>
+			<th>Monto</th>
+		</tr>
+		<tr>
+			<th>Cuenta</th>
+			<th>Fee</th><tr>
+			<th></th>
+			<th></th>
+		</tr>
+	</table>
+	<br/>
+	<br/>
+	<br/>
+	<table style="width: 25%; display: inline-table;">
+		<tr id="headerTable">
+			<th colspan="100%">Gastos variables</th>
+			<th colspan="100%">Monto</th>
+		</tr>
+		<tr>
+			<td>Luz</td><tr>
+			<td>Agua</td><tr>
+			<td>Comisiones</td><tr>
+			<td>Mantenimiento</td><tr>
+			<td>Mejoras al proyecto</td><tr>
+			<td>Insumos</td><tr>
+
+		</tr>
+	</table>
+	<table style="width: 25%; display: inline-table;">
+		<tr id="headerTable">
+			<th colspan="100%">Gastos fijos</th>
+			<th colspan="100%">Monto</th>
+		</tr>
+		<tr>
+			<td>Recepcción</td><tr>
+			<td>Wifi</td><tr>
+			<td>Teléfono</td><tr>
+			<td>Renta</td><tr>
+			<td>Retención de impuestos</td><tr>
+			<td>Velador y limpieza</td><tr>
+			<td>Contador</td><tr>
+			<td>Provision aguinaldo</td><tr>
+			<td>Provision poliza de seguros</td><tr>
+			<td>Marketing</td><tr>
+		    <td>Publicidad</td><tr>
+		</tr>
+	</table>
+	<table style="width: 25%; display: inline-table;">
+		<tr id="headerTable">
+			<th colspan="100%">Mejoras al proyecto</th>
+		</tr>
+		<tr>
+			<td><strong>Total</strong></td>
+			<td>$</td>
+		</tr>
+	</table>
+	<br/>
+	<br/>
+	<br/>
+	<table style="width: 25%; display: inline-table;">
+		<tr id="headerTable">
+			<th>Gasto Total</th>
+			<td>$</td>
+		</tr>
+	</table>
+	<table style="width: 25%; display: inline-table;">
+		<tr id="headerTable">
+			<th>Utilidad</th>
+			<td>$$$</td>
+		</tr>
+	</table>
+	<br/>
+	<br/>
+	<br/>
+
+	 <ion-buttons end>
+    <button color = "create" ion-button icon-right item-right (click) = "downloadPDF()">
+     Descarga PDF<ion-icon ios="ios-add-circle" md="md-add-circle"></ion-icon>
+    </button>
+  </ion-buttons>
+
+</ion-content>
