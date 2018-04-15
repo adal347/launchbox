@@ -28,7 +28,7 @@ export class TenantsProvider {
 	public updateTenant(tenant) {
     let self = this;
     let promise = new Promise((resolve, reject) => {
-      this.tenantsRef.update(tenant.key, tenant);
+      self.tenantsRef.update(tenant.key, tenant);
       resolve();
     });
     return promise;
@@ -37,7 +37,7 @@ export class TenantsProvider {
 	public removeTenant(tenant) {
     let self = this;
     let promise = new Promise((resolve, reject) => {
-      this.tenantsRef.remove(tenant.key);
+      self.tenantsRef.remove(tenant.key);
       resolve();
     });
     return promise;
