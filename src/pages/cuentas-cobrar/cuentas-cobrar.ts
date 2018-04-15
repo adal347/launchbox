@@ -63,6 +63,7 @@ export class CuentasCobrarPage {
     }
     this.cuentasCobrarProvider.updateAccountReceivable(accountReceivable);
   }
+  
   totalAmount(){
      this.accountsReceivable.forEach((arrayAccounts)=>{
        arrayAccounts.forEach((account)=>{
