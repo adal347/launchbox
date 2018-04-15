@@ -17,6 +17,7 @@ export class IngresosEgresosPage {
   egress: any;
   incomeTotal: number = 0;
   entryToDelete: any;
+  egressToDelete: any;
   income: Observable<any[]>;
   expenses: Observable<any[]>;
 
@@ -59,6 +60,15 @@ export class IngresosEgresosPage {
 
   deleteEntry() {
     this.ingresosEgresosProvider.removeIncome(this.entryToDelete).then(() => {
+      this.commons.createAlert('Eliminación Exitosa', 'El ingreso se eliminó correctamente');
+    })
+    .catch(error => {
+      this.commons.createAlert('Algo salió mal', 'Hubo un problema al eliminar el ingreso');
+    });
+  }
+
+  deleteEgress() {
+    this.ingresosEgresosProvider.removeEgress(this.egressToDelete).then(() => {
       this.commons.createAlert('Eliminación Exitosa', 'El ingreso se eliminó correctamente');
     })
     .catch(error => {

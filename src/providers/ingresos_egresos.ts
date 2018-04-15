@@ -75,4 +75,13 @@ export class IngresosEgresosProvider {
 	    return promise;
 		}
 
+		public removeEgress(egress) {
+	    let self = this;
+	    let promise = new Promise((resolve, reject) => {
+	      self.expensesRef.remove(egress.key);
+	      resolve();
+	    });
+	    return promise;
+		}
+
 }
