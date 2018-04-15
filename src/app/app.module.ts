@@ -7,7 +7,9 @@ import { LoginPage } from '../pages/login/login';
 import { CuentasCobrarPage } from '../pages/cuentas-cobrar/cuentas-cobrar';
 import { CuentasPagarPage } from '../pages/cuentas-pagar/cuentas-pagar';
 import { MapPage } from '../pages/map/map';
-import { RegisterPage } from '../pages/register/register';
+import { IngresosEgresosPage } from '../pages/ingresos-egresos/ingresos-egresos';
+import { UsersPage } from '../pages/users/users';
+import { TenantsPage } from '../pages/tenants/tenants';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -20,6 +22,8 @@ import { CuentasCobrarProvider } from '../providers/cuentas_cobrar';
 import { CuentasPagarProvider } from '../providers/cuentas_pagar';
 import { CommonsProvider } from '../providers/commons';
 import { UsersProvider } from '../providers/users';
+import { IngresosEgresosProvider } from '../providers/ingresos_egresos';
+import { TenantsProvider } from '../providers/tenants';
 
 @NgModule({
   declarations: [
@@ -28,7 +32,9 @@ import { UsersProvider } from '../providers/users';
     CuentasCobrarPage,
     CuentasPagarPage,
     MapPage,
-    RegisterPage
+    IngresosEgresosPage,
+    UsersPage,
+    TenantsPage
   ],
   imports: [
     BrowserModule,
@@ -44,7 +50,9 @@ import { UsersProvider } from '../providers/users';
     CuentasCobrarPage,
     CuentasPagarPage,
     MapPage,
-    RegisterPage,
+    IngresosEgresosPage,
+    UsersPage,
+    TenantsPage
   ],
   providers: [
     StatusBar,
@@ -53,7 +61,9 @@ import { UsersProvider } from '../providers/users';
     CuentasCobrarProvider,
     CuentasPagarProvider,
     CommonsProvider,
-    UsersProvider
+    UsersProvider,
+    IngresosEgresosProvider,
+    TenantsProvider
   ]
 })
 export class AppModule {}
