@@ -18,14 +18,6 @@ export class CondensadoPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
- 	 downloadPDF(argument) {
- 		// body...
- 		let options = {
-		 title: 'hi'
-		};
-		this.documentViewer.viewDocument('myPDF.PDF', 'aplication/pdf', options)
- 	}
-
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad CondensadoPage');
