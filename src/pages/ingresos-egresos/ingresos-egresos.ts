@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
 import { IngresosEgresosProvider} from '../../providers/ingresos_egresos';
-import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 import { CommonsProvider } from '../../providers/commons';
 import { Observable } from 'rxjs/Observable';
 @IonicPage()
