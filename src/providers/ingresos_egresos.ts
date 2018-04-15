@@ -10,10 +10,11 @@ import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 @Injectable()
 export class IngresosEgresosProvider {
 		incomeRef: AngularFireList<any>;
+		expensesRef: AngularFireList<any>;
 
   	constructor(public db: AngularFireDatabase) {
 			this.incomeRef = this.db.list('income');
-			this.expensesRef = this.db.list('expesnses');
+			this.expensesRef = this.db.list('expenses');
 		}
 
 	  public getIncome() {
