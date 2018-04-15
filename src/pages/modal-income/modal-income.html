@@ -1,0 +1,50 @@
+<!--
+  Generated template for the ModalIncomePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Nuevo Ingreso</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-list>
+    <ion-item>
+      <ion-label>Fecha</ion-label>
+      <ion-input type="date" [(ngModel)]="entry.date"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Descripción</ion-label>
+      <ion-input type="text" [(ngModel)]="entry.description"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Recibo</ion-label>
+      <ion-input type="text" [(ngModel)]="entry.whoGet"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Total</ion-label>
+      <ion-input type="number" [(ngModel)]="entry.total"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Rubro</ion-label>
+      <ion-input type="text" [(ngModel)]="entry.type"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Box</ion-label>
+      <ion-select interface="popover" [(ngModel)]="entry.box">
+        <ion-option *ngFor="let box of boxes | async" [value]="box">{{ box.id }}</ion-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+
+  <ion-buttons end>
+    <button ion-button (click)="dismiss()">Cancelar</button>
+    <button ion-button color="secondary" (click)="submitEntry()">Guardar</button>
+  </ion-buttons>
+</ion-content>

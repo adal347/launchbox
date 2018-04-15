@@ -9,7 +9,7 @@
 
 <ion-content padding>
   <img alt="logo" style="width: 122px; height: 92px;" src="./assets/imgs/logo.png">
-
+  <h1>Tabla cuentas por pagar del mes de {{ month }}</h1>
   <table>
   	<tr id="headerTable">
   		<th colspan="100%">Cuentas por pagar</th>
@@ -22,7 +22,7 @@
   		<th>Pagado</th>
   		<th>Por pagar</th>
   		<th>Fecha limite</th>
-  		<th colspan="3">Botones</th>
+  		<th colspan="3">Opciones</th>
   	</tr>
   	<tr *ngFor="let bill of bills | async">
   		<td>{{ bill.service }}</td>
@@ -33,79 +33,35 @@
   		<td>$ {{ bill.toPay }}</td>
   		<td>{{ bill.limitDate }}</td>
   		<td>
-        <button ion-button icon-only color="update" data-target="#newEntryModal"
-                data-toggle="modal" (click)="initModal(0, bill)">
+        <button ion-button icon-only clear color="update" (click)="initModal(0, bill)">
           <ion-icon ios="ios-create" md="md-create"></ion-icon>
         </button>
-      </td>
-
-      <td>
-        <button ion-button icon-only color="danger" data-target="#newDeleteModal"
+        <button ion-button icon-only clear color="danger" data-target="#newDeleteModal"
                 data-toggle="modal" (click)="billToDelete = bill">
           <ion-icon ios="ios-trash" md="md-trash"></ion-icon>
         </button>
       </td>
   	</tr>
   </table>
-  <h4>Monto Total: {{ amountTotal }}</h4>
-  <h4>Pagado Total: {{ paidTotal }}</h4>
-  <h4>Por Pagar Total: {{ toPaidTotal }}</h4>
   <ion-buttons end>
-    <button color = "create" ion-button icon-right item-right data-toggle="modal" (click)="initModal(1)" data-target="#newEntryModal">
-      Nueva Fila<ion-icon ios="ios-add-circle" md="md-add-circle"></ion-icon>
+    <button color="create" ion-button icon-right (click)="initModal(1)">
+      Nuevo Pago<ion-icon ios="ios-add-circle" md="md-add-circle"></ion-icon>
     </button>
   </ion-buttons>
-
-  <!--Modal of new Entry (NUEVA FILA)-->
-  <div class="modal fade" id="newEntryModal" tabindex="-1" role="dialog"  aria-hidden="true" >
-   <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" >{{ title }}</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <ion-item>
-            <ion-label>Tipo de servicio</ion-label>
-            <ion-input type="text" [(ngModel)]="service.service" [disabled]="show"></ion-input>
-          </ion-item>
-          <ion-item>
-            <ion-label>Proveedor</ion-label>
-            <ion-input type="text" [(ngModel)]="service.provider" [disabled]="show"></ion-input>
-          </ion-item>
-          <ion-item>
-            <ion-label>Efectivo/Transferencia</ion-label>
-            <ion-select [(ngModel)]="service.typePay" interface="popover" [disabled]="show">
-              <ion-option *ngFor="let type of typePay | async" [value]="type">{{ type.name }}</ion-option>
-            </ion-select>
-          </ion-item>
-          <ion-item>
-            <ion-label>Monto</ion-label>
-            <ion-input type="text" [(ngModel)]="service.amount" [disabled]="show"></ion-input>
-          </ion-item>
-          <ion-item>
-            <ion-label>Pagado</ion-label>
-            <ion-input type="text" [(ngModel)]="service.paid" [disabled]="show"></ion-input>
-          </ion-item>
-          <ion-item>
-            <ion-label>Por Pagar</ion-label>
-            <ion-input type="text" [(ngModel)]="service.toPay" [disabled]="show"></ion-input>
-          </ion-item>
-          <ion-item>
-            <ion-label>Fecha limite</ion-label>
-            <ion-input type="date" [(ngModel)]="service.limitDate" [disabled]="show"></ion-input>
-          </ion-item>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-          <button type="button" class="btn btn-primary" data-dismiss="modal" *ngIf="!show" (click)="submitService()">Guardar</button>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!--Modal of new END-->
+  <table style="width: 25%; display: inline-table;">
+    <tr>
+      <td><strong>Monto Total: </strong></td>
+      <td> $ {{ amountTotal }}</td>
+    </tr>
+    <tr>
+      <td><strong>Total Pagado: </strong></td>
+      <td> $ {{ paidTotal }}</td>
+    </tr>
+    <tr>
+      <td><strong>Total por Pagar: </strong></td>
+      <td> $ {{ toPaidTotal }}</td>
+    </tr>
+  </table>
 
   <!--Modal of new Entry (NUEVA FILA)-->
   <div class="modal fade" id="newDeleteModal" tabindex="-1" role="dialog"  aria-hidden="true" >
