@@ -16,6 +16,7 @@ export class IngresosEgresosPage {
   entry: any;
   egress: any;
   incomeTotal: number = 0;
+  expensesTotal: number = 0;
   entryToDelete: any;
   egressToDelete: any;
   income: Observable<any[]>;
@@ -29,7 +30,7 @@ export class IngresosEgresosPage {
     this.expenses = this.ingresosEgresosProvider.getExpenses();
 
     this.totalIncome();
-    // this.totalExpenses();
+    this.totalExpenses();
   }
 
   initModalIncome(type, entry) {
@@ -82,6 +83,18 @@ export class IngresosEgresosPage {
       arrayIncome.forEach((entry) => {
         if (entry.total) {
          this.incomeTotal += Number(entry.total);
+        }
+      });
+    });
+
+  }
+
+  totalExpenses() {
+    this.expenses.forEach((arrayExpenses) => {
+      this.expensesTotal = 0;
+      arrayExpenses.forEach((egress) => {
+        if (egress.amount) {
+         this.expensesTotal += Number(egress.amount);
         }
       });
     });
