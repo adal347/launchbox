@@ -18,14 +18,24 @@ export class CuentasPagarProvider {
 			typePay: service.typePay,
 			amount: service.amount || 0,
 			paid: service.paid || 0,
-			toPay: service.toPay || 0,
+			toPay: service.amount-service.paid || 0,
 			limitDate: service.limitDate || null
 		};
-		this.billsRef.push(bill);
+		let self = this;
+		let promise = new Promise((resolve, reject) => {
+	      self.billsRef.push(bill);
+	      resolve();
+	    });
+	    return promise;
   }
 
 	public updateBill(bill) {
-		this.billsRef.update(bill.key, bill);
+		let self = this;
+		let promise = new Promise((resolve, reject) => {
+	      self.billsRef.update(bill.key, bill);
+	      resolve();
+	    });
+	    return promise;
 	}
 
 	public getBills() {
@@ -35,6 +45,11 @@ export class CuentasPagarProvider {
 	}
 
 	public removeBill(bill) {
-		this.billsRef.remove(bill.key);
+		let self = this;
+		let promise = new Promise((resolve, reject) => {
+	      self.billsRef.remove(bill.key);
+	      resolve();
+	    });
+	    return promise;
 	}
 }

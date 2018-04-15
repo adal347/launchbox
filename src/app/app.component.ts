@@ -8,6 +8,7 @@ import { CuentasCobrarPage } from '../pages/cuentas-cobrar/cuentas-cobrar';
 import { CuentasPagarPage } from '../pages/cuentas-pagar/cuentas-pagar';
 import { MapPage } from '../pages/map/map';
 import { IngresosEgresosPage } from '../pages/ingresos-egresos/ingresos-egresos';
+import { CondensadoPage } from '../pages/condensado/condensado';
 import { UsersPage } from '../pages/users/users';
 import { TenantsPage } from '../pages/tenants/tenants';
 
@@ -19,7 +20,7 @@ import { CommonsProvider } from '../providers/commons';
 })
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
-
+  
   rootPage: any = LoginPage;
 
   pages: Array<{title: string, component: any}>;
@@ -35,6 +36,7 @@ export class MyApp {
       { title: 'Cuentas por pagar', component: CuentasPagarPage },
       { title: 'Mapa', component: MapPage },
       { title: 'Ingresos/Egresos', component: IngresosEgresosPage },
+      { title: 'Condensado del mes', component: CondensadoPage },
       { title: 'Usuarios', component: UsersPage },
       { title: 'Inquilinos', component: TenantsPage }
     ];

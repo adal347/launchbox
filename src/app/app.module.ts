@@ -8,6 +8,7 @@ import { CuentasCobrarPage } from '../pages/cuentas-cobrar/cuentas-cobrar';
 import { CuentasPagarPage } from '../pages/cuentas-pagar/cuentas-pagar';
 import { MapPage } from '../pages/map/map';
 import { IngresosEgresosPage } from '../pages/ingresos-egresos/ingresos-egresos';
+import { CondensadoPage } from '../pages/condensado/condensado';
 import { UsersPage } from '../pages/users/users';
 import { TenantsPage } from '../pages/tenants/tenants';
 
@@ -17,6 +18,7 @@ import { Environment } from '../enviorments/enviorment';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
+import { DocumentViewer }  from '@ionic-native/document-viewer';  
 
 import { CuentasCobrarProvider } from '../providers/cuentas_cobrar';
 import { CuentasPagarProvider } from '../providers/cuentas_pagar';
@@ -32,6 +34,7 @@ import { TenantsProvider } from '../providers/tenants';
     CuentasCobrarPage,
     CuentasPagarPage,
     MapPage,
+    CondensadoPage,
     IngresosEgresosPage,
     UsersPage,
     TenantsPage
@@ -41,7 +44,7 @@ import { TenantsProvider } from '../providers/tenants';
     IonicModule.forRoot(MyApp),
     AngularFireModule.initializeApp(Environment.firebase),
     AngularFireDatabaseModule,
-    AngularFireAuthModule
+    AngularFireAuthModule,
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -51,6 +54,7 @@ import { TenantsProvider } from '../providers/tenants';
     CuentasPagarPage,
     MapPage,
     IngresosEgresosPage,
+    CondensadoPage,
     UsersPage,
     TenantsPage
   ],

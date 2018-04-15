@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
-import { AngularFireAuth } from 'angularfire2/auth';
-import { CommonsProvider } from '../../providers/commons';
 import { UsersProvider } from '../../providers/users';
 import { Observable } from 'rxjs/Observable';
 
@@ -17,8 +15,8 @@ export class UsersPage {
   disabled: any;
   users: Observable<any[]>;
 
-  constructor(private fire: AngularFireAuth, public navCtrl: NavController,
-              public navParams: NavParams, private commons: CommonsProvider,
+  constructor(public navCtrl: NavController,
+              public navParams: NavParams,
               private usersProvider: UsersProvider, public modalCtrl : ModalController) {
     this.user = {};
   	this.users = this.usersProvider.getUsers();

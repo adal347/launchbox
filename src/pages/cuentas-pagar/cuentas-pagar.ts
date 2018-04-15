@@ -1,14 +1,9 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
 import { CuentasCobrarProvider } from '../../providers/cuentas_cobrar';
 import { CuentasPagarProvider } from '../../providers/cuentas_pagar';
+import { CommonsProvider } from '../../providers/commons';
 import { Observable } from 'rxjs/Observable';
-/**
- * Generated class for the CuentasPagarPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
@@ -24,21 +19,19 @@ export class CuentasPagarPage {
   service: any;
   billToDelete: any;
   month: any;
-  amountTotal: number = 0;
-  paidTotal: number = 0;
-  toPaidTotal: number = 0;
+  amountTotal: number;
+  paidTotal: number;
+  toPaidTotal: number;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
               public cuentasCobrarProvider: CuentasCobrarProvider,
-              public cuentasPagarProvider: CuentasPagarProvider) {
+              public cuentasPagarProvider: CuentasPagarProvider, public modalCtrl : ModalController, private commons: CommonsProvider) {
     this.typePay = this.cuentasCobrarProvider.getTypePay();
     this.bills = this.cuentasPagarProvider.getBills();
   	this.title= 'Ingreso de nuevo servicio';
     this.service = {};
     this.billToDelete = {};
-    this.totalAmount();
-    this.totalPaid();
-    this.totalToPaid();
+    this.updateTotals();
     this.month = 'Marzo';
   }
 
@@ -52,10 +45,13 @@ export class CuentasPagarPage {
       this.service = bill;
   		this.title = 'Editar servicio';
   	}
+    let modalPage = this.modalCtrl.create('ModalCuentasPagarPage', { title: this.title, service: this.service });
+    modalPage.present();
   }
 
   totalAmount() {
     this.bills.forEach((arrayBills) => {
+      this.amountTotal = 0;
       arrayBills.forEach((bill) => {
         this.amountTotal += Number(bill.amount);
       });
@@ -64,6 +60,7 @@ export class CuentasPagarPage {
 
   totalPaid() {
     this.bills.forEach((arrayBills) => {
+      this.paidTotal = 0;
       arrayBills.forEach((bill) => {
         if (bill.paid) {
          this.paidTotal += Number(bill.paid);
@@ -74,6 +71,7 @@ export class CuentasPagarPage {
 
   totalToPaid() {
     this.bills.forEach((arrayBills) => {
+      this.toPaidTotal = 0;
       arrayBills.forEach((bill) => {
         if (bill.toPay) {
          this.toPaidTotal += Number(bill.toPay);
@@ -82,24 +80,20 @@ export class CuentasPagarPage {
     });
   }
 
-  submitService() {
-    if (this.title === 'Editar servicio') {
-      this.updateEntry();
-    } else {
-      this.createNewEntry();
-    }
-  }
-
-  createNewEntry() {
-    this.cuentasPagarProvider.createNewEntry(this.service);
-  }
-
-  updateEntry() {
-    this.cuentasPagarProvider.updateBill(this.service);
+  updateTotals() {
+    this.totalAmount();
+    this.totalPaid();
+    this.totalToPaid();
   }
 
   deleteEntry() {
-    this.cuentasPagarProvider.removeBill(this.billToDelete);
+    this.cuentasPagarProvider.removeBill(this.billToDelete).then(() => {
+      this.commons.createAlert('Eliminación Exitosa', 'El servicio se eliminó correctamente');
+    })
+    .catch(error => {
+      this.commons.createAlert('Algo salió mal', 'Hubo un problema al eliminar el servicio');
+    });
+    this.updateTotals();
   }
 
   ionViewDidLoad() {

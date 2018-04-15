@@ -3,23 +3,14 @@ import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angul
 import { IngresosEgresosProvider} from '../../providers/ingresos_egresos';
 import { CommonsProvider } from '../../providers/commons';
 
-/**
- * Generated class for the ModalEgressPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-
 @IonicPage()
 @Component({
   selector: 'page-modal-egress',
   templateUrl: 'modal-egress.html',
 })
 export class ModalEgressPage {
-
   title: any;
   egress: any;
-  
   constructor(public navCtrl: NavController, public navParams: NavParams,
               public viewCtrl: ViewController, private commons: CommonsProvider,
               public ingresosEgresosProvider: IngresosEgresosProvider) {
