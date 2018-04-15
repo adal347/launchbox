@@ -23,7 +23,6 @@ export class CondensadoPage {
  		let options = {
 		 title: 'hi'
 		};
-		console.log(this.documentViewer)
 		this.documentViewer.viewDocument('myPDF.PDF', 'aplication/pdf', options)
  	}
 
