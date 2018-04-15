@@ -17,6 +17,7 @@ import { Environment } from '../enviorments/enviorment';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
+import { DocumentViewer }  from '@ionic-native/document-viewer';  
 
 import { CuentasCobrarProvider } from '../providers/cuentas_cobrar';
 import { CuentasPagarProvider } from '../providers/cuentas_pagar';
@@ -39,7 +40,7 @@ import { UsersProvider } from '../providers/users';
     IonicModule.forRoot(MyApp),
     AngularFireModule.initializeApp(Environment.firebase),
     AngularFireDatabaseModule,
-    AngularFireAuthModule
+    AngularFireAuthModule,
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -59,7 +60,8 @@ import { UsersProvider } from '../providers/users';
     CuentasCobrarProvider,
     CuentasPagarProvider,
     CommonsProvider,
-    UsersProvider
+    UsersProvider,
+    DocumentViewer
   ]
 })
 export class AppModule {}
