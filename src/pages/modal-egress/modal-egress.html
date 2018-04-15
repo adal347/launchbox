@@ -7,12 +7,40 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>ModalEgressPage</ion-title>
+    <ion-title>{{ title }}</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
+  <ion-list>
+    <ion-item>
+      <ion-label>Fecha</ion-label>
+      <ion-input type="date"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Descripción</ion-label>
+      <ion-input type="text"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Proveedor</ion-label>
+      <ion-input type="name"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Total</ion-label>
+      <ion-input type="number"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Rubro</ion-label>
+      <ion-select  interface="popover">
+        <ion-option ></ion-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
 
+  <ion-buttons end>
+    <button ion-button (click)="dismiss()">Cancelar</button>
+    <button ion-button color="secondary" (click)="submitEgress()">Guardar</button>
+  </ion-buttons>
 </ion-content>

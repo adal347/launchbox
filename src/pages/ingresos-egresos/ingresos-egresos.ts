@@ -14,6 +14,7 @@ export class IngresosEgresosPage {
   month: any;
   title: any;
   entry: any;
+  egress: any;
   incomeTotal: number = 0;
   entryToDelete: any;
   income: Observable<any[]>;
@@ -39,7 +40,19 @@ export class IngresosEgresosPage {
     }
     let modalPage = this.modalCtrl.create('ModalIncomePage', { title: this.title, entry: this.entry });
     modalPage.present();
-    this.totalIncome();
+  }
+
+  initModalExpenses(type, egress) {
+    if (type == 1) {
+      this.egress = {};
+      this.title = 'Nuevo Egreso';
+
+    } else if (type == 0) {
+      this.egress = egress;
+      this.title = 'Actualizar Egreso';
+    }
+    let modalPage = this.modalCtrl.create('ModalEgressPage', { title: this.title, egress: this.egress });
+    modalPage.present();
   }
 
   deleteEntry() {

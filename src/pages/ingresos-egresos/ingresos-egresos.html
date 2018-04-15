@@ -49,7 +49,6 @@
 
   <h4>Total de Ingresos: ${{ incomeTotal }}</h4>
 
-
   <ion-buttons end>
     <button color="create" ion-button icon-right (click)="initModalIncome(1)">
       Nueva Fila<ion-icon ios="ios-add-circle" md="md-add-circle"></ion-icon>
@@ -71,18 +70,19 @@
   		<th>Botones</th>
   	</tr>
   	<tr>
-  		<td>01/18/2018</td>
   		<td></td>
   		<td></td>
-  		<td> $</td>
+  		<td></td>
+  		<td></td>
   		<td></td>
   		<td>
-        <button ion-button icon-only clear color="update" (click)="initModal(0, bill)">
-            <ion-icon ios="ios-create" md="md-create"></ion-icon>
-          </button>
-          <button ion-button icon-only clear color="danger" (click)="billToDelete = bill">
-            <ion-icon ios="ios-trash" md="md-trash"></ion-icon>
-          </button>
+        <button ion-button icon-only clear color="update" (click)="initModalExpenses(0, egress)">
+          <ion-icon ios="ios-create" md="md-create"></ion-icon>
+        </button>
+        <button ion-button icon-only clear color="danger" data-target="#deleteEgressModal"
+                data-toggle="modal" (click)="egressToDelete = egress">
+          <ion-icon ios="ios-trash" md="md-trash"></ion-icon>
+        </button>
       </td>
   	</tr>
   </table>
@@ -90,54 +90,10 @@
   <h4>Subtotal: $</h4>
 
   <ion-buttons end>
-    <button color="create" ion-button icon-right>
+    <button color="create" ion-button icon-right (click)="initModalExpenses(1)">
       Nueva Fila<ion-icon ios="ios-add-circle" md="md-add-circle"></ion-icon>
     </button>
   </ion-buttons>
-
-  <!--Modal of new Entry (NUEVA FILA|Egresos)-->
-  <div class="modal fade" id="newEntryModalEgreso" tabindex="-1" role="dialog"  aria-hidden="true" >
-   <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" >Nuevo Egreso</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <ion-item>
-            <ion-label>Fecha</ion-label>
-            <ion-input type="date"></ion-input>
-          </ion-item>
-          <ion-item>
-            <ion-label>Descripción</ion-label>
-            <ion-input type="text"></ion-input>
-          </ion-item>
-          <ion-item>
-            <ion-label>Proveedor</ion-label>
-            <ion-input type="name"></ion-input>
-          </ion-item>
-          <ion-item>
-            <ion-label>Total</ion-label>
-            <ion-input type="number"></ion-input>
-          </ion-item>
-          <ion-item>
-            <ion-label>Rubro</ion-label>
-            <ion-select  interface="popover" [disabled]="show">
-              <ion-option ></ion-option>
-            </ion-select>
-          </ion-item>
-        </div>
-
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-          <button type="button" class="btn btn-primary">Guardar</button>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!--Modal of new END-->
 
   <!--Modal of new Delete (Borrar fila)-->
   <div class="modal fade" id="deleteIncomeModal" tabindex="-1" role="dialog"  aria-hidden="true" >
@@ -153,6 +109,25 @@
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
           <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="deleteEntry()">Eliminar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--Modal of new Delete (Borrar fila)-->
+  <div class="modal fade" id="deleteEgressModal" tabindex="-1" role="dialog"  aria-hidden="true" >
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+         <h5 class="modal-title" >Eliminar Egreso</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">Estas seguro que desea eliminar el egreso?</div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+          <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="deleteEgress()">Eliminar</button>
         </div>
       </div>
     </div>
