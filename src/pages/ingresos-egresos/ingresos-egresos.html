@@ -1,178 +1,152 @@
-<!--
-  Generated template for the IngresosEgresosPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
   <ion-navbar>
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>ingresos-egresos</ion-title>
+    <ion-title>Ingresos-egresos</ion-title>
   </ion-navbar>
 </ion-header>
 
 
 <ion-content padding>
-<br>
-<h1>Mes</h1>
-<br>
-<br>
+  <img alt="logo" style="width: 122px; height: 92px;" src="./assets/imgs/logo.png">
+  <br>
+  <h1>{{ month }}</h1>
+  <br>
+  <table style = "width: 25%; display: inline-table;">
+    <tr>
+      <td><strong>Saldo inicial de {{ month }}</strong></td>
+      <td>$10000</td>
+    </tr>
+    <tr>
+      <td><strong>Total de Ingresos</strong></td>
+      <td>${{ incomeTotal }}</td>
+    </tr>
+    <tr>
+      <td><strong>Total de egresos</strong></td>
+      <td>${{ expensesTotal }}</td>
+    </tr>
+    <tr>
+      <td><strong>Saldo del mes</strong></td>
+      <td>${{ (10000 + incomeTotal) - expensesTotal }}</td>
+    </tr>
 
-<table>
-	<tr id="headerTable">
-		<th colspan="100%">Ingresos</th>
-	</tr>
-	<tr>
-		<th>Fecha</th>
-		<th>Descripcción</th>
-		<th>Recibo</th>
-		<th>Total</th>
-		<th>Rubro</th>
-		<th>Box</th>
-		<th colspan="3">Botones</th>
-	</tr>
-	<tr>
-		<td>01/18/2018</td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td><button color = "update" ion-button icon-left item-left data-target="#updateEntryModal" data-toggle="modal"><ion-icon ios="ios-create" md="md-create"></ion-icon>Editar</button></td>
-      <td><button color = "retrieve" ion-button icon-left item-left><ion-icon ios="ios-clipboard" md="md-clipboard"></ion-icon>Detalles</button></td>
-      <td><button  color = "danger" ion-button icon-left item-left><ion-icon ios="ios-trash" md="md-trash"></ion-icon>Eliminar</button></td>
-	</tr>	
-</table>
+  </table>
+  <br>
+  <br>
 
-<h4>Total:</h4>
+  <!--TABLA INGRESOS-->
+  <table>
+  	<tr id="headerTable">
+  		<th colspan="100%">Ingresos</th>
+  	</tr>
+  	<tr>
+  		<th>Fecha</th>
+  		<th>Descripcción</th>
+  		<th>Recibo</th>
+  		<th>Total</th>
+  		<th>Rubro</th>
+  		<th>Box</th>
+  		<th>Botones</th>
+  	</tr>
+  	<tr *ngFor="let entry of income | async">
+  		<td>{{ entry.date }}</td>
+  		<td>{{ entry.description }}</td>
+  		<td>{{ entry.whoGet }}</td>
+  		<td>{{ entry.total}}</td>
+  		<td>{{ entry.type }}</td>
+  		<td>{{ entry.box.id }}</td>
+  		<td>
+        <button ion-button icon-only clear color="update" (click)="initModalIncome(0, entry)">
+          <ion-icon ios="ios-create" md="md-create"></ion-icon>
+        </button>
+        <button ion-button icon-only clear color="danger" data-target="#deleteIncomeModal"
+                data-toggle="modal" (click)="entryToDelete = entry">
+          <ion-icon ios="ios-trash" md="md-trash"></ion-icon>
+        </button>
+      </td>
+  	</tr>
+  </table>
 
-<ion-buttons end>
-    <button color = "create" ion-button icon-right item-right data-toggle="modal" data-target="#newEntryModal">
+  <ion-buttons end>
+    <button color="create" ion-button icon-right (click)="initModalIncome(1)">
       Nueva Fila<ion-icon ios="ios-add-circle" md="md-add-circle"></ion-icon>
     </button>
   </ion-buttons>
-<br>
-<br>
+  <br>
+  <br>
+  <!--TABLA EGRESOS-->
+  <table>
+  	<tr id="headerTable">
+  		<th colspan="100%">Egresos</th>
+  	</tr>
+  	<tr>
+  		<th>Fecha</th>
+  		<th>Descripcción</th>
+  		<th>Proveedor</th>
+  		<th>Total</th>
+  		<th>Rubro</th>
+  		<th>Botones</th>
+  	</tr>
+  	<tr *ngFor="let egress of expenses | async">
+  		<td>{{ egress.date }}</td>
+  		<td>{{ egress.description }}</td>
+  		<td>{{ egress.provider }}</td>
+  		<td>{{ egress.amount }}</td>
+  		<td>{{ egress.item }}</td>
+  		<td>
+        <button ion-button icon-only clear color="update" (click)="initModalExpenses(0, egress)">
+          <ion-icon ios="ios-create" md="md-create"></ion-icon>
+        </button>
+        <button ion-button icon-only clear color="danger" data-target="#deleteEgressModal"
+                data-toggle="modal" (click)="egressToDelete = egress">
+          <ion-icon ios="ios-trash" md="md-trash"></ion-icon>
+        </button>
+      </td>
+  	</tr>
+  </table>
 
-
-
-
-<table>
-	<tr id="headerTable">
-		<th colspan="100%">Egresos</th>
-	</tr>
-	<tr>
-		<th>Fecha</th>
-		<th>Descripcción</th>
-		<th>Proveedor</th>
-		<th>Total</th>
-		<th>Rubro</th>
-		<th colspan="3">Botones</th>
-	</tr>
-	<tr>
-		<td>01/18/2018</td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td><button color = "update" ion-button icon-left item-left data-target="#updateEntryModal" data-toggle="modal"><ion-icon ios="ios-create" md="md-create"></ion-icon>Editar</button></td>
-      <td><button color = "retrieve" ion-button icon-left item-left><ion-icon ios="ios-clipboard" md="md-clipboard"></ion-icon>Detalles</button></td>
-      <td><button  color = "danger" ion-button icon-left item-left><ion-icon ios="ios-trash" md="md-trash"></ion-icon>Eliminar</button></td>
-	</tr>	
-</table>
-
-<h4>Total:</h4>
-
-<ion-buttons end>
-    <button color = "create" ion-button icon-right item-right data-toggle="modal" data-target="#newEntryModal">
+  <ion-buttons end>
+    <button color="create" ion-button icon-right (click)="initModalExpenses(1)">
       Nueva Fila<ion-icon ios="ios-add-circle" md="md-add-circle"></ion-icon>
     </button>
   </ion-buttons>
 
-<!--Modal of new Entry(editar)-->
-  <div class="modal fade" id="updateEntryModal" tabindex="-1" role="dialog"  aria-hidden="true" >
-   <div class="modal-dialog modal-dialog-centered" role="document">
+  <!--Modal of new Delete (Borrar fila)-->
+  <div class="modal fade" id="deleteIncomeModal" tabindex="-1" role="dialog"  aria-hidden="true" >
+    <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title">editar Ingreso servicio</h5>
+         <h5 class="modal-title" >Eliminar Ingreso</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <div class="modal-body">
-        </div>
+        <div class="modal-body">Estas seguro que desea eliminar el ingreso?</div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+          <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="deleteEntry()">Eliminar</button>
         </div>
       </div>
     </div>
   </div>
-<!--Modal of new END-->
 
-
-<!--Modal of new Entry (NUEVA FILA)-->
-  <div class="modal fade" id="newEntryModal" tabindex="-1" role="dialog"  aria-hidden="true" >
-   <div class="modal-dialog modal-dialog-centered" role="document">
+  <!--Modal of new Delete (Borrar fila)-->
+  <div class="modal fade" id="deleteEgressModal" tabindex="-1" role="dialog"  aria-hidden="true" >
+    <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" >Nuevo Ingreso</h5>
+         <h5 class="modal-title" >Eliminar Egreso</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <div class="modal-body">
-          <form>
-            <div class="input-group mb-3">
-              <label for = "recipient-name" class="col-form-label" text-align="center">Fecha</label>
-              <div class="col">
-                <input type="text" class="form-control" placeholder="00/00/00000">
-              </div>
-            </div>
-            <div class="input-group mb-3">
-              <label for = "recipient-name" class="col-form-label" text-align="center">Descripción</label>
-              <div class="col">
-                <input type="text" class="form-control" placeholder="Texto">
-              </div>
-            </div>
-
-            <div class="input-group mb-3">
-              <label for = "recipient-name" class="col-form-label" text-align="center">Recibo</label>
-              <div class="col">
-                <input type="text" class="form-control" placeholder="Nombre">
-              </div>
-            </div>
-
-
-            <div class="input-group mb-3">
-              <label for = "recipient-name" class="col-form-label" text-align="center">Total</label>
-              <div class="col">
-                <input type="text" class="form-control" placeholder="Cantidad">
-              </div>
-            </div>
-            <div class="input-group mb-3">
-              <label for = "recipient-name" class="col-form-label" text-align="center">Rubro</label>
-              <div class="col">
-                <input type="text" class="form-control" placeholder="Chose">
-              </div>
-            </div>
-            <div class="input-group mb-3">
-              <label for = "recipient-name" class="col-form-label" text-align="center">Box</label>
-              <div class="col">
-                <input type="text" class="form-control" placeholder="Numero de box (chose)">
-              </div>
-            </div>
-
-          </form>
-        </div>
+        <div class="modal-body">Estas seguro que desea eliminar el egreso?</div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-          <button type="button" class="btn btn-primary">Guardar cambios</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+          <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="deleteEgress()">Eliminar</button>
         </div>
       </div>
     </div>
   </div>
-<!--Modal of new END-->
-
 </ion-content>
