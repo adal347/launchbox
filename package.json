@@ -46,6 +46,8 @@
     "ionic": "3.20.0",
     "typescript": "2.4.2"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "@ionic/cli-plugin-proxy": "1.5.8"
+  },
   "description": "An Ionic project"
 }
