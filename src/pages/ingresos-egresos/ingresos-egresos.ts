@@ -52,8 +52,8 @@ export class IngresosEgresosPage {
   }
 
   totalIncome() {
-    this.incomeTotal = 0;
     this.income.forEach((arrayIncome) => {
+      this.incomeTotal = 0;
       arrayIncome.forEach((entry) => {
         if (entry.total) {
          this.incomeTotal += Number(entry.total);
