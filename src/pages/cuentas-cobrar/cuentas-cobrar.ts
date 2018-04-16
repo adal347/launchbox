@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
 import { CuentasCobrarProvider } from '../../providers/cuentas_cobrar';
 import { Observable } from 'rxjs/Observable';
 
@@ -29,9 +29,11 @@ export class CuentasCobrarPage {
   activeBoxes: number = 0;
   takenBoxes: number = 0;
   freeBoxes: number = 0;
+  title: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
-              public cuentasCobrarProvider: CuentasCobrarProvider) {
+              public cuentasCobrarProvider: CuentasCobrarProvider,
+              public modalCtrl : ModalController) {
     this.boxes = this.cuentasCobrarProvider.getBoxes();
   	this.statusBoxes = this.cuentasCobrarProvider.getBoxStatus();
   	this.typeBoxes = this.cuentasCobrarProvider.getTypeBox();
@@ -46,8 +48,16 @@ export class CuentasCobrarPage {
     this.numFreeBoxes();
   }
 
-  createNewEntry() {
-    this.cuentasCobrarProvider.createNewEntry(this.service);
+  initModal(type, service) {
+  	if (type == 1) {
+      this.service = {};
+  		this.title = 'Registrar nuevo servicio';
+  	} else if (type == 0) {
+      this.service = service;
+  		this.title = 'Actualizar servicio';
+  	}
+    let modalPage = this.modalCtrl.create('ModalAccountsPage', { title: this.title, service: this.service });
+    modalPage.present();
   }
 
   deleteEntry() {
@@ -63,7 +73,7 @@ export class CuentasCobrarPage {
     }
     this.cuentasCobrarProvider.updateAccountReceivable(accountReceivable);
   }
-  
+
   totalAmount(){
      this.accountsReceivable.forEach((arrayAccounts)=>{
        arrayAccounts.forEach((account)=>{

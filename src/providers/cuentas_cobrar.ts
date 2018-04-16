@@ -20,42 +20,29 @@ export class CuentasCobrarProvider {
 		this.accountsReceivableRef = this.db.list('accountsReceivable');
 	}
 
-  public createNewEntry(service) {
+  public createService(service) {
   	let box = {
   		id: service.box.id,
   		type: service.typeBox,
   		status: service.statusBox
   	};
-  	let tenant = {
-  		name: service.nameTenant || null,
-  		lastname: service.lastnameTenant || null
-  	}
 		let accountsReceivable = {
 			box: box,
 			paymentMade: false,
 			payDay: service.payDay || null,
 			type: service.typePay || null,
+			tenant: service.tenant || null,
 			amount: service.amount || null,
 			payDate: null
 		}
-		this.updateBox(service.box.key, box).then(response => {
-			if (!tenant.name) {
-				this.createNewAccountReceivable(null, accountsReceivable);
-			} else {
-				this.findTenant(tenant, accountsReceivable);
-			}
-		});
-
-  }
-
-  public createNewTentant(tenant, accountsReceivable) {
-  	this.tenantsRef.push(tenant);
-		//this.findTenant(tenant, accountsReceivable);
-  }
-
-  public createNewAccountReceivable(tenant, accountsReceivable) {
-		accountsReceivable['tenant'] = tenant;
-  	this.accountsReceivableRef.push(accountsReceivable);
+		let self = this;
+    let promise = new Promise((resolve, reject) => {
+			self.updateBox(service.box.key, box).then(response => {
+				self.accountsReceivableRef.push(accountsReceivable);
+			});
+      resolve();
+    });
+    return promise;
   }
 
 	public updateBox(key, box) {
@@ -66,30 +53,13 @@ export class CuentasCobrarProvider {
 	}
 
 	public updateAccountReceivable(accountReceivable) {
-		this.accountsReceivableRef.update(accountReceivable.key, accountReceivable);
-	}
 
-	public findTenant(tenant, accountsReceivable) {
-		let tenants = this.db.list('tenants', ref => ref.orderByChild('lastname').equalTo(tenant.lastname))
-									.snapshotChanges().map( data => {
-			return data.map(c => ({ key: c.payload.key, ...c.payload.val() }));
-		});
-		tenants.forEach(items => {
-			if (items.length === 0) {
-				this.createNewTentant(tenant, accountsReceivable);
-			} else {
-				let flag = false;
-				for (let i = 0; i < items.length; i++) {
-					if (items[i].name === tenant.name) {
-						flag = true;
-						this.createNewAccountReceivable(tenant, accountsReceivable);
-					}
-				}
-				if (!flag) {
-					this.createNewTentant(tenant, accountsReceivable);
-				}
-			}
-		});
+		let self = this;
+    let promise = new Promise((resolve, reject) => {
+			self.accountsReceivableRef.update(accountReceivable.key, accountReceivable);
+      resolve();
+    });
+    return promise;
 	}
 
 	public getBoxes() {

@@ -23,7 +23,7 @@
       <th>Día de pago</th>
       <th>Tipo de pago</th>
       <th>Pagado</th>
-      <th colspan="100%"></th>
+      <th>Opciones</th>
     </tr>
     <tr *ngFor="let accountReceivable of accountsReceivable | async">
       <td>{{ accountReceivable.box.id }}</td>
@@ -37,21 +37,21 @@
       <td><div *ngIf="accountReceivable.type">{{ accountReceivable.type.name }}</div></td>
       <td><ion-toggle [(ngModel)]="accountReceivable.paymentMade" (ionChange)="updatePay(accountReceivable)"></ion-toggle></td>
       <td>
-        <button ion-button icon-only color="update" data-toggle="modal" data-target="#updateEntryModal">
+        <button ion-button icon-only clear color="update">
           <ion-icon ios="ios-create" md="md-create"></ion-icon>
         </button>
+        <button ion-button icon-only clear color="danger" data-toggle="modal"
+                data-target="#deleteEntryModal" (click)="accountReceivableToDelete = accountReceivable">
+          <ion-icon ios="ios-trash" md="md-trash"></ion-icon>
+        </button>
       </td>
-      <td><button ion-button icon-only color="danger" data-toggle="modal"
-                  data-target="#deleteEntryModal" (click)="accountReceivableToDelete = accountReceivable">
-        <ion-icon ios="ios-trash" md="md-trash"></ion-icon>
-      </button></td>
     </tr>
   </table>
   <br/>
   <br/>
   <ion-buttons end>
-    <button color="create" ion-button icon-right item-right data-toggle="modal" data-target="#newEntryModal">
-      Nuevo<ion-icon ios="ios-add-circle" md="md-add-circle"></ion-icon>
+    <button color="create" ion-button icon-right (click)="initModal(1)">
+      Nuevo Registro<ion-icon ios="ios-add-circle" md="md-add-circle"></ion-icon>
     </button>
   </ion-buttons>
   <table style = "width: 25%; display: inline-table;">
@@ -71,7 +71,7 @@
       <td><strong>No. de boxes disponibles</strong></td>
       <td>{{freeBoxes}}</td>
     </tr>
-    
+
   </table>
   <table style="width: 25%; display: inline-table;">
     <tr>
@@ -80,65 +80,6 @@
     </tr>
   </table>
 
-  <!--MODALS FOR BUTTONS-->
-  <!--Modal of 'generic Modal'-->
-  <div class="modal fade" id="newEntryModal" tabindex="-1" role="dialog"  aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">Ingreso de cuenta nueva</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <ion-item>
-            <ion-label>No. de Box</ion-label>
-            <ion-select [(ngModel)]="service.box" interface="popover">
-              <ion-option *ngFor="let box of boxes | async" [value]="box">{{ box.id }}</ion-option>
-            </ion-select>
-          </ion-item>
-          <ion-item>
-            <ion-label>Estatus</ion-label>
-            <ion-select [(ngModel)]="service.statusBox" interface="popover">
-              <ion-option *ngFor="let status of statusBoxes | async" [value]="status">{{ status.name }}</ion-option>
-            </ion-select>
-          </ion-item>
-          <ion-item>
-            <ion-label>Tipo de box</ion-label>
-            <ion-select [(ngModel)]="service.typeBox" interface="popover">
-              <ion-option *ngFor="let type of typeBoxes | async" [value]="type">{{ type.name }}</ion-option>
-            </ion-select>
-          </ion-item>
-          <ion-item>
-            <ion-label>Inquilino</ion-label>
-            <ion-input type="text" placeholder="Nombre(s)" [(ngModel)]="service.nameTenant"></ion-input>
-            <ion-input type="text" placeholder="Apellidos" [(ngModel)]="service.lastnameTenant"></ion-input>
-          </ion-item>
-          <ion-item>
-            <ion-label>Monto</ion-label>
-            <ion-input type="text" [(ngModel)]="service.amount"></ion-input>
-          </ion-item>
-          <ion-item>
-            <ion-label>Día de pago</ion-label>
-            <ion-input type="text" [(ngModel)]="service.payDay"></ion-input>
-          </ion-item>
-          <ion-item>
-            <ion-label>Efectivo/Transferencia</ion-label>
-            <ion-select [(ngModel)]="service.typePay" interface="popover">
-              <ion-option *ngFor="let type of typePay | async" [value]="type">{{ type.name }}</ion-option>
-            </ion-select>
-          </ion-item>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-          <button type="button" class="btn btn-primary" (click)="createNewEntry()" data-dismiss="modal">Guardar</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!--'Generic Modal' END-->
   <!--Modal of 'Delete Entry'-->
   <div class="modal fade" id="deleteEntryModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog  modal-dialog-centered" role="document">
