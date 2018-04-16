@@ -1,20 +1,37 @@
+//rgb(199, 209, 96)
 page-cuentas-pagar {
+	.ion-content, .ion-header{
+		background-color: rgb(51,51,51);
+	}
+	.button-clear-md-update, .button-clear-md-danger, .button-md-create{
+		color: white;
+	}
+
 	table {
     font-family: arial, sans-serif;
     border-collapse: collapse;
     width: 100%;
+    
+	}
+	h1{
+		color: #ffffff;
 	}
 
 	td, th {
-    border: 1px solid #dddddd;
     text-align: left;
     padding: 8px;
 	}
 
-	tr:nth-child(even) {
-    background-color: #dddddd;
+	tr:nth-child(odd) {
+		color: #000000;
+    background-color: rgb(199, 209, 96);
+	}
+	tr:nth-child(even){
+		background-color: rgba(51,51,51,0.5);
+		color: #ffffff;
 	}
 	#headerTable th{
+		border: 2px solid #c7d160;
 		text-align: center;
 		background-color: #000000;
 		color: #ffffff;
