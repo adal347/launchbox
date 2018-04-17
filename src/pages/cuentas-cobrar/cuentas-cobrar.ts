@@ -76,6 +76,7 @@ export class CuentasCobrarPage {
 
   totalAmount(){
      this.accountsReceivable.forEach((arrayAccounts)=>{
+       this.amount = 0;
        arrayAccounts.forEach((account)=>{
 
          if(account.amount){
@@ -86,6 +87,7 @@ export class CuentasCobrarPage {
   }
   numActiveBoxes(){
     this.accountsReceivable.forEach((arrayAcounts)=>{
+      this.activeBoxes = 0;
       arrayAcounts.forEach((account)=>{
         if(account.box.status.name === "activo"){
           this.activeBoxes ++;
@@ -95,6 +97,7 @@ export class CuentasCobrarPage {
   }
   numTakenBoxes(){
     this.accountsReceivable.forEach((arrayAcounts)=>{
+      this.takenBoxes = 0;
       arrayAcounts.forEach((account)=>{
         if(account.box.status.name === "apartado"){
           this.takenBoxes ++;
@@ -104,6 +107,7 @@ export class CuentasCobrarPage {
   }
   numFreeBoxes(){
     this.accountsReceivable.forEach((arrayAcounts)=>{
+      this.freeBoxes = 0;
       arrayAcounts.forEach((account)=>{
         if(account.box.status.name === "inactivo"){
           this.freeBoxes ++;

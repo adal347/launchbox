@@ -37,7 +37,7 @@
       <td><div *ngIf="accountReceivable.type">{{ accountReceivable.type.name }}</div></td>
       <td><ion-toggle [(ngModel)]="accountReceivable.paymentMade" (ionChange)="updatePay(accountReceivable)"></ion-toggle></td>
       <td>
-        <button ion-button icon-only clear color="update">
+        <button ion-button icon-only clear color="update" (click)="initModal(0, accountReceivable)">
           <ion-icon ios="ios-create" md="md-create"></ion-icon>
         </button>
         <button ion-button icon-only clear color="danger" data-toggle="modal"
