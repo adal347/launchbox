@@ -11,7 +11,7 @@
   <img alt="logo" class="headerContents" src="./assets/imgs/logo.png">
   <h1 class="headerContents">Tabla principal del mes de {{ month }}</h1>
   <table>
-    <tr id="headerTable">
+    <tr class="headerTable">
       <th colspan="100%">Cuentas por Cobrar</th>
     </tr>
     <tr>
@@ -54,7 +54,7 @@
       Nuevo<ion-icon ios="ios-add-circle" md="md-add-circle"></ion-icon>
     </button>
   </ion-buttons>
-  <table style = "width: 25%; display: inline-table;">
+  <table class="shortTable">
     <tr>
       <td><strong>No. de boxes activos</strong></td>
       <td>{{activeBoxes}}</td>
@@ -73,7 +73,7 @@
     </tr>
     
   </table>
-  <table style="width: 25%; display: inline-table;">
+  <table class="shortTable">
     <tr>
       <td><strong>Total: </strong></td>
       <td> ${{amount}}</td>

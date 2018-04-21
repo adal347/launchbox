@@ -9,11 +9,9 @@
 
 
 <ion-content padding>
-  <img alt="logo" style="width: 122px; height: 92px;" src="./assets/imgs/logo.png">
-  <br>
-  <h1>{{ month }}</h1>
-  <br>
-  <table style = "width: 25%; display: inline-table;">
+  <img class="headerContents" alt="logo" src="./assets/imgs/logo.png">
+  <h1 class="headerContents">{{ month }}</h1>
+  <table class="shortTable floatRight">
     <tr>
       <td><strong>Saldo inicial de {{ month }}</strong></td>
       <td>$10000</td>
@@ -32,12 +30,14 @@
     </tr>
 
   </table>
-  <br>
-  <br>
-
+  <br/>
+  <br/>
+  <br/>
+  <br/>
+  <br/>
   <!--TABLA INGRESOS-->
   <table>
-  	<tr id="headerTable">
+  	<tr class="headerTable">
   		<th colspan="100%">Ingresos</th>
   	</tr>
   	<tr>
