@@ -29,6 +29,8 @@ export class CuentasCobrarPage {
   activeBoxes: number = 0;
   takenBoxes: number = 0;
   freeBoxes: number = 0;
+  coworkingBoxes: number = 0;
+  virtualBoxes: number = 0;
   title: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
