@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, MenuController } from 'ionic-angular';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { CuentasCobrarPage } from '../cuentas-cobrar/cuentas-cobrar';
 import { CommonsProvider } from '../../providers/commons';
@@ -23,10 +23,11 @@ export class LoginPage {
     @ViewChild('password') password;
 
   constructor(private fire: AngularFireAuth, public navCtrl: NavController,
-              public navParams: NavParams, private commons: CommonsProvider) {
+              public navParams: NavParams, private commons: CommonsProvider, private menuCtrl: MenuController) {
   }
 
   ionViewDidLoad() {
+    this.menuCtrl.swipeEnable(false);
     console.log('ionViewDidLoad LoginPage');
   }
 
