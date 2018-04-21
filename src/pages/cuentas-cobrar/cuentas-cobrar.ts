@@ -46,6 +46,8 @@ export class CuentasCobrarPage {
     this.numActiveBoxes();
     this.numTakenBoxes();
     this.numFreeBoxes();
+    this.numCowrokingBoxes();
+    this.numVirtualBoxes();
   }
 
   initModal(type, service) {
@@ -101,6 +103,26 @@ export class CuentasCobrarPage {
       arrayAcounts.forEach((account)=>{
         if(account.box.status.name === "apartado"){
           this.takenBoxes ++;
+        }
+      })
+    });
+  }
+  numCowrokingBoxes(){
+    this.accountsReceivable.forEach((arrayAcounts)=>{
+      this.coworkingBoxes = 0;
+      arrayAcounts.forEach((account)=>{
+        if(account.box.status.name === "coworking"){
+          this.coworkingBoxes++;
+        }
+      })
+    });
+  }
+  numVirtualBoxes(){
+    this.accountsReceivable.forEach((arrayAcounts)=>{
+      this.virtualBoxes = 0;
+      arrayAcounts.forEach((account)=>{
+        if(account.box.status.name === "virtual"){
+          this.virtualBoxes++;
         }
       })
     });
