@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
 import { CuentasCobrarProvider } from '../../providers/cuentas_cobrar';
 import { Observable } from 'rxjs/Observable';
 
@@ -29,9 +29,11 @@ export class CuentasCobrarPage {
   activeBoxes: number = 0;
   takenBoxes: number = 0;
   freeBoxes: number = 0;
+  title: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
-              public cuentasCobrarProvider: CuentasCobrarProvider) {
+              public cuentasCobrarProvider: CuentasCobrarProvider,
+              public modalCtrl : ModalController) {
     this.boxes = this.cuentasCobrarProvider.getBoxes();
   	this.statusBoxes = this.cuentasCobrarProvider.getBoxStatus();
   	this.typeBoxes = this.cuentasCobrarProvider.getTypeBox();
@@ -44,10 +46,20 @@ export class CuentasCobrarPage {
     this.numActiveBoxes();
     this.numTakenBoxes();
     this.numFreeBoxes();
+    this.numCowrokingBoxes();
+    this.numVirtualBoxes();
   }
 
-  createNewEntry() {
-    this.cuentasCobrarProvider.createNewEntry(this.service);
+  initModal(type, service) {
+  	if (type == 1) {
+      this.service = {};
+  		this.title = 'Registrar nuevo servicio';
+  	} else if (type == 0) {
+      this.service = service;
+  		this.title = 'Actualizar servicio';
+  	}
+    let modalPage = this.modalCtrl.create('ModalAccountsPage', { title: this.title, service: this.service });
+    modalPage.present();
   }
 
   deleteEntry() {
@@ -63,9 +75,10 @@ export class CuentasCobrarPage {
     }
     this.cuentasCobrarProvider.updateAccountReceivable(accountReceivable);
   }
-  
+
   totalAmount(){
      this.accountsReceivable.forEach((arrayAccounts)=>{
+       this.amount = 0;
        arrayAccounts.forEach((account)=>{
 
          if(account.amount){
@@ -76,6 +89,7 @@ export class CuentasCobrarPage {
   }
   numActiveBoxes(){
     this.accountsReceivable.forEach((arrayAcounts)=>{
+      this.activeBoxes = 0;
       arrayAcounts.forEach((account)=>{
         if(account.box.status.name === "activo"){
           this.activeBoxes ++;
@@ -85,6 +99,7 @@ export class CuentasCobrarPage {
   }
   numTakenBoxes(){
     this.accountsReceivable.forEach((arrayAcounts)=>{
+      this.takenBoxes = 0;
       arrayAcounts.forEach((account)=>{
         if(account.box.status.name === "apartado"){
           this.takenBoxes ++;
@@ -92,8 +107,29 @@ export class CuentasCobrarPage {
       })
     });
   }
+  numCowrokingBoxes(){
+    this.accountsReceivable.forEach((arrayAcounts)=>{
+      this.coworkingBoxes = 0;
+      arrayAcounts.forEach((account)=>{
+        if(account.box.status.name === "coworking"){
+          this.coworkingBoxes++;
+        }
+      })
+    });
+  }
+  numVirtualBoxes(){
+    this.accountsReceivable.forEach((arrayAcounts)=>{
+      this.virtualBoxes = 0;
+      arrayAcounts.forEach((account)=>{
+        if(account.box.status.name === "virtual"){
+          this.virtualBoxes++;
+        }
+      })
+    });
+  }
   numFreeBoxes(){
     this.accountsReceivable.forEach((arrayAcounts)=>{
+      this.freeBoxes = 0;
       arrayAcounts.forEach((account)=>{
         if(account.box.status.name === "inactivo"){
           this.freeBoxes ++;
