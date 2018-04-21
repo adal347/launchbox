@@ -8,8 +8,8 @@
 </ion-header>
 
 <ion-content padding class="ion-content">
-  <img alt="logo" style="width: 122px; height: 92px;" src="./assets/imgs/logo.png">
-  <h1>Tabla cuentas por pagar del mes de {{ month }}</h1>
+  <img alt="logo" class="headerContents" src="./assets/imgs/logo.png">
+  <h1 class="headerContents">Tabla cuentas por pagar del mes de {{ month }}</h1>
   <table>
   	<tr id="headerTable">
   		<th  id="header" colspan="100%">Cuentas por pagar</th>
@@ -44,8 +44,8 @@
   	</tr>
   </table>
   <ion-buttons end>
-    <button color="create" style="color: #000000" ion-button icon-right (click)="initModal(1)">
-      Nuevo Pago<ion-icon ios="ios-add-circle" md="md-add-circle"></ion-icon>
+    <button class="createButton" color="create" ion-button icon-right (click)="initModal(1)">
+      Nuevo Pago<ion-icon class="ion-icon" ios="ios-add-circle" md="md-add-circle"></ion-icon>
     </button>
   </ion-buttons>
   <table style="width: 25%; display: inline-table;">

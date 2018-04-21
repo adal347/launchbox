@@ -8,36 +8,36 @@
 <ion-content padding class="ion-content">
 	<ion-list class="ion-content">
           <ion-item class="ion-content">
-            <ion-label floating>Tipo de servicio</ion-label>
-            <ion-input type="name" [(ngModel)]="service.service" [disabled]="show"></ion-input>
+            <ion-label floating class="whiteText">Tipo de servicio</ion-label>
+            <ion-input type="name" class="whiteText" [(ngModel)]="service.service" [disabled]="show"></ion-input>
           </ion-item>
           <ion-item class="ion-content">
-            <ion-label floating>Proveedor</ion-label>
-            <ion-input type="name" [(ngModel)]="service.provider" [disabled]="show"></ion-input>
+            <ion-label floating class="whiteText">Proveedor</ion-label>
+            <ion-input type="name" class="whiteText" [(ngModel)]="service.provider" [disabled]="show"></ion-input>
           </ion-item>
           <ion-item class="ion-content">
-            <ion-label>Efectivo/Transferencia</ion-label>
+            <ion-label class="whiteText">Efectivo/Transferencia</ion-label>
             <ion-select [(ngModel)]="service.typePay" interface="popover">
               <ion-option *ngFor="let type of typePay | async" [value]="type">{{type.name}}</ion-option>
             </ion-select>
           </ion-item>
           <ion-item class="ion-content">
-            <ion-label floating>Monto</ion-label>
-            <ion-input type="number" [(ngModel)]="service.amount" [disabled]="show"></ion-input>
+            <ion-label floating class="whiteText">Monto</ion-label>
+            <ion-input type="number" class="whiteText" [(ngModel)]="service.amount" [disabled]="show"></ion-input>
           </ion-item>
           <ion-item class="ion-content">
-            <ion-label floating>Pagado</ion-label>
-            <ion-input type="number" [(ngModel)]="service.paid" [disabled]="show"></ion-input>
+            <ion-label floating class="whiteText">Pagado</ion-label>
+            <ion-input type="number" class="whiteText" [(ngModel)]="service.paid" [disabled]="show"></ion-input>
           </ion-item>
           <ion-item class="ion-content">
-            <ion-label >Fecha limite</ion-label>
-            <ion-input type="date" style="color: white;" [(ngModel)]="service.limitDate" [disabled]="show"></ion-input>
+            <ion-label class="whiteText">Fecha limite</ion-label>
+            <ion-input type="date" class="whiteText" [(ngModel)]="service.limitDate" [disabled]="show"></ion-input>
           </ion-item>
     </ion-list>
 
   <ion-buttons end>
-    <button ion-button color="create" style="color: black;" (click)="dismiss()">Cancelar</button>
-    <button ion-button color="create" style="color: black;" (click)="submitService()">Guardar</button>
+    <button class="blackText" ion-button color="create" (click)="dismiss()">Cancelar</button>
+    <button class="blackText" ion-button color="create" (click)="submitService()">Guardar</button>
   </ion-buttons>
 
 </ion-content>
