@@ -1,20 +1,58 @@
 page-cuentas-pagar {
+
+	// COLOR PALETTE
+	.ion-content, .ion-header{
+		background-color: rgb(255,255,255);
+	}
+	.button-clear-md-update, .button-clear-md-danger, .button-md-create{
+		color: black;
+	}
+	tr:nth-child(odd){
+		color: #000000;
+    background-color: rgb(199, 209, 96);
+	}
+	tr:nth-child(even){
+		background-color: rgb(249,249,249);
+		color: #000000;
+	}
+	tr:hover:nth-child(odd){
+		background-color: rgba(199,209,96,0.7);
+		color: black;
+	}
+	tr:hover:nth-child(even){
+		background-color: rgb(255,255,255);
+		color: black;
+	}
+	.button-md-create:hover:not(.disable-hover){
+		background-color: rgba(199, 209, 96, 0.5);
+	}
+	.headerContents{
+		display: inline-block;
+	}
+
+	///////////////////////////////////////
+
+
+
+
 	table {
     font-family: arial, sans-serif;
     border-collapse: collapse;
     width: 100%;
+    
+	}
+	h1{
+		color: #000000;
 	}
 
 	td, th {
-    border: 1px solid #dddddd;
     text-align: left;
     padding: 8px;
 	}
 
-	tr:nth-child(even) {
-    background-color: #dddddd;
-	}
+	
 	#headerTable th{
+		border: 2px solid #c7d160;
 		text-align: center;
 		background-color: #000000;
 		color: #ffffff;
@@ -51,8 +89,7 @@ page-cuentas-pagar {
 		padding-left: 30px;
 	}
 	img{
-		width: 20px;
-		float: left;
+		width: 200px;
 	}
 
 	.fade{

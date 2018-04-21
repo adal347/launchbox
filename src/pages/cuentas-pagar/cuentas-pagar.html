@@ -1,5 +1,5 @@
-<ion-header>
-  <ion-navbar>
+<ion-header >
+  <ion-navbar class="ion-header">
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
@@ -7,12 +7,12 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  <img alt="logo" style="width: 122px; height: 92px;" src="./assets/imgs/logo.png">
-  <h1>Tabla cuentas por pagar del mes de {{ month }}</h1>
+<ion-content padding class="ion-content">
+  <img alt="logo" class="headerContents" src="./assets/imgs/logo.png">
+  <h1 class="headerContents">Tabla cuentas por pagar del mes de {{ month }}</h1>
   <table>
   	<tr id="headerTable">
-  		<th colspan="100%">Cuentas por pagar</th>
+  		<th  id="header" colspan="100%">Cuentas por pagar</th>
   	</tr>
   	<tr>
   		<th>Servicio</th>
@@ -44,8 +44,8 @@
   	</tr>
   </table>
   <ion-buttons end>
-    <button color="create" ion-button icon-right (click)="initModal(1)">
-      Nuevo Pago<ion-icon ios="ios-add-circle" md="md-add-circle"></ion-icon>
+    <button class="createButton" color="create" ion-button icon-right (click)="initModal(1)">
+      Nuevo Pago<ion-icon class="ion-icon" ios="ios-add-circle" md="md-add-circle"></ion-icon>
     </button>
   </ion-buttons>
   <table style="width: 25%; display: inline-table;">
