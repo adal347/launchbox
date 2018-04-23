@@ -13,32 +13,32 @@
 </ion-header>
 
 
-<ion-content padding>
+<ion-content padding class="ion-content">
   <ion-list>
     <ion-item>
-      <ion-label>Fecha</ion-label>
-      <ion-input type="date" [(ngModel)]="egress.date"></ion-input>
+      <ion-label class="blackText">Fecha</ion-label>
+      <ion-input type="date"  [(ngModel)]="egress.date"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-label>Descripción</ion-label>
+      <ion-label floating class="blackText">Descripción</ion-label>
       <ion-input type="text" [(ngModel)]="egress.description"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-label>Proveedor</ion-label>
+      <ion-label floating class="blackText">Proveedor</ion-label>
       <ion-input type="name" [(ngModel)]="egress.provider"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-label>Total</ion-label>
+      <ion-label floating class="blackText">Total</ion-label>
       <ion-input type="number" [(ngModel)]="egress.amount"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-label>Rubro</ion-label>
+      <ion-label floating class="blackText">Rubro</ion-label>
       <ion-input type="text" [(ngModel)]="egress.item"></ion-input>
     </ion-item>
   </ion-list>
 
   <ion-buttons end>
-    <button ion-button (click)="dismiss()">Cancelar</button>
-    <button ion-button color="secondary" (click)="submitEgress()">Guardar</button>
+    <button class="blackText" ion-button color="create" (click)="dismiss()">Cancelar</button>
+    <button class="blackText" ion-button color="create" (click)="submitEgress()">Guardar</button>
   </ion-buttons>
 </ion-content>

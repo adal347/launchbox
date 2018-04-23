@@ -9,29 +9,29 @@
 	<ion-list class="ion-content">
           <ion-item class="ion-content">
             <ion-label floating class="blackText">Tipo de servicio</ion-label>
-            <ion-input type="name" class="blackText" [(ngModel)]="service.service" [disabled]="show"></ion-input>
+            <ion-input type="name"[(ngModel)]="service.service" [disabled]="show"></ion-input>
           </ion-item>
           <ion-item class="ion-content">
             <ion-label floating class="blackText">Proveedor</ion-label>
-            <ion-input type="name" class="blackText" [(ngModel)]="service.provider" [disabled]="show"></ion-input>
+            <ion-input type="name"  [(ngModel)]="service.provider" [disabled]="show"></ion-input>
           </ion-item>
           <ion-item class="ion-content">
-            <ion-label class="blackText">Efectivo/Transferencia</ion-label>
-            <ion-select [(ngModel)]="service.typePay" interface="popover">
+            <ion-label floating class="blackText">Efectivo/Transferencia</ion-label>
+            <ion-select class="blackText" [(ngModel)]="service.typePay" okText="Ok" cancelText="Cancelar">
               <ion-option *ngFor="let type of typePay | async" [value]="type">{{type.name}}</ion-option>
             </ion-select>
           </ion-item>
           <ion-item class="ion-content">
             <ion-label floating class="blackText">Monto</ion-label>
-            <ion-input type="number" class="blackText" [(ngModel)]="service.amount" [disabled]="show"></ion-input>
+            <ion-input type="number"  [(ngModel)]="service.amount" [disabled]="show"></ion-input>
           </ion-item>
           <ion-item class="ion-content">
             <ion-label floating class="blackText">Pagado</ion-label>
-            <ion-input type="number" class="blackText" [(ngModel)]="service.paid" [disabled]="show"></ion-input>
+            <ion-input type="number"  [(ngModel)]="service.paid" [disabled]="show"></ion-input>
           </ion-item>
           <ion-item class="ion-content">
             <ion-label class="blackText">Fecha limite</ion-label>
-            <ion-input type="date" class="blackText" [(ngModel)]="service.limitDate" [disabled]="show"></ion-input>
+            <ion-input type="date"  [(ngModel)]="service.limitDate" [disabled]="show"></ion-input>
           </ion-item>
     </ion-list>
 

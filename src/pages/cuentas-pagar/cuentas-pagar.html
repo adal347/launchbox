@@ -33,10 +33,10 @@
   		<td>$ {{ bill.toPay }}</td>
   		<td>{{ bill.limitDate }}</td>
   		<td>
-        <button ion-button icon-only clear color="update" (click)="initModal(0, bill)">
+        <button title="Editar" ion-button icon-only clear color="update" (click)="initModal(0, bill)">
           <ion-icon ios="ios-create" md="md-create"></ion-icon>
         </button>
-        <button ion-button icon-only clear color="danger" data-target="#newDeleteModal"
+        <button title="Eliminar" ion-button icon-only clear color="danger" data-target="#newDeleteModal"
                 data-toggle="modal" (click)="billToDelete = bill">
           <ion-icon ios="ios-trash" md="md-trash"></ion-icon>
         </button>

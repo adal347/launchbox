@@ -30,10 +30,10 @@
   		<td>{{ user.permission.name }}</td>
   		<td>{{ user.email }}</td>
   		<td>
-        <button ion-button icon-only clear color="update" (click)="initModal(0, user)">
+        <button title="Editar" ion-button icon-only clear color="update" (click)="initModal(0, user)">
           <ion-icon ios="ios-create" md="md-create"></ion-icon>
         </button>
-        <button ion-button icon-only clear color="danger" data-target="#deleteUserModal"
+        <button  title="Eliminar" ion-button icon-only clear color="danger" data-target="#deleteUserModal"
                 data-toggle="modal" (click)="userToDelete = user">
           <ion-icon ios="ios-trash" md="md-trash"></ion-icon>
         </button>
@@ -57,8 +57,8 @@
         </div>
         <div class="modal-body">Estas seguro que desea eliminar el usuario?</div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-          <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="deleteUser()">Eliminar</button>
+          <button class="blackText" data-dismiss="modal" ion-button color="create">Cancelar</button>
+          <button class="blackText" data-dismiss="modal" ion-button color="create" (click)="deleteUser()">Eliminar</button>
         </div>
       </div>
     </div>

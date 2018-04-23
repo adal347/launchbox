@@ -23,7 +23,7 @@
   	</tr>
   	<tr>
       <th>Nombre</th>
-      <th>Telefono</th>
+      <th>Teléfono</th>
       <th>Mail</th>
       <th>Fecha de ingreso</th>
       <th>Fecha de salida</th>
@@ -36,10 +36,10 @@
       <td>{{ tenant.startContract }}</td>
       <td>{{ tenant.endContract }}</td>
   		<td>
-        <button ion-button icon-only clear color="update" (click)="initModal(0, tenant)">
+        <button title="Editar" ion-button icon-only clear color="update" (click)="initModal(0, tenant)">
           <ion-icon ios="ios-create" md="md-create"></ion-icon>
         </button>
-        <button ion-button icon-only clear color="danger" data-target="#deleteModal"
+        <button title="Eliminar" ion-button icon-only clear color="danger" data-target="#deleteModal"
                 data-toggle="modal" (click)="tenantToDelete = tenant">
           <ion-icon ios="ios-trash" md="md-trash"></ion-icon>
         </button>
@@ -63,8 +63,8 @@
         </div>
         <div class="modal-body">Estas seguro que desea eliminar el inquilino?</div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-          <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="deleteTenant()">Eliminar</button>
+          <button class="blackText" data-dismiss="modal" ion-button color="create">Cancelar</button>
+          <button class="blackText" data-dismiss="modal" ion-button color="create" (click)="deleteTenant()">Eliminar</button>
         </div>
       </div>
     </div>
