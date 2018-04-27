@@ -22,16 +22,6 @@
 
 
 /////// COLOR PALETTE ////////////////////////////
-.item-md{
-	background-color: rgba(51,51,51,0.8);
-	color: white;
-
-}
-.item-md:hover{
-	background-color: rgba(51,51,51,0.5);
-	color: white;
-
-}
 .button-clear-md-update, .button-clear-md-danger, .button-md-create{
 		color: black;
 }
@@ -127,7 +117,7 @@ td, th {
 	display: inline-block;
 }
 .shortTable{
-	width: 25%; 
+	width: 25%;
 	display: inline-table;
 	border: 2px solid black;
 }
