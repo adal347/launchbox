@@ -8,42 +8,42 @@
 </ion-header>
 
 
-<ion-content padding>
+<ion-content padding class="ion-content">
   <ion-list>
 
     <ion-item>
-      <ion-label floating>Nombre Completo</ion-label>
+      <ion-label floating class="blackText">Nombre Completo</ion-label>
       <ion-input type="text" [(ngModel)]="tenant.name"></ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-label floating>Teléfono</ion-label>
+      <ion-label floating class="blackText">Teléfono</ion-label>
       <ion-input [(ngModel)]="tenant.phone"></ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-label floating>Correo</ion-label>
+      <ion-label floating class="blackText">Correo</ion-label>
       <ion-input type="text" [(ngModel)]="tenant.email"></ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-label>Fecha de ingreso</ion-label>
+      <ion-label class="blackText">Fecha de ingreso</ion-label>
       <ion-input type="date" [(ngModel)]="tenant.startContract"></ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-label>Fecha de salida</ion-label>
+      <ion-label class="blackText">Fecha de salida</ion-label>
       <ion-input type="date" [(ngModel)]="tenant.endContract"></ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-label floating>Comentarios</ion-label>
+      <ion-label floating class="blackText">Comentarios</ion-label>
       <ion-textarea type="textarea" [(ngModel)]="tenant.comments"></ion-textarea>
     </ion-item>
   </ion-list>
 
   <ion-buttons end>
-    <button ion-button (click)="dismiss()">Cancelar</button>
-    <button ion-button color="secondary" (click)="submitTenant()">Guardar</button>
+    <button class="blackText" ion-button color="create" (click)="dismiss()">Cancelar</button>
+    <button class="blackText" ion-button color="create" (click)="submitTenant()">Guardar</button>
   </ion-buttons>
 </ion-content>

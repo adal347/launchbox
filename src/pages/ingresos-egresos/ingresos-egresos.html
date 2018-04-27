@@ -9,11 +9,9 @@
 
 
 <ion-content padding>
-  <img alt="logo" style="width: 122px; height: 92px;" src="./assets/imgs/logo.png">
-  <br>
-  <h1>{{ month }}</h1>
-  <br>
-  <table style = "width: 25%; display: inline-table;">
+  <img class="headerContents" alt="logo" src="./assets/imgs/logo.png">
+  <h1 class="headerContents">{{ month }}</h1>
+  <table class="shortTable floatRight">
     <tr>
       <td><strong>Saldo inicial de {{ month }}</strong></td>
       <td>$10000</td>
@@ -32,12 +30,14 @@
     </tr>
 
   </table>
-  <br>
-  <br>
-
+  <br/>
+  <br/>
+  <br/>
+  <br/>
+  <br/>
   <!--TABLA INGRESOS-->
   <table>
-  	<tr id="headerTable">
+  	<tr class="headerTable">
   		<th colspan="100%">Ingresos</th>
   	</tr>
   	<tr>
@@ -57,10 +57,10 @@
   		<td>{{ entry.type }}</td>
   		<td>{{ entry.box.id }}</td>
   		<td>
-        <button ion-button icon-only clear color="update" (click)="initModalIncome(0, entry)">
+        <button title="Editar" ion-button icon-only clear color="update" (click)="initModalIncome(0, entry)">
           <ion-icon ios="ios-create" md="md-create"></ion-icon>
         </button>
-        <button ion-button icon-only clear color="danger" data-target="#deleteIncomeModal"
+        <button title="Eliminar" ion-button icon-only clear color="danger" data-target="#deleteIncomeModal"
                 data-toggle="modal" (click)="entryToDelete = entry">
           <ion-icon ios="ios-trash" md="md-trash"></ion-icon>
         </button>
@@ -77,7 +77,7 @@
   <br>
   <!--TABLA EGRESOS-->
   <table>
-  	<tr id="headerTable">
+  	<tr class="headerTable">
   		<th colspan="100%">Egresos</th>
   	</tr>
   	<tr>
@@ -95,10 +95,10 @@
   		<td>{{ egress.amount }}</td>
   		<td>{{ egress.item }}</td>
   		<td>
-        <button ion-button icon-only clear color="update" (click)="initModalExpenses(0, egress)">
+        <button title="Editar" ion-button icon-only clear color="update" (click)="initModalExpenses(0, egress)">
           <ion-icon ios="ios-create" md="md-create"></ion-icon>
         </button>
-        <button ion-button icon-only clear color="danger" data-target="#deleteEgressModal"
+        <button title="Eliminar" ion-button icon-only clear color="danger" data-target="#deleteEgressModal"
                 data-toggle="modal" (click)="egressToDelete = egress">
           <ion-icon ios="ios-trash" md="md-trash"></ion-icon>
         </button>
@@ -124,8 +124,8 @@
         </div>
         <div class="modal-body">Estas seguro que desea eliminar el ingreso?</div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-          <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="deleteEntry()">Eliminar</button>
+          <button class="blackText" data-dismiss="modal" ion-button color="create">Cancelar</button>
+          <button class="blackText" data-dismiss="modal" ion-button color="create" (click)="deleteEntry()">Eliminar</button>
         </div>
       </div>
     </div>
@@ -143,8 +143,8 @@
         </div>
         <div class="modal-body">Estas seguro que desea eliminar el egreso?</div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-          <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="deleteEgress()">Eliminar</button>
+          <button class="blackText" data-dismiss="modal" ion-button color="create">Cancelar</button>
+          <button class="blackText" data-dismiss="modal" ion-button color="create" (click)="deleteEgress()">Eliminar</button>
         </div>
       </div>
     </div>

@@ -11,7 +11,7 @@
   <img alt="logo" class="headerContents" src="./assets/imgs/logo.png">
   <h1 class="headerContents">Tabla principal del mes de {{ month }}</h1>
   <table>
-    <tr id="headerTable">
+    <tr class="headerTable">
       <th colspan="100%">Cuentas por Cobrar</th>
     </tr>
     <tr>
@@ -37,10 +37,10 @@
       <td><div *ngIf="accountReceivable.type">{{ accountReceivable.type.name }}</div></td>
       <td><ion-toggle [(ngModel)]="accountReceivable.paymentMade" (ionChange)="updatePay(accountReceivable)"></ion-toggle></td>
       <td>
-        <button ion-button icon-only clear color="update" (click)="initModal(0, accountReceivable)">
+        <button title="Editar" ion-button icon-only clear color="update" (click)="initModal(0, accountReceivable)">
           <ion-icon ios="ios-create" md="md-create"></ion-icon>
         </button>
-        <button ion-button icon-only clear color="danger" data-toggle="modal"
+        <button title="Eliminar" ion-button icon-only clear color="danger" data-toggle="modal"
                 data-target="#deleteEntryModal" (click)="accountReceivableToDelete = accountReceivable">
           <ion-icon ios="ios-trash" md="md-trash"></ion-icon>
         </button>
@@ -54,7 +54,7 @@
       Nuevo Registro<ion-icon ios="ios-add-circle" md="md-add-circle"></ion-icon>
     </button>
   </ion-buttons>
-  <table style = "width: 25%; display: inline-table;">
+  <table class="shortTable">
     <tr>
       <td><strong>No. de boxes activos</strong></td>
       <td>{{activeBoxes}}</td>
@@ -81,7 +81,7 @@
     </tr>
 
   </table>
-  <table style="width: 25%; display: inline-table;">
+  <table class="shortTable">
     <tr>
       <td><strong>Total: </strong></td>
       <td> ${{amount}}</td>

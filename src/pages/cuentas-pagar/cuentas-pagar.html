@@ -1,5 +1,5 @@
 <ion-header >
-  <ion-navbar class="ion-header">
+  <ion-navbar>
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
@@ -7,11 +7,11 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding class="ion-content">
+<ion-content padding>
   <img alt="logo" class="headerContents" src="./assets/imgs/logo.png">
   <h1 class="headerContents">Tabla cuentas por pagar del mes de {{ month }}</h1>
   <table>
-  	<tr id="headerTable">
+  	<tr class="headerTable">
   		<th  id="header" colspan="100%">Cuentas por pagar</th>
   	</tr>
   	<tr>
@@ -33,10 +33,10 @@
   		<td>$ {{ bill.toPay }}</td>
   		<td>{{ bill.limitDate }}</td>
   		<td>
-        <button ion-button icon-only clear color="update" (click)="initModal(0, bill)">
+        <button title="Editar" ion-button icon-only clear color="update" (click)="initModal(0, bill)">
           <ion-icon ios="ios-create" md="md-create"></ion-icon>
         </button>
-        <button ion-button icon-only clear color="danger" data-target="#newDeleteModal"
+        <button title="Eliminar" ion-button icon-only clear color="danger" data-target="#newDeleteModal"
                 data-toggle="modal" (click)="billToDelete = bill">
           <ion-icon ios="ios-trash" md="md-trash"></ion-icon>
         </button>
@@ -48,7 +48,7 @@
       Nuevo Pago<ion-icon class="ion-icon" ios="ios-add-circle" md="md-add-circle"></ion-icon>
     </button>
   </ion-buttons>
-  <table style="width: 25%; display: inline-table;">
+  <table class="shortTable">
     <tr>
       <td><strong>Monto Total: </strong></td>
       <td> $ {{ amountTotal }}</td>
@@ -75,8 +75,8 @@
         </div>
         <div class="modal-body">Estas seguro que desea eliminar el servicio?</div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-          <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="deleteEntry()">Eliminar</button>
+          <button class="blackText" data-dismiss="modal" ion-button color="create">Cancelar</button>
+          <button class="blackText" data-dismiss="modal" ion-button color="create" (click)="deleteEntry()">Eliminar</button>
         </div>
       </div>
     </div>

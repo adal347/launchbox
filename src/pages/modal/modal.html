@@ -13,38 +13,38 @@
 </ion-header>
 
 
-<ion-content padding>
+<ion-content padding class="ion-content">
   <ion-list>
     <ion-item>
-      <ion-label floating>Nombre</ion-label>
+      <ion-label floating class="blackText">Nombre</ion-label>
       <ion-input type="text" [(ngModel)]="user.name"></ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-label floating>Apellidos</ion-label>
+      <ion-label floating class="blackText">Apellidos</ion-label>
       <ion-input [(ngModel)]="user.lastname"></ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-label floating>Permisos</ion-label>
-      <ion-select [(ngModel)]="user.permission" interface="popover">
+      <ion-label floating class="blackText">Permisos</ion-label>
+      <ion-select [(ngModel)]="user.permission" okText="OK" cancelText="Cancelar">
         <ion-option *ngFor="let permission of permissions | async" [value]="permission">{{ permission.name }}</ion-option>
       </ion-select>
     </ion-item>
 
     <ion-item>
-      <ion-label floating>Correo</ion-label>
+      <ion-label floating class="blackText">Correo</ion-label>
       <ion-input type="text" [(ngModel)]="user.email" [disabled]="disabled"></ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-label floating>Contraseña</ion-label>
+      <ion-label floating class="blackText">Contraseña</ion-label>
       <ion-input type="password" [(ngModel)]="user.password"></ion-input>
     </ion-item>
   </ion-list>
 
   <ion-buttons end>
-    <button ion-button (click)="dismiss()">Cancelar</button>
-    <button ion-button color="secondary" (click)="submitUser()">Guardar</button>
+    <button class="blackText" ion-button color="create" (click)="dismiss()">Cancelar</button>
+    <button class="blackText" ion-button color="create" (click)="submitUser()">Guardar</button>
   </ion-buttons>
 </ion-content>
