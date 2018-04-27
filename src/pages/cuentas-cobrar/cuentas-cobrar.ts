@@ -43,7 +43,7 @@ export class CuentasCobrarPage {
   	this.accountsReceivable = this.cuentasCobrarProvider.getAccountsReceivable();
     this.service = {};
     this.accountReceivableToDelete = {};
-    this.month = 'Marzo';
+    this.month = 'Mayo';
     this.totalAmount();
     this.numActiveBoxes();
     this.numTakenBoxes();
