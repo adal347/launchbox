@@ -26,9 +26,9 @@ export class CuentasCobrarPage {
   accountReceivableToDelete: any;
   month: any;
   amount: number = 0;
+  chargedTotal: number = 0;
   activeBoxes: number = 0;
   takenBoxes: number = 0;
-  freeBoxes: number = 0;
   coworkingBoxes: number = 0;
   virtualBoxes: number = 0;
   title: any;
@@ -47,9 +47,9 @@ export class CuentasCobrarPage {
     this.totalAmount();
     this.numActiveBoxes();
     this.numTakenBoxes();
-    this.numFreeBoxes();
     this.numCowrokingBoxes();
     this.numVirtualBoxes();
+    this.totalCharged();
   }
 
   initModal(type, service) {
@@ -89,6 +89,19 @@ export class CuentasCobrarPage {
        })
      });
   }
+
+  totalCharged(){
+     this.accountsReceivable.forEach((arrayAccounts)=>{
+       this.chargedTotal = 0;
+       arrayAccounts.forEach((account)=>{
+
+         if(account.totalCharged){
+          this.chargedTotal += Number(account.totalCharged);
+         }
+       })
+     });
+  }
+
   numActiveBoxes(){
     this.accountsReceivable.forEach((arrayAcounts)=>{
       this.activeBoxes = 0;
@@ -99,6 +112,7 @@ export class CuentasCobrarPage {
       })
     });
   }
+
   numTakenBoxes(){
     this.accountsReceivable.forEach((arrayAcounts)=>{
       this.takenBoxes = 0;
@@ -109,6 +123,7 @@ export class CuentasCobrarPage {
       })
     });
   }
+
   numCowrokingBoxes(){
     this.accountsReceivable.forEach((arrayAcounts)=>{
       this.coworkingBoxes = 0;
@@ -119,6 +134,7 @@ export class CuentasCobrarPage {
       })
     });
   }
+
   numVirtualBoxes(){
     this.accountsReceivable.forEach((arrayAcounts)=>{
       this.virtualBoxes = 0;
@@ -129,15 +145,9 @@ export class CuentasCobrarPage {
       })
     });
   }
-  numFreeBoxes(){
-    this.accountsReceivable.forEach((arrayAcounts)=>{
-      this.freeBoxes = 0;
-      arrayAcounts.forEach((account)=>{
-        if(account.box.status.name === "inactivo"){
-          this.freeBoxes ++;
-        }
-      })
-    });
+
+  floor(number) {
+      return Math.floor(number);
   }
 
   ionViewDidLoad() {
