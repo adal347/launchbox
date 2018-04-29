@@ -26,6 +26,7 @@ export class CuentasCobrarPage {
   accountReceivableToDelete: any;
   month: any;
   amount: number = 0;
+  extras: number = 0;
   chargedTotal: number = 0;
   activeBoxes: number = 0;
   takenBoxes: number = 0;
@@ -45,6 +46,7 @@ export class CuentasCobrarPage {
     this.accountReceivableToDelete = {};
     this.month = 'Mayo';
     this.totalAmount();
+    this.totalExtras();
     this.numActiveBoxes();
     this.numTakenBoxes();
     this.numCowrokingBoxes();
@@ -85,6 +87,18 @@ export class CuentasCobrarPage {
 
          if(account.amount){
           this.amount += Number(account.amount);
+         }
+       })
+     });
+  }
+
+  totalExtras(){
+     this.accountsReceivable.forEach((arrayAccounts)=>{
+       this.extras = 0;
+       arrayAccounts.forEach((account)=>{
+
+         if(account.extras){
+          this.extras += Number(account.extras);
          }
        })
      });

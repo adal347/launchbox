@@ -20,6 +20,7 @@
       <th>Tipo de Box</th>
       <th>Inquilino</th>
       <th>Monto</th>
+      <th>Extras</th>
       <th>Día de pago</th>
       <th>Tipo de pago</th>
       <th>Pagado</th>
@@ -33,6 +34,7 @@
         {{ accountReceivable.tenant.name }} {{ accountReceivable.tenant.lastname }}
       </div></td>
       <td> $ {{ accountReceivable.amount }}</td>
+      <td> $ {{ accountReceivable.extras }}</td>
       <td>{{ accountReceivable.payDay }}</td>
       <td><div *ngIf="accountReceivable.type">{{ accountReceivable.type.name }}</div></td>
       <td><ion-toggle [(ngModel)]="accountReceivable.paymentMade" (ionChange)="updatePay(accountReceivable)"></ion-toggle></td>
@@ -84,7 +86,7 @@
   <table class="shortTable">
     <tr>
       <td><strong>Total: </strong></td>
-      <td> ${{ amount }}</td>
+      <td> ${{ amount + extras}}</td>
     </tr>
     <tr>
       <td><strong>Total Cobrado: </strong></td>
@@ -92,7 +94,7 @@
     </tr>
     <tr>
       <td><strong>Por Cobrar: </strong></td>
-      <td> $ {{ amount - chargedTotal }} </td>
+      <td> $ {{ (amount + extras) - chargedTotal }} </td>
     </tr>
   </table>
 
