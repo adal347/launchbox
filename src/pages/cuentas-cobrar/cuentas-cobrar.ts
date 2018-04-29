@@ -109,8 +109,9 @@ export class CuentasCobrarPage {
        this.chargedTotal = 0;
        arrayAccounts.forEach((account)=>{
 
-         if(account.totalCharged){
-          this.chargedTotal += Number(account.totalCharged);
+         if(account.charged){
+
+          this.chargedTotal += Number(account.charged);
          }
        })
      });

@@ -32,8 +32,15 @@ export class CuentasCobrarProvider {
 			payDay: service.payDay || null,
 			type: service.typePay || null,
 			tenant: service.tenant || null,
-			amount: service.amount || null,
+			amount: service.amount || 0,
+			extras: service.extras || 0,
+			charged: service.charged || 0,
 			payDate: null
+		}
+		accountsReceivable['collect'] = (Number(accountsReceivable.amount) + Number(accountsReceivable.extras)) - Number(accountsReceivable.charged);
+		if (accountsReceivable.collect == 0) {
+			accountsReceivable.paymentMade = true;
+			accountsReceivable['payDate'] = new Date();
 		}
 		let self = this;
     let promise = new Promise((resolve, reject) => {
@@ -55,7 +62,13 @@ export class CuentasCobrarProvider {
 	public updateAccountReceivable(accountReceivable) {
 
 		let self = this;
-    let promise = new Promise((resolve, reject) => {
+		accountReceivable.collect = 0;
+		accountReceivable.collect = (Number(accountReceivable.amount) + Number(accountReceivable.extras)) - Number(accountReceivable.charged);
+		if (accountReceivable.collect == 0) {
+			accountReceivable.paymentMade = true;
+			accountReceivable.payDate = new Date();
+		}
+		let promise = new Promise((resolve, reject) => {
 			self.accountsReceivableRef.update(accountReceivable.key, accountReceivable);
       resolve();
     });

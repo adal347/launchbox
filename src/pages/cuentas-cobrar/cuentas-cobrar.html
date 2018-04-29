@@ -21,6 +21,8 @@
       <th>Inquilino</th>
       <th>Monto</th>
       <th>Extras</th>
+      <th>Cobrado</th>
+      <th>Por cobrar</th>
       <th>Día de pago</th>
       <th>Tipo de pago</th>
       <th>Pagado</th>
@@ -35,6 +37,8 @@
       </div></td>
       <td> $ {{ accountReceivable.amount }}</td>
       <td> $ {{ accountReceivable.extras }}</td>
+      <td> $ {{ accountReceivable.charged }}</td>
+      <td> $ {{ accountReceivable.collect }}</td>
       <td>{{ accountReceivable.payDay }}</td>
       <td><div *ngIf="accountReceivable.type">{{ accountReceivable.type.name }}</div></td>
       <td><ion-toggle [(ngModel)]="accountReceivable.paymentMade" (ionChange)="updatePay(accountReceivable)"></ion-toggle></td>
