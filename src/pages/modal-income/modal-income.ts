@@ -20,7 +20,8 @@ import { Observable } from 'rxjs/Observable';
 export class ModalIncomePage {
   title: any;
   entry: any;
-  boxes: Observable<any[]>
+  typePay: Observable<any[]>;
+  boxes: Observable<any[]>;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
               public ingresosEgresosProvider: IngresosEgresosProvider,
