@@ -32,7 +32,7 @@ export class CuentasPagarPage {
     this.service = {};
     this.billToDelete = {};
     this.updateTotals();
-    this.month = 'Marzo';
+    this.month = 'Mayo';
   }
 
   initModal(type, bill) {

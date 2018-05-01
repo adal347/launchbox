@@ -49,21 +49,21 @@ export class ModalAccountsPage {
 
   registerService() {
     this.cuentasCobrarProvider.createService(this.service).then(() => {
-      this.commons.createAlert('Registro Exitoso', 'El inquilino se registro correctamente');
+      this.commons.createAlert('Registro Exitoso', 'La cuenta se registro correctamente');
       this.dismiss();
     })
     .catch(error => {
-      this.commons.createAlert('Algo salió mal', 'Hubo un problema al registrar al inquilino');
+      this.commons.createAlert('Algo salió mal', 'Hubo un problema al registrar la cuenta');
     });
   }
 
   updateService() {
     this.cuentasCobrarProvider.updateAccountReceivable(this.service).then(() => {
-      this.commons.createAlert('Actualización Exitosa', 'El inquilino se actualizo correctamente');
+      this.commons.createAlert('Actualización Exitosa', 'La cuenta se actualizo correctamente');
       this.dismiss();
     })
     .catch(error => {
-      this.commons.createAlert('Algo salió mal', 'Hubo un problema al actualizar al inquilino');
+      this.commons.createAlert('Algo salió mal', 'Hubo un problema al actualizar la cuenta');
     });
   }
 
