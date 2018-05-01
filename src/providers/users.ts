@@ -20,6 +20,29 @@ export class UsersProvider {
 		});
 	}
 
+	public updateUser(user) {
+    let self = this;
+    let promise = new Promise((resolve, reject) => {
+      self.usersRef.update(user.key, {
+				name: user.name,
+				lastname: user.lastname,
+				permission: user.permission,
+				email: user.email
+			});
+      resolve();
+    });
+    return promise;
+	}
+
+	public removeUser(user) {
+    let self = this;
+    let promise = new Promise((resolve, reject) => {
+      self.usersRef.remove(user.key);
+      resolve();
+    });
+    return promise;
+	}
+
 	public getPermissions() {
 		return this.permissionsRef.snapshotChanges().map( data => {
       return data.map(c => ({ key: c.payload.key, ...c.payload.val() }));
@@ -31,10 +54,6 @@ export class UsersProvider {
       return data.map(c => ({ key: c.payload.key, ...c.payload.val() }));
     });
 
-	}
-
-	public removeUser(user) {
-		this.usersRef.remove(user.key);
 	}
 
 }
