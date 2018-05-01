@@ -27,6 +27,7 @@ export class ModalIncomePage {
               public viewCtrl: ViewController, private commons: CommonsProvider,
               public cuentasCobrarProvider: CuentasCobrarProvider) {
     this.boxes = this.cuentasCobrarProvider.getBoxes();
+    this.typePay = this.cuentasCobrarProvider.getTypePay();
     this.title = this.navParams.get('title');
     this.entry = this.navParams.get('entry');
   }
