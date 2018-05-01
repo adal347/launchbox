@@ -41,6 +41,12 @@
         <ion-option *ngFor="let box of boxes | async" [value]="box">{{ box.id }}</ion-option>
       </ion-select>
     </ion-item>
+    <ion-item class="ion-content">
+      <ion-label floating class="blackText">Efectivo/Transferencia</ion-label>
+      <ion-select class="blackText" [(ngModel)]="entry.typePay" okText="Ok" cancelText="Cancelar">
+        <ion-option *ngFor="let type of typePay | async" [value]="type">{{type.name}}</ion-option>
+      </ion-select>
+    </ion-item>
   </ion-list>
 
   <ion-buttons end>

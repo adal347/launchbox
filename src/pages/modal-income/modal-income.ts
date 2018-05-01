@@ -20,13 +20,15 @@ import { Observable } from 'rxjs/Observable';
 export class ModalIncomePage {
   title: any;
   entry: any;
-  boxes: Observable<any[]>
+  typePay: Observable<any[]>;
+  boxes: Observable<any[]>;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
               public ingresosEgresosProvider: IngresosEgresosProvider,
               public viewCtrl: ViewController, private commons: CommonsProvider,
               public cuentasCobrarProvider: CuentasCobrarProvider) {
     this.boxes = this.cuentasCobrarProvider.getBoxes();
+    this.typePay = this.cuentasCobrarProvider.getTypePay();
     this.title = this.navParams.get('title');
     this.entry = this.navParams.get('entry');
   }

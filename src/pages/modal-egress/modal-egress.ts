@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
-import { IngresosEgresosProvider} from '../../providers/ingresos_egresos';
+import { CuentasCobrarProvider } from '../../providers/cuentas_cobrar';
+import { IngresosEgresosProvider } from '../../providers/ingresos_egresos';
 import { CommonsProvider } from '../../providers/commons';
+import { Observable } from 'rxjs/Observable';
 
 @IonicPage()
 @Component({
@@ -11,11 +13,14 @@ import { CommonsProvider } from '../../providers/commons';
 export class ModalEgressPage {
   title: any;
   egress: any;
+  typePay: Observable<any[]>;
   constructor(public navCtrl: NavController, public navParams: NavParams,
               public viewCtrl: ViewController, private commons: CommonsProvider,
-              public ingresosEgresosProvider: IngresosEgresosProvider) {
+              public ingresosEgresosProvider: IngresosEgresosProvider,
+              public cuentasCobrarProvider: CuentasCobrarProvider) {
     this.title = this.navParams.get('title');
     this.egress = this.navParams.get('egress');
+    this.typePay = this.cuentasCobrarProvider.getTypePay();
   }
 
   submitEgress() {
