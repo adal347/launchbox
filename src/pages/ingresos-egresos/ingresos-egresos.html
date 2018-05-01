@@ -85,7 +85,8 @@
   		<th>Descripcción</th>
   		<th>Proveedor</th>
   		<th>Total</th>
-  		<th>Rubro</th>
+      <th>Rubro</th>
+  		<th>Tipo de pago</th>
   		<th>Opciones</th>
   	</tr>
   	<tr *ngFor="let egress of expenses | async">
@@ -93,7 +94,8 @@
   		<td>{{ egress.description }}</td>
   		<td>{{ egress.provider }}</td>
   		<td>{{ egress.amount }}</td>
-  		<td>{{ egress.item }}</td>
+      <td>{{ egress.item }}</td>
+  		<td>{{ egress.typePay.name }}</td>
   		<td>
         <button title="Editar" ion-button icon-only clear color="update" (click)="initModalExpenses(0, egress)">
           <ion-icon ios="ios-create" md="md-create"></ion-icon>
