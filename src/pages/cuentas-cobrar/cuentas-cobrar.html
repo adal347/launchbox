@@ -20,6 +20,9 @@
       <th>Tipo de Box</th>
       <th>Inquilino</th>
       <th>Monto</th>
+      <th>Extras</th>
+      <th>Cobrado</th>
+      <th>Por cobrar</th>
       <th>Día de pago</th>
       <th>Tipo de pago</th>
       <th>Pagado</th>
@@ -33,6 +36,9 @@
         {{ accountReceivable.tenant.name }} {{ accountReceivable.tenant.lastname }}
       </div></td>
       <td> $ {{ accountReceivable.amount }}</td>
+      <td> $ {{ accountReceivable.extras }}</td>
+      <td> $ {{ accountReceivable.charged }}</td>
+      <td> $ {{ accountReceivable.collect }}</td>
       <td>{{ accountReceivable.payDay }}</td>
       <td><div *ngIf="accountReceivable.type">{{ accountReceivable.type.name }}</div></td>
       <td><ion-toggle [(ngModel)]="accountReceivable.paymentMade" (ionChange)="updatePay(accountReceivable)"></ion-toggle></td>
@@ -56,19 +62,19 @@
   </ion-buttons>
   <table class="shortTable">
     <tr>
-      <td><strong>No. de boxes activos</strong></td>
+      <td><strong>Boxes activos</strong></td>
       <td>{{activeBoxes}}</td>
     </tr>
     <tr>
-      <td><strong>No de boxes apartados</strong></td>
+      <td><strong>Boxes apartados</strong></td>
       <td>{{takenBoxes}}</td>
     </tr>
     <tr>
-      <td><strong>No de boxes en coworking</strong></td>
+      <td><strong>Coworking</strong></td>
       <td>{{coworkingBoxes}}</td>
     </tr>
     <tr>
-      <td><strong>No de boxes virtuales</strong></td>
+      <td><strong>Boxes virtuales</strong></td>
       <td>{{virtualBoxes}}</td>
     </tr>
     <tr>
@@ -76,23 +82,23 @@
       <td>{{activeBoxes + takenBoxes}}</td>
     </tr>
     <tr>
-      <td><strong>No. de boxes disponibles</strong></td>
-      <td>{{freeBoxes}}</td>
+      <td><strong>Boxes disponibles</strong></td>
+      <td>{{ 41 - (activeBoxes + takenBoxes + floor(coworkingBoxes)) }}</td>
     </tr>
 
   </table>
   <table class="shortTable">
     <tr>
       <td><strong>Total: </strong></td>
-      <td> ${{amount}}</td>
+      <td> ${{ amount + extras}}</td>
     </tr>
     <tr>
       <td><strong>Total Cobrado: </strong></td>
-      <td> $</td>
+      <td> $ {{ chargedTotal }}</td>
     </tr>
     <tr>
-      <td><strong>Total por Cobrar: </strong></td>
-      <td> $</td>
+      <td><strong>Por Cobrar: </strong></td>
+      <td> $ {{ (amount + extras) - chargedTotal }} </td>
     </tr>
   </table>
 

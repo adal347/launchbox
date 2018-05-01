@@ -21,7 +21,7 @@ import { CommonsProvider } from '../providers/commons';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = LoginPage;
+  rootPage: any = CuentasCobrarPage;
 
   pages: Array<{title: string, component: any}>;
 
