@@ -44,6 +44,7 @@ export class ModalPage {
     this.fire.auth.createUserWithEmailAndPassword(this.user.email, this.user.password)
     .then(data =>{
       this.commons.createAlert('Registro Exitoso', 'Registraste a ' + this.user.email);
+      this.dismiss();
     })
     .catch(error =>{
       if (error.code === 'auth/invalid-email') {
@@ -55,6 +56,13 @@ export class ModalPage {
   }
 
   updateUser() {
+    this.usersProvider.updateUser(this.user).then(() => {
+      this.commons.createAlert('Actualización Exitosa', 'El usuario se actualizo correctamente');
+      this.dismiss();
+    })
+    .catch(error => {
+      this.commons.createAlert('Algo salió mal', 'Hubo un problema al actualizar al usuario');
+    });
   }
 
   ionViewDidLoad() {
