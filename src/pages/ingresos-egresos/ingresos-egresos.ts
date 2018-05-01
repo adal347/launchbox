@@ -24,7 +24,7 @@ export class IngresosEgresosPage {
   constructor(public navCtrl: NavController, public navParams: NavParams,
               public ingresosEgresosProvider: IngresosEgresosProvider,
               public modalCtrl: ModalController, private commons: CommonsProvider) {
-    this.month = 'Marzo';
+    this.month = 'Mayo';
     this.income = this.ingresosEgresosProvider.getIncome();
     this.expenses = this.ingresosEgresosProvider.getExpenses();
 
