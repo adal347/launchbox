@@ -4,35 +4,37 @@
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
 -->
-<ion-header>
 
-  <ion-navbar>
-    <ion-title>Inicio de Sesión</ion-title>
-  </ion-navbar>
+  <ion-header>
 
-</ion-header>
+    <ion-navbar>
+      <ion-title>Inicio de Sesión</ion-title>
+    </ion-navbar>
+
+  </ion-header>
 
 
-<ion-content padding>
-  <img class="centeredImg" src="./assets/imgs/logo.png">
+  <ion-content padding>
+  <div class="col-md-8" style="margin:0 auto; background-color:#F8F8FF;">
+    <img class="centeredImg" src="./assets/imgs/logo.png">
 
-<ion-list>
-  <ion-item>
-    <ion-label floating>Correo</ion-label>
-    <ion-input type="text" #email></ion-input>
-  </ion-item>
+  <ion-list>
+    <ion-item>
+      <ion-label floating>Correo</ion-label>
+      <ion-input type="text" #email></ion-input>
+    </ion-item>
 
-  <ion-item>
-    <ion-label floating>Contraseña</ion-label>
-    <ion-input type="password" #password></ion-input>
-  </ion-item>
+    <ion-item>
+      <ion-label floating>Contraseña</ion-label>
+      <ion-input type="password" #password  (keyup.enter)="signInUser()"></ion-input>
+    </ion-item>
 
-</ion-list>
+  </ion-list>
 
-<div padding>
-  <button block ion-button color="create" (click)="signInUser()">Ingresar</button>
+  <div padding>
+    <button block ion-button color="create" type="submit" (click)="signInUser()">Ingresar</button>
+  </div>
+
 </div>
 
-
-
-</ion-content>
+  </ion-content>
