@@ -1,11 +1,11 @@
 export const Environment = {
   production: false,
   firebase: {
-    apiKey: "AIzaSyBe9V8UzVZpftTP2dja0eoz9iKC3acF-rc",
-    authDomain: "launchbox-e3aea.firebaseapp.com",
-    databaseURL: "https://launchbox-e3aea.firebaseio.com",
-    projectId: "launchbox-e3aea",
-    storageBucket: "launchbox-e3aea.appspot.com",
-    messagingSenderId: "76793331911"
+    apiKey: "AIzaSyBi3Kmg-CeNL6QRfDAY_s87OXndH-67vc4",
+    authDomain: "launchbox-3e139.firebaseapp.com",
+    databaseURL: "https://launchbox-3e139.firebaseio.com",
+    projectId: "launchbox-3e139",
+    storageBucket: "launchbox-3e139.appspot.com",
+    messagingSenderId: "1094374289087"
   }
 };
