@@ -11,6 +11,7 @@ import { IngresosEgresosPage } from '../pages/ingresos-egresos/ingresos-egresos'
 import { CondensadoPage } from '../pages/condensado/condensado';
 import { UsersPage } from '../pages/users/users';
 import { TenantsPage } from '../pages/tenants/tenants';
+import { MonthsPage } from '../pages/months/months';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -36,7 +37,8 @@ import { TenantsProvider } from '../providers/tenants';
     CondensadoPage,
     IngresosEgresosPage,
     UsersPage,
-    TenantsPage
+    TenantsPage,
+    MonthsPage
   ],
   imports: [
     BrowserModule,
@@ -55,7 +57,8 @@ import { TenantsProvider } from '../providers/tenants';
     IngresosEgresosPage,
     CondensadoPage,
     UsersPage,
-    TenantsPage
+    TenantsPage,
+    MonthsPage
   ],
   providers: [
     StatusBar,

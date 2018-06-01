@@ -11,6 +11,7 @@ import { IngresosEgresosPage } from '../pages/ingresos-egresos/ingresos-egresos'
 import { CondensadoPage } from '../pages/condensado/condensado';
 import { UsersPage } from '../pages/users/users';
 import { TenantsPage } from '../pages/tenants/tenants';
+import { MonthsPage } from '../pages/months/months';
 
 import { AngularFireAuth } from 'angularfire2/auth';
 import { CommonsProvider } from '../providers/commons';
@@ -38,7 +39,8 @@ export class MyApp {
       { title: 'Ingresos/Egresos', component: IngresosEgresosPage },
       { title: 'Condensado del mes', component: CondensadoPage },
       { title: 'Usuarios', component: UsersPage },
-      { title: 'Inquilinos', component: TenantsPage }
+      { title: 'Inquilinos', component: TenantsPage },
+      { title: 'Meses', component: MonthsPage },
     ];
 
   }
