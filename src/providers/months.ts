@@ -50,7 +50,7 @@ export class MonthsProvider {
 			});
 			resolve();
 		});
-		return promise
+		return promise;
 	}
 
 	public removeMonth(month) {
