@@ -19,6 +19,10 @@ export class CondensadoPage {
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
+  downloadPDF() {
+  	window.print();
+  }
+
   ionViewDidLoad() {
     console.log('ionViewDidLoad CondensadoPage');
   }

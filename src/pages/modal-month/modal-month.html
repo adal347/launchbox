@@ -1,0 +1,43 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{ title }}</ion-title>
+
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding class="ion-content">
+  <ion-list>
+
+      <ion-item>
+        <ion-label floating class="blackText" >Mes</ion-label>
+        <ion-select okText="Ok" cancelText="Cancelar"[(ngModel)]="month.name">
+          <ion-option *ngFor="let month of months" [value]="month">{{ month }}</ion-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating class="blackText" >Año</ion-label>
+        <ion-select okText="Ok" cancelText="Cancelar"[(ngModel)]="month.year">
+          <ion-option *ngFor="let year of years" [value]="year">{{ year }}</ion-option>
+        </ion-select>
+      </ion-item>
+
+    <ion-item>
+      <ion-label floating class="blackText">Saldo inicial de mes</ion-label>
+      <ion-input [(ngModel)]="month.initialBalance"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating class="blackText">Comentarios</ion-label>
+      <ion-textarea type="textarea" [(ngModel)]="month.comments"></ion-textarea>
+    </ion-item>
+  </ion-list>
+
+  <ion-buttons end>
+    <button class="blackText" ion-button color="create" (click)="dismiss()">Cancelar</button>
+    <button class="blackText" ion-button color="create" (click)="submitMonth()">Guardar</button>
+  </ion-buttons>
+</ion-content>

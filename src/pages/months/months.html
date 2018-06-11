@@ -1,0 +1,66 @@
+<ion-header>
+  <ion-navbar>
+  	<button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Meses</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <img alt="logo" class="headerContents" src="./assets/imgs/logo.png">
+  <h1 class="headerContents">Meses Registrados</h1>
+  <table>
+    <tr>
+      <th>Mes</th>
+      <th>Año</th>
+      <th>Saldo Inicial</th>
+      <th>Activo</th>
+      <th>Opciones</th>
+    </tr>
+    <tr *ngFor="let month of months | async">
+        <td>{{ month.name }}</td>
+        <td>{{ month.year }}</td>
+        <td>{{ month.initialBalance }}</td>
+        <td><ion-toggle [(ngModel)]="month.isActive" (ionChange)="updateMonth(month)"></ion-toggle></td>
+      <td>
+        <button title="Editar" ion-button icon-only clear color="update" (click)="initModal(0, month)">
+          <ion-icon ios="ios-create" md="md-create"></ion-icon>
+        </button>
+        <button title="Eliminar" ion-button icon-only clear color="danger" data-toggle="modal"
+                data-target="#deleteModal" (click)="monthToDelete = month">
+          <ion-icon ios="ios-trash" md="md-trash"></ion-icon>
+        </button>
+      </td>
+    </tr>
+  </table>
+  <br/>
+  <br/>
+  <ion-buttons end>
+    <button color="create" ion-button icon-right (click)="initModal(1)">
+      Nuevo mes<ion-icon ios="ios-add-circle" md="md-add-circle"></ion-icon>
+    </button>
+  </ion-buttons>
+
+  <!--Modal of 'Delete Entry'-->
+  <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog  modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Eliminar mes</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          ¿Estas seguro de que quieres eliminar este mes?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+          <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="deleteMonth()">Eliminar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--'Delete Entry' END-->
+</ion-content>

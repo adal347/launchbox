@@ -11,6 +11,7 @@ import { IngresosEgresosPage } from '../pages/ingresos-egresos/ingresos-egresos'
 import { CondensadoPage } from '../pages/condensado/condensado';
 import { UsersPage } from '../pages/users/users';
 import { TenantsPage } from '../pages/tenants/tenants';
+import { MonthsPage } from '../pages/months/months';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -25,6 +26,7 @@ import { CommonsProvider } from '../providers/commons';
 import { UsersProvider } from '../providers/users';
 import { IngresosEgresosProvider } from '../providers/ingresos_egresos';
 import { TenantsProvider } from '../providers/tenants';
+import { MonthsProvider } from '../providers/months';
 
 @NgModule({
   declarations: [
@@ -36,7 +38,8 @@ import { TenantsProvider } from '../providers/tenants';
     CondensadoPage,
     IngresosEgresosPage,
     UsersPage,
-    TenantsPage
+    TenantsPage,
+    MonthsPage
   ],
   imports: [
     BrowserModule,
@@ -55,7 +58,8 @@ import { TenantsProvider } from '../providers/tenants';
     IngresosEgresosPage,
     CondensadoPage,
     UsersPage,
-    TenantsPage
+    TenantsPage,
+    MonthsPage
   ],
   providers: [
     StatusBar,
@@ -66,7 +70,8 @@ import { TenantsProvider } from '../providers/tenants';
     CommonsProvider,
     UsersProvider,
     IngresosEgresosProvider,
-    TenantsProvider
+    TenantsProvider,
+    MonthsProvider
   ]
 })
 export class AppModule {}

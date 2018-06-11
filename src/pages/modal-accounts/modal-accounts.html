@@ -18,19 +18,19 @@
     <ion-item>
       <ion-label>No. de Box</ion-label>
       <ion-select [(ngModel)]="service.box" interface="popover">
-        <ion-option *ngFor="let box of boxes | async" [value]="box">{{ box.id }}</ion-option>
+        <ion-option *ngFor="let box of boxes" [value]="box">{{ box }}</ion-option>
       </ion-select>
     </ion-item>
     <ion-item>
       <ion-label>Estatus</ion-label>
       <ion-select [(ngModel)]="service.statusBox" interface="popover">
-        <ion-option *ngFor="let status of statusBoxes | async" [value]="status">{{ status.name }}</ion-option>
+        <ion-option *ngFor="let status of statusBoxes" [value]="status">{{ status }}</ion-option>
       </ion-select>
     </ion-item>
     <ion-item>
       <ion-label>Tipo de box</ion-label>
       <ion-select [(ngModel)]="service.typeBox" interface="popover">
-        <ion-option *ngFor="let type of typeBoxes | async" [value]="type">{{ type.name }}</ion-option>
+        <ion-option *ngFor="let type of typeBoxes" [value]="type">{{ type }}</ion-option>
       </ion-select>
     </ion-item>
     <ion-item>
@@ -57,8 +57,8 @@
     </ion-item>
     <ion-item>
       <ion-label>Efectivo/Transferencia</ion-label>
-      <ion-select [(ngModel)]="service.typePay" interface="popover">
-        <ion-option *ngFor="let type of typePay | async" [value]="type">{{ type.name }}</ion-option>
+      <ion-select [(ngModel)]="service.type" interface="popover">
+        <ion-option *ngFor="let type of typePay" [value]="type">{{ type }}</ion-option>
       </ion-select>
     </ion-item>
   </ion-list>
