@@ -26,6 +26,7 @@ import { CommonsProvider } from '../providers/commons';
 import { UsersProvider } from '../providers/users';
 import { IngresosEgresosProvider } from '../providers/ingresos_egresos';
 import { TenantsProvider } from '../providers/tenants';
+import { MonthsProvider } from '../providers/months';
 
 @NgModule({
   declarations: [
@@ -69,7 +70,8 @@ import { TenantsProvider } from '../providers/tenants';
     CommonsProvider,
     UsersProvider,
     IngresosEgresosProvider,
-    TenantsProvider
+    TenantsProvider,
+    MonthsProvider
   ]
 })
 export class AppModule {}

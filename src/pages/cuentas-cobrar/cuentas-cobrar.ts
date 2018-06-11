@@ -44,7 +44,7 @@ export class CuentasCobrarPage {
   	this.accountsReceivable = this.cuentasCobrarProvider.getAccountsReceivable();
     this.service = {};
     this.accountReceivableToDelete = {};
-    this.month = 'Mayo';
+    this.month = 'Junio';
     this.totalAmount();
     this.totalExtras();
     this.numActiveBoxes();
@@ -121,7 +121,7 @@ export class CuentasCobrarPage {
     this.accountsReceivable.forEach((arrayAcounts)=>{
       this.activeBoxes = 0;
       arrayAcounts.forEach((account)=>{
-        if(account.box.status.name === "activo"){
+        if(account.statusBox === "activo"){
           this.activeBoxes ++;
         }
       })
@@ -132,7 +132,7 @@ export class CuentasCobrarPage {
     this.accountsReceivable.forEach((arrayAcounts)=>{
       this.takenBoxes = 0;
       arrayAcounts.forEach((account)=>{
-        if(account.box.status.name === "apartado"){
+        if(account.statusBox === "apartado"){
           this.takenBoxes ++;
         }
       })
@@ -143,7 +143,7 @@ export class CuentasCobrarPage {
     this.accountsReceivable.forEach((arrayAcounts)=>{
       this.coworkingBoxes = 0;
       arrayAcounts.forEach((account)=>{
-        if(account.box.status.name === "coworking"){
+        if(account.statusBox === "coworking"){
           this.coworkingBoxes++;
         }
       })
@@ -154,7 +154,7 @@ export class CuentasCobrarPage {
     this.accountsReceivable.forEach((arrayAcounts)=>{
       this.virtualBoxes = 0;
       arrayAcounts.forEach((account)=>{
-        if(account.box.status.name === "virtual"){
+        if(account.statusBox === "virtual"){
           this.virtualBoxes++;
         }
       })

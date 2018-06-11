@@ -20,11 +20,11 @@ import { Observable } from 'rxjs/Observable';
 export class ModalAccountsPage {
   title: any;
   service: any;
-  boxes: Observable<any[]>;
+  boxes: any[];
   tenants: Observable<any[]>;
-  statusBoxes: Observable<any[]>;
-  typeBoxes: Observable<any[]>;
-  typePay: Observable<any[]>;
+  statusBoxes: any[];
+  typeBoxes: any[];
+  typePay: any[];
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
               public viewCtrl: ViewController, private commons: CommonsProvider,
@@ -32,11 +32,12 @@ export class ModalAccountsPage {
               public tenantsProvider: TenantsProvider) {
     this.title = this.navParams.get('title');
     this.service = this.navParams.get('service');
-    this.boxes = this.cuentasCobrarProvider.getBoxes();
-    this.statusBoxes = this.cuentasCobrarProvider.getBoxStatus();
-    this.typeBoxes = this.cuentasCobrarProvider.getTypeBox();
+    this.boxes = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27,
+                  28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41];
+    this.statusBoxes = ['activo', 'inactivo', 'apartado', 'coworking', 'virtual'];
+    this.typeBoxes = ['FRUIT BOX', 'SPROUT BOX', 'DOUBLE SPROUT BOX', 'SEED BOX'];
     this.tenants = this.tenantsProvider.getTenants();
-    this.typePay = this.cuentasCobrarProvider.getTypePay();
+    this.typePay = ['Transfer', 'Efectivo'];
   }
 
   submitService() {

@@ -21,21 +21,24 @@ export class CuentasCobrarProvider {
 	}
 
   public createService(service) {
-  	let box = {
-  		id: service.box.id,
-  		type: service.typeBox,
-  		status: service.statusBox
-  	};
-		let accountsReceivable = {
-			box: box,
-			paymentMade: false,
-			payDay: service.payDay || null,
-			type: service.typePay || null,
-			tenant: service.tenant || null,
-			amount: service.amount || 0,
-			extras: service.extras || 0,
-			charged: service.charged || 0,
-			payDate: null
+	  let box = {
+		  id: service.box,
+		  type: service.typeBox,
+		  status: service.statusBox
+	  };
+
+	  let accountsReceivable = {
+		  box: service.box,
+		  typeBox: service.typeBox,
+		  statusBox: service.statusBox,
+		  paymentMade: false,
+		  payDay: service.payDay || null,
+		  type: service.type || null,
+		  tenant: service.tenant || null,
+		  amount: service.amount || 0,
+		  extras: service.extras || 0,
+		  charged: service.charged || 0,
+		  payDate: null
 		}
 		accountsReceivable['collect'] = (Number(accountsReceivable.amount) + Number(accountsReceivable.extras)) - Number(accountsReceivable.charged);
 		if (accountsReceivable['collect'] == 0) {
@@ -43,8 +46,9 @@ export class CuentasCobrarProvider {
 			accountsReceivable['payDate'] = new Date();
 		}
 		let self = this;
-    let promise = new Promise((resolve, reject) => {
-			self.updateBox(service.box.key, box).then(response => {
+    	let promise = new Promise((resolve, reject) => {
+			let key = String(service.box);
+			self.updateBox(key, box).then(response => {
 				self.accountsReceivableRef.push(accountsReceivable);
 			});
       resolve();
@@ -61,15 +65,17 @@ export class CuentasCobrarProvider {
 
 	public updateAccountReceivable(accountReceivable) {
 		let box = {
-  		id: accountReceivable.box.id,
-  		type: accountReceivable.typeBox,
-  		status: accountReceivable.statusBox
-  	};
+	  		id: accountReceivable.box,
+	  		type: accountReceivable.typeBox,
+	  		status: accountReceivable.statusBox
+  		};
 		let accountsReceivable = {
-			box: box,
+			box: accountReceivable.box,
+	  		typeBox: accountReceivable.typeBox,
+	  		statusBox: accountReceivable.statusBox,
 			paymentMade: false,
 			payDay: accountReceivable.payDay || null,
-			type: accountReceivable.typePay || null,
+			type: accountReceivable.type || null,
 			tenant: accountReceivable.tenant || null,
 			amount: accountReceivable.amount || 0,
 			extras: accountReceivable.extras || 0,
@@ -84,12 +90,13 @@ export class CuentasCobrarProvider {
 			accountsReceivable.payDate = new Date();
 		}
 		let promise = new Promise((resolve, reject) => {
-			self.updateBox(accountReceivable.box.key, box).then(response => {
+			let key = String(accountsReceivable.box);
+			self.updateBox(key, box).then(response => {
 				self.accountsReceivableRef.update(accountReceivable.key, accountsReceivable);
 			});
-      resolve();
-    });
-    return promise;
+      		resolve();
+    	});
+    	return promise;
 	}
 
 	public getBoxes() {
