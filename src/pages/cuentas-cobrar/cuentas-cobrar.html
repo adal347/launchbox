@@ -29,9 +29,9 @@
       <th>Opciones</th>
     </tr>
     <tr *ngFor="let accountReceivable of accountsReceivable | async">
-      <td>{{ accountReceivable.box.id }}</td>
-      <td>{{ accountReceivable.box.status.name }}</td>
-      <td>{{ accountReceivable.box.type.name }}</td>
+      <td>{{ accountReceivable.box }}</td>
+      <td>{{ accountReceivable.statusBox }}</td>
+      <td>{{ accountReceivable.typeBox }}</td>
       <td><div *ngIf="accountReceivable.tenant">
         {{ accountReceivable.tenant.name }} {{ accountReceivable.tenant.lastname }}
       </div></td>
@@ -40,7 +40,7 @@
       <td> $ {{ accountReceivable.charged }}</td>
       <td> $ {{ accountReceivable.collect }}</td>
       <td>{{ accountReceivable.payDay }}</td>
-      <td><div *ngIf="accountReceivable.type">{{ accountReceivable.type.name }}</div></td>
+      <td><div *ngIf="accountReceivable.type">{{ accountReceivable.type }}</div></td>
       <td><ion-toggle [(ngModel)]="accountReceivable.paymentMade" (ionChange)="updatePay(accountReceivable)"></ion-toggle></td>
       <td>
         <button title="Editar" ion-button icon-only clear color="update" (click)="initModal(0, accountReceivable)">

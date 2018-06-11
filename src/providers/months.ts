@@ -14,7 +14,6 @@ export class MonthsProvider {
 		let self = this;
 		let promise = new Promise((resolve, reject) => {
 			self.activateMonth().then(() => {
-				month['isActive'] = true;
 				self.monthsRef.push(month);
 			});
 			resolve();

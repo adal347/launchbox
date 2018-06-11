@@ -40,6 +40,15 @@ export class MonthsPage {
     modalPage.present();
   }
 
+  updateMonth() {
+    this.monthsProvider.updateMonth(this.month).then(() => {
+      this.commons.createAlert('Actualización Exitosa', 'El mes se actualizo correctamente');
+    })
+    .catch(error => {
+      this.commons.createAlert('Algo salió mal', 'Hubo un problema al actualizar el mes');
+    });
+  }
+
   deleteMonth() {
     this.monthsProvider.removeMonth(this.monthToDelete).then(() => {
       this.commons.createAlert('Eliminación Exitosa', 'El mes se eliminó correctamente');
