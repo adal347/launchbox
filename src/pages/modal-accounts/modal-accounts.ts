@@ -37,7 +37,7 @@ export class ModalAccountsPage {
     this.statusBoxes = ['activo', 'inactivo', 'apartado', 'coworking', 'virtual'];
     this.typeBoxes = ['FRUIT BOX', 'SPROUT BOX', 'DOUBLE SPROUT BOX', 'SEED BOX'];
     this.tenants = this.tenantsProvider.getTenants();
-    this.typePay = ['Transfer', 'Efectivo'];
+    this.typePay = this.cuentasCobrarProvider.getTypePay();
   }
 
   submitService() {

@@ -17,10 +17,6 @@ import { Observable } from 'rxjs/Observable';
 })
 export class CuentasCobrarPage {
 
-  boxes: Observable<any[]>
-  statusBoxes: Observable<any[]>;
-  typeBoxes: Observable<any[]>;
-  typePay: Observable<any[]>;
   accountsReceivable: Observable<any[]>;
   service: any;
   accountReceivableToDelete: any;
@@ -37,10 +33,6 @@ export class CuentasCobrarPage {
   constructor(public navCtrl: NavController, public navParams: NavParams,
               public cuentasCobrarProvider: CuentasCobrarProvider,
               public modalCtrl : ModalController) {
-    this.boxes = this.cuentasCobrarProvider.getBoxes();
-  	this.statusBoxes = this.cuentasCobrarProvider.getBoxStatus();
-  	this.typeBoxes = this.cuentasCobrarProvider.getTypeBox();
-  	this.typePay = this.cuentasCobrarProvider.getTypePay();
   	this.accountsReceivable = this.cuentasCobrarProvider.getAccountsReceivable();
     this.service = {};
     this.accountReceivableToDelete = {};
