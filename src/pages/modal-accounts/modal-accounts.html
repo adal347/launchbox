@@ -56,7 +56,7 @@
       <ion-input type="text" [(ngModel)]="service.payDay"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-label>Efectivo/Transferencia</ion-label>
+      <ion-label>Fee/Transferencia</ion-label>
       <ion-select [(ngModel)]="service.type" interface="popover">
         <ion-option *ngFor="let type of typePay | async" [value]="type.name">{{ type.name }}</ion-option>
       </ion-select>
