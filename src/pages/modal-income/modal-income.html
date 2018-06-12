@@ -42,7 +42,7 @@
       </ion-select>
     </ion-item>
     <ion-item class="ion-content">
-      <ion-label floating class="blackText">Efectivo/Transferencia</ion-label>
+      <ion-label floating class="blackText">Fee/Transferencia</ion-label>
       <ion-select class="blackText" [(ngModel)]="entry.typePay" okText="Ok" cancelText="Cancelar">
         <ion-option *ngFor="let type of typePay | async" [value]="type.name">{{type.name}}</ion-option>
       </ion-select>
