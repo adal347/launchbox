@@ -22,9 +22,9 @@ export class ModalAccountsPage {
   service: any;
   boxes: any[];
   tenants: Observable<any[]>;
+  typePay: Observable<any[]>;
   statusBoxes: any[];
   typeBoxes: any[];
-  typePay: any[];
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
               public viewCtrl: ViewController, private commons: CommonsProvider,
@@ -37,7 +37,7 @@ export class ModalAccountsPage {
     this.statusBoxes = ['activo', 'inactivo', 'apartado', 'coworking', 'virtual'];
     this.typeBoxes = ['FRUIT BOX', 'SPROUT BOX', 'DOUBLE SPROUT BOX', 'SEED BOX'];
     this.tenants = this.tenantsProvider.getTenants();
-    this.typePay = ['Transfer', 'Efectivo'];
+    this.typePay = this.cuentasCobrarProvider.getTypePay();
   }
 
   submitService() {
