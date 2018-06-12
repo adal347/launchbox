@@ -56,8 +56,8 @@
   		<td>{{ entry.whoGet }}</td>
   		<td>{{ entry.total}}</td>
   		<td>{{ entry.type }}</td>
-  		<td>{{ entry.box.id }}</td>
-      <td>{{ entry.typePay.name }}</td>
+  		<td>{{ entry.box }}</td>
+      <td>{{ entry.typePay }}</td>
   		<td>
         <button title="Editar" ion-button icon-only clear color="update" (click)="initModalIncome(0, entry)">
           <ion-icon ios="ios-create" md="md-create"></ion-icon>
@@ -97,7 +97,7 @@
   		<td>{{ egress.provider }}</td>
   		<td>{{ egress.amount }}</td>
       <td>{{ egress.item }}</td>
-  		<td>{{ egress.typePay.name }}</td>
+  		<td>{{ egress.typePay }}</td>
   		<td>
         <button title="Editar" ion-button icon-only clear color="update" (click)="initModalExpenses(0, egress)">
           <ion-icon ios="ios-create" md="md-create"></ion-icon>
