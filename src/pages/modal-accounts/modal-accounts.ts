@@ -22,9 +22,9 @@ export class ModalAccountsPage {
   service: any;
   boxes: any[];
   tenants: Observable<any[]>;
+  typePay: Observable<any[]>;
   statusBoxes: any[];
   typeBoxes: any[];
-  typePay: any[];
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
               public viewCtrl: ViewController, private commons: CommonsProvider,
