@@ -27,7 +27,7 @@
   	<tr *ngFor="let bill of bills | async">
   		<td>{{ bill.service }}</td>
   		<td>{{ bill.provider }}</td>
-  		<td>{{ bill.typePay.name }}</td>
+  		<td>{{ bill.typePay }}</td>
   		<td>$ {{ bill.amount }}</td>
   		<td>$ {{ bill.paid }}</td>
   		<td>$ {{ bill.toPay }}</td>
