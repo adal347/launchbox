@@ -1,19 +1,28 @@
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
 import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 
 @Injectable()
 export class MonthsProvider {
 
 	monthsRef: AngularFireList<any>;
+	monthsObservable: Observable<any[]>;
+	months: any;
 
 	constructor(public db: AngularFireDatabase) {
 		this.monthsRef = this.db.list('months');
+		this.monthsObservable = this.getMonths();
+		this.monthsObservable.forEach((arrayMonths) => {
+			this.months = arrayMonths;
+		});
+
 	}
 
 	public createMonth(month) {
 		let self = this;
 		let promise = new Promise((resolve, reject) => {
 			self.activateMonth().then(() => {
+				month.isActive = true;
 				self.monthsRef.push(month);
 			});
 			resolve();
@@ -38,14 +47,11 @@ export class MonthsProvider {
 
 	public activateMonth() {
 		let promise = new Promise((resolve, reject) => {
-			let months = this.getMonths();
-			months.forEach((arrayMonths) => {
-				arrayMonths.forEach((month) => {
-					if (month.isActive) {
-						month.isActive = false;
-						this.updateMonth(month);
-					}
-				});
+			this.months.forEach((month) => {
+				if (month.isActive) {
+					month.isActive = false;
+					this.updateMonth(month);
+				}
 			});
 			resolve();
 		});

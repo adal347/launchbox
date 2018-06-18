@@ -18,7 +18,7 @@
       <th>Activo</th>
       <th>Opciones</th>
     </tr>
-    <tr *ngFor="let month of months | async">
+    <tr *ngFor="let month of months">
         <td>{{ month.name }}</td>
         <td>{{ month.year }}</td>
         <td>{{ month.initialBalance }}</td>
