@@ -18,14 +18,18 @@ import { Observable } from 'rxjs/Observable';
 })
 export class MonthsPage {
 
-    months: Observable<any[]>;
+    monthsObservable: Observable<any[]>;
     title: any;
     month: any;
     monthToDelete: any;
+    months: any;
   constructor(public navCtrl: NavController, public navParams: NavParams,
               public monthsProvider: MonthsProvider, private commons: CommonsProvider,
               public modalCtrl : ModalController) {
-    this.months = this.monthsProvider.getMonths();
+    this.monthsObservable = this.monthsProvider.getMonths();
+    this.monthsObservable.forEach((arrayMonths) => {
+        this.months = arrayMonths;
+    });
   }
 
   initModal(type, month) {
@@ -40,13 +44,18 @@ export class MonthsPage {
     modalPage.present();
   }
 
-  updateMonth() {
-    this.monthsProvider.updateMonth(this.month).then(() => {
-      this.commons.createAlert('Actualización Exitosa', 'El mes se actualizo correctamente');
-    })
-    .catch(error => {
-      this.commons.createAlert('Algo salió mal', 'Hubo un problema al actualizar el mes');
-    });
+  updateMonth(month) {
+      this.monthsProvider.activateMonth().then(() => {
+          this.monthsProvider.updateMonth(month).then(() => {
+              this.commons.createAlert('Actualización Exitosa', 'El mes se actualizo correctamente');
+          })
+          .catch(error => {
+              this.commons.createAlert('Algo salió mal', 'Hubo un problema al actualizar el mes');
+          });
+      })
+      .catch(error => {
+          this.commons.createAlert('Algo salió mal', 'Hubo un problema al actualizar el mes');
+      })
   }
 
   deleteMonth() {
